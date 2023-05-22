@@ -1,0 +1,9 @@
+termux setup storage
+apt update
+apt upgrade -y
+apt install x11-repo
+apt install pulseaudio -y
+apt install tigervnc -y
+apt install firefox -y
+apt install xfce4 -y
+vncserver -geometry 1280x768 -xstartup startxfce4
