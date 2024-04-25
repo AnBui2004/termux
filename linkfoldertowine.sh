@@ -27,7 +27,8 @@ if [ -z "$name" ]; then
 fi
 
 if [ ! -f "/data/data/com.termux/files/usr/glibc/$wine" ]; then
-    echo -e "\e[0;31mLooks like you haven't started Wine yet, run it and try again. Or you did not import the correct version of Wine. Please check back."
+    echo -e "\e[0;31mLooks like you haven't started Wine yet, run it and try again. Or you did not enter the correct version of Wine. Please check back."
+    echo -e "\e[0;33m--------------------"
     exit 1
 fi
 
