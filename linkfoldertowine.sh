@@ -36,7 +36,8 @@ if [ ! -f "/data/data/com.termux/files/usr/glibc/$wine" ]; then
         exit 1
         fi
     else
-    
+      echo -e "\e[0;31mCanceled."
+      exit 1
     fi
 fi
 
