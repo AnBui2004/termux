@@ -14,7 +14,6 @@ echo -e "\e[0;33m--------------------"
 read -p $'\e[1;37mEnter the Wine version you selected for Mobox: \e[0m' wine
 echo -e "\e[0;33m--------------------"
 if [ -z "$wine" ]; then
-    echo -e "\e[0;33m--------------------"
     echo -e "\e[91mAborted because you did not enter the correct Wine version."
     echo -e "\e[0;33m--------------------"
     exit 1
