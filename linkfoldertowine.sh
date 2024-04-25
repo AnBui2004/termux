@@ -29,9 +29,10 @@ fi
 read -p $'\e[1;37mEnter the folder name you want, it will appear on drive C and linked to your Micro SD card or USB: \e[0m' name
 echo -e "\e[0;33m--------------------"
 if [ -z "$name" ]; then
-    echo -e "\e[91mAborted because you did not enter a new folder name to link your Micro SD card or USB to Wine."
+    name="sdcard"
+    echo -e "\e[1,37mSince you didn't name this new folder, it will be named "sdcard". Continue after 3 seconds..."
     echo -e "\e[0;33m--------------------"
-    exit 1
+    sleep 3
 fi
 
 ln -s "$external" "$PREFIX/glibc/$wine/.wine/drive_c/$name"
