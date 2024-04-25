@@ -26,7 +26,7 @@ if [ -z "$name" ]; then
     exit 1
 fi
 
-if [ ! -f "/data/data/com.termux/files/usr/glibc/$wine" ]; then
+if [ ! -d "/data/data/com.termux/files/usr/glibc/$wine" ]; then
     echo -e "\e[0;31mLooks like you haven't started Wine yet, run it and try again. Or you did not enter the correct version of Wine. Please check back."
     echo -e "\e[0;33m--------------------"
     exit 1
@@ -34,7 +34,7 @@ fi
 
 ln -s "$external" "$PREFIX/glibc/$wine/.wine/drive_c/$name"
 
-if [ ! -f "/data/data/com.termux/files/usr/glibc/$wine/.wine/drive_c/$name" ]; then
+if [ -d "/data/data/com.termux/files/usr/glibc/$wine/.wine/drive_c/$name" ]; then
     echo -e "\e[1;37mDone!"
 else
     echo -e "\e[0;31mError! An error occurred. Please try again later."
