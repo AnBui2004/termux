@@ -30,7 +30,7 @@ read -p $'\e[1;37mEnter the folder name you want, it will appear on drive C and 
 echo -e "\e[0;33m--------------------"
 if [ -z "$name" ]; then
     name="sdcard"
-    echo -e "\e[1,37mSince you didn't name this new folder, it will be named "sdcard". Continue after 3 seconds..."
+    echo -e "\e[1;37mSince you didn't name this new folder, it will be named 'sdcard'. Continue after 3 seconds..."
     echo -e "\e[0;33m--------------------"
     sleep 3
 fi
