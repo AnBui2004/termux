@@ -5,6 +5,7 @@ echo -e "\e[0;33m--------------------"
 
 read -p $'\e[1;37mEnter the path of your Micro SD card or USB: \e[0m' external
 if [ ! -d "$external" ]; then
+    clear
     echo -e "\e[0;33m--------------------"
     echo -e "\e[91mAborted because you did not enter the correct Micro SD card or USB path."
     echo -e "\e[0;33m--------------------"
@@ -15,12 +16,16 @@ echo -e "\e[0;33m--------------------"
 read -p $'\e[1;37mEnter the Wine version you selected for Mobox: \e[0m' wine
 echo -e "\e[0;33m--------------------"
 if [ -z "$wine" ]; then
+    clear
+    echo -e "\e[0;33m--------------------"
     echo -e "\e[91mAborted because you did not enter the correct Wine version."
     echo -e "\e[0;33m--------------------"
     exit 1
 fi
 
 if [ ! -d "/data/data/com.termux/files/usr/glibc/$wine" ]; then
+    clear
+    echo -e "\e[0;33m--------------------"
     echo -e "\e[91mLooks like you haven't started Wine yet, run it and try again. Or you did not enter the correct version of Wine. Please check back."
     echo -e "\e[0;33m--------------------"
     exit 1
