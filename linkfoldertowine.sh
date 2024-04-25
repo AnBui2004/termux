@@ -1,3 +1,4 @@
+clear
 echo -e "\e[1;37mThis is the original project: https://github.com/YourTeachermd/External-Data-mobox"
 echo -e "\e[1;37mAnd customized by https://github.com/AnBui2004"
 echo -e "\e[0;33m--------------------"
@@ -36,8 +37,12 @@ fi
 ln -s "$external" "$PREFIX/glibc/$wine/.wine/drive_c/$name"
 
 if [ -d "/data/data/com.termux/files/usr/glibc/$wine/.wine/drive_c/$name" ]; then
+    clear
+    echo -e "\e[0;33m--------------------"
     echo -e "\e[1;37mDone!"
 else
+    clear
+    echo -e "\e[0;33m--------------------"
     echo -e "\e[91mError! An error occurred. Please try again later."
 fi
 echo -e "\e[0;33m--------------------"
