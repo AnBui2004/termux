@@ -23,5 +23,5 @@ echo -e '\e[1;37mSetup VNC Server\e[0m'
 vncpasswd
 clear
 echo -e '\e[1;37mDone!\e[0m'
-echo -e '\e[1;37mUse this command to start vscode: "./idea.sh"\e[0m'
+echo -e '\e[1;37mUse this command to start IntelliJ IDEA: "./idea.sh"\e[0m'
 echo -e '\e[1;37mUse this command to browse files: "thunar"\e[0m'
