@@ -6,7 +6,7 @@ clear
 echo -e '\e[1;37mInstalling packages...\e[0m'
 apt install wget xterm fluxbox tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer thunar -y
 clear
-echo -e '\e[1;37mDownloading vscode...\e[0m'
+echo -e '\e[1;37mDownloading idea...\e[0m'
 wget -O idea.tar.gz https://download-cdn.jetbrains.com/idea/ideaIU-2024.1.4-aarch64.tar.gz
 clear
 echo -e '\e[1;37mInstalling vscode...\e[0m'
