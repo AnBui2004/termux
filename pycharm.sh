@@ -6,7 +6,7 @@ clear
 echo -e '\e[1;37mInstalling packages...\e[0m'
 apt install python3 pip wget xterm fluxbox tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer thunar -y
 clear
-echo -e '\e[1;37mDownloading vscode...\e[0m'
+echo -e '\e[1;37mDownloading pycharm...\e[0m'
 wget -O pycharm.tar.gz https://download-cdn.jetbrains.com/python/pycharm-professional-2024.1.4-aarch64.tar.gz
 clear
 echo -e '\e[1;37mInstalling vscode...\e[0m'
