@@ -9,7 +9,7 @@ clear
 echo -e '\e[1;37mDownloading idea...\e[0m'
 wget -O idea.tar.gz https://download-cdn.jetbrains.com/idea/ideaIU-2024.1.4-aarch64.tar.gz
 clear
-echo -e '\e[1;37mInstalling vscode...\e[0m'
+echo -e '\e[1;37mInstalling idea...\e[0m'
 tar -xvzf idea.tar.gz
 rm idea.tar.gz
 clear
