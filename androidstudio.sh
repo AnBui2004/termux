@@ -25,3 +25,6 @@ clear
 echo -e '\e[1;37mDone!\e[0m'
 echo -e '\e[1;37mUse this command to start Android Studio: "./studio.sh"\e[0m'
 echo -e '\e[1;37mUse this command to browse files: "thunar"\e[0m'
+echo -e '\e[1;33m----------\e[0m'
+echo -e '\e[1;33mIf error=2 occurs for Gradle, go to File > Settings > Build, Execution, Deployment > Build Tools > Gradle. In Gradle SDK, select /usr/lib/vm/default-java xx.x.xx - aarch64.\e[0m'
+echo -e '\e[1;33m----------\e[0m'
