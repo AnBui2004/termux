@@ -4,7 +4,7 @@ apt update
 apt upgrade -y
 clear
 echo -e '\e[1;37mInstalling packages...\e[0m'
-apt install wget xterm fluxbox tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer thunar default-jdk -y
+apt install wget xterm fluxbox tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer thunar -y
 clear
 echo -e '\e[1;37mDownloading clion...\e[0m'
 wget -O clion.tar.gz https://download-cdn.jetbrains.com/cpp/CLion-2024.2.0.1-aarch64.tar.gz
