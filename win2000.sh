@@ -7,8 +7,8 @@ rm installqemu.sh
 pkg install unzip -y
 clear
 echo -e '\e[1;37mDownloading file...\e[0m'
-wget -O a.7z http://192.168.1.111:8080/api/Windows%202000.zip
-unzip a.7z
+wget -O a.zip http://192.168.1.111:8080/api/Windows%202000.zip
+unzip a.zip
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
 mv 2000.img /storage/emulated/0/VM
