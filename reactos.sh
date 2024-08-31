@@ -8,6 +8,7 @@ pkg install p7zip -y
 clear
 echo -e '\e[1;37mDownloading file...\e[0m'
 wget -O a.7z http://192.168.1.111:8080/api/ReactOS.7z
+7z x a.7z
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
 mv ReactOS.qcow2 /storage/emulated/0/VM
