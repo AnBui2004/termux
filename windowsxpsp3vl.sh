@@ -11,7 +11,7 @@ wget -O a.7z http://192.168.1.111:8080/api/Windows%20XP%20SP3%20VL.7z
 7z x a.7z
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
-mv ME.qcow2 /storage/emulated/0/VM
+mv XPSP3VL.qcow2 /storage/emulated/0/VM
 rm a.7z
 clear
 echo -e '\e[1;37mJust a moment...\e[0m'
