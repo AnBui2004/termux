@@ -7,7 +7,7 @@ rm installqemu.sh
 pkg install p7zip -y
 clear
 echo -e '\e[1;37mDownloading file...\e[0m'
-wget -O a.7z http://192.168.1.111:8080/api/TW101809.7z
+wget -O a.7z https://archive.org/download/tw-101809.7z/TW101809.7z
 7z x a.7z
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
