@@ -8,7 +8,7 @@ pkg install p7zip -y
 clear
 echo -e '\e[1;37mDownloading file...\e[0m'
 wget https://github.com/AnBui2004/termux/raw/refs/heads/main/OVMF.fd
-wget -O a.7z http://192.168.1.111:8080/api/Windows%2011.7z
+wget -O a.7z https://archive.org/download/windows-11.7z_202410/Windows%2011.7z
 7z x a.7z
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
