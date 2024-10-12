@@ -8,11 +8,13 @@ apt update
 apt upgrade -y
 apt install x11-repo -y
 apt install proot-distro p7zip wget -y
+clear
 echo -e '\e[1;37mSetting up Pulseaudio...\e[0m'
 curl -o setup.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/installpulseaudio.sh
 chmod +rwx setup.sh
 ./setup.sh
 rm setup.sh
+clear
 echo -e '\e[1;37mDownloading file...\e[0m'
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
