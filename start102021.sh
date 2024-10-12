@@ -7,29 +7,25 @@ echo -e "\e[1;37m3. Remove from Debian startup"
 echo -e "\e[1;37m4. Remove VM"
 echo -e "\e[1;37mOther. Exit"
 read -p $'' vmoption
-if [vmoption == '1']
-then
+if [ vmoption == '1' ]; then
 cd
 clear
 ./start102021vm.sh
 fi
 read -p $'' vmoption
-if [vmoption == '2']
-then
+if [ vmoption == '2' ]; then
 cd
 nano start102021vm.sh
 clear
 fi
 read -p $'' vmoption
-if [vmoption == '3']
-then
+if [ vmoption == '3' ]; then
 sed -i '/start102021/d' /etc/profile
 clear
 echo -e "\e[1;37mDone!"
 fi
 read -p $'' vmoption
-if [vmoption == '4']
-then
+if [ vmoption == '4' ]; then
 sed -i '/start102021/d' /etc/profile
 cd
 rm start102021vm.sh

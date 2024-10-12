@@ -1,5 +1,9 @@
 clear
 echo -e '\e[1;37mInstalling packages...\e[0m'
+getpermisionsdcard=$(ls -l /sdcard/)
+if [ "$getpermisionsdcard" == "" ]; then
+termux-setup-storage
+fi
 apt update
 apt upgrade -y
 apt install x11-repo -y
