@@ -36,7 +36,9 @@ chmod +rwx start102021vm.sh
 cd ../
 echo '/root/setup121024.sh' >> ./etc/profile
 cd
-echo 'proot-distro login debian' > start102021.sh
+echo 'sed -i '/start102021/d' /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/etc/profile' > start102021.sh
+echo 'echo '/root/start102021.sh' >> /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/etc/profile' >> start102021.sh
+echo 'proot-distro login debian' >> start102021.sh
 chmod +rwx start102021.sh
 clear
 echo -e '\e[1;37mLogin to Debian...\e[0m'
