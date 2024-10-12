@@ -5,10 +5,10 @@ apt upgrade -y
 apt install x11-repo -y
 apt install proot-distro p7zip wget -y
 echo -e '\e[1;37mSetting up Pulseaudio...\e[0m'
-curl -o setup121024.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/installpulseaudio.sh
-chmod +rwx setup121024.sh
-./setup121024.sh
-rm setup121024.sh
+curl -o setup.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/installpulseaudio.sh
+chmod +rwx setup.sh
+./setup.sh
+rm setup.sh
 echo -e '\e[1;37mDownloading file...\e[0m'
 termux-setup-storage
 mkdir /storage/emulated/0/VM
