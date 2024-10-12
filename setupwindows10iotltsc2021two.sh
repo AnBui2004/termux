@@ -24,8 +24,8 @@ else
     rm start102021vm.sh
     rm /storage/emulated/0/VM/W10IoTLTSC2021.qcow2
     rm start102021.sh
+    rm /data/data/com.termux/files/home/start102021.sh
     echo -e "\e[0;33m--------------------"
     echo -e "\e[91mError! An error occurred. Please try again later."
 fi
-rm setup121024.sh
 exit

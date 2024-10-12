@@ -2,7 +2,7 @@ clear
 echo -e '\e[1;37mInstalling packages...\e[0m'
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
-termux-setup-storage
+yes y | termux-setup-storage
 fi
 apt update
 apt upgrade -y
@@ -41,3 +41,4 @@ chmod +rwx start102021.sh
 clear
 echo -e '\e[1;37mLogin to Debian...\e[0m'
 proot-distro login debian
+rm /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/root/setup121024.sh
