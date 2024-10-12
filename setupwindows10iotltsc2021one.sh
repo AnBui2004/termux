@@ -14,7 +14,6 @@ chmod +rwx setup.sh
 ./setup.sh
 rm setup.sh
 echo -e '\e[1;37mDownloading file...\e[0m'
-termux-setup-storage
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
 cd /storage/emulated/0/VM
