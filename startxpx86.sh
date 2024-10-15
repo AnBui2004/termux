@@ -1,4 +1,4 @@
-sed -i '/start102021/d' /etc/profile
+sed -i '/startxpx86/d' /etc/profile
 clear
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mDo you want to run Windows 10 IoT LTSC 2021 now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
@@ -16,33 +16,33 @@ clear
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mStarting VM..."
 echo -e "\e[1;37m--------------------"
-./start102021vm.sh
+./startxpx86vm.sh
 clear
-./start102021.sh
+./startxpx86.sh
 fi
 if [ $vmoption == '2' ]; then
 cd
-nano start102021vm.sh
+nano startxpx86vm.sh
 clear
-./start102021.sh
+./startxpx86.sh
 fi
 if [ $vmoption == '3' ]; then
-sed -i '/start102021/d' /etc/profile
+sed -i '/startxpx86/d' /etc/profile
 clear
 echo -e "\e[1;37mDone!"
-./start102021.sh
+./startxpx86.sh
 fi
 if [ $vmoption == '4' ]; then
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mThis VM will be deleted after 10 seconds. To cancel, press Ctrl + C."
 echo -e "\e[1;37m--------------------"
 sleep 10
-sed -i '/start102021/d' /etc/profile
+sed -i '/startxpx86/d' /etc/profile
 cd
-rm start102021vm.sh
-rm /storage/emulated/0/VM/W10IoTLTSC2021.qcow2
-rm /data/data/com.termux/files/home/start102021.sh
-rm start102021.sh
+rm startxpx86vm.sh
+rm /storage/emulated/0/VM/XPSP3VL.qcow2
+rm /data/data/com.termux/files/home/startxpx86.sh
+rm startxpx86.sh
 clear
 echo -e "\e[1;37mDone!"
 fi
