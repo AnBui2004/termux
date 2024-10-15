@@ -1,7 +1,7 @@
 sed -i '/startxpx86/d' /etc/profile
 clear
 echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mDo you want to run Windows 10 IoT LTSC 2021 now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
+echo -e "\e[1;37mDo you want to run Windows XP SP3 VL x86 now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Edit"
