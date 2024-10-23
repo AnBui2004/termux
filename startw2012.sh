@@ -1,7 +1,7 @@
-sed -i '/startxp2k5/d' /etc/profile
+sed -i '/startw2012/d' /etc/profile
 clear
 echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mDo you want to run Windows XP Media Center Edition 2005 now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
+echo -e "\e[1;37mDo you want to run Windows Server 2012 R2 now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Edit"
@@ -16,33 +16,33 @@ clear
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mStarting VM..."
 echo -e "\e[1;37m--------------------"
-./startxp2k5vm.sh
+./startw2012vm.sh
 clear
-./startxp2k5.sh
+./startw2012.sh
 fi
 if [ $vmoption == '2' ]; then
 cd
-nano startxp2k5vm.sh
+nano startw2012vm.sh
 clear
-./startxp2k5.sh
+./startw2012.sh
 fi
 if [ $vmoption == '3' ]; then
-sed -i '/startxp2k5/d' /etc/profile
+sed -i '/startw2012/d' /etc/profile
 clear
 echo -e "\e[1;37mDone!"
-./startxp2k5.sh
+./startw2012.sh
 fi
 if [ $vmoption == '4' ]; then
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mThis VM will be deleted after 10 seconds. To cancel, press Ctrl + C."
 echo -e "\e[1;37m--------------------"
 sleep 10
-sed -i '/startxp2k5/d' /etc/profile
+sed -i '/startw2012/d' /etc/profile
 cd
-rm startxp2k5vm.sh
-rm /storage/emulated/0/VM/XPSP3VL.qcow2
-rm /data/data/com.termux/files/home/startxp2k5.sh
-rm startxp2k5.sh
+rm startw2012vm.sh
+rm /storage/emulated/0/VM/ws2012r2.qcow2
+rm /data/data/com.termux/files/home/startw2012.sh
+rm startw2012.sh
 clear
 echo -e "\e[1;37mDone!"
 fi
