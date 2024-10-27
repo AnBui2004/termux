@@ -19,7 +19,7 @@ echo -e '\e[1;37mDownloading file...\e[0m'
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
 cd /storage/emulated/0/VM
-wget -O a.7z http://192.168.1.111:8080/api/Windows%2010%20LTSB%202015.7z
+wget -O a.7z 'https://www.googleapis.com/drive/v3/files/1cPRmI8CS3xVO_z4WGxSe5ftTuY6-Kwj7?alt=media&key=AIzaSyBg5cJ4QZF7kDgco9Sxrs-cPtV3F65bVSY'
 7z x a.7z
 rm a.7z
 cd
