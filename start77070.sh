@@ -7,8 +7,7 @@ echo -e "\e[1;37mDo you want to run Windows 7 7070 now? Enter the corresponding 
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Edit"
-echo -e "\e[1;37m3. Remove from Debian startup"
-echo -e "\e[1;37m4. Remove VM"
+echo -e "\e[1;37m3. Remove VM"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
 read -p $'' vmoption
@@ -29,12 +28,6 @@ clear
 ./start"$setname".sh
 fi
 if [ $vmoption == '3' ]; then
-sed -i "/start"$setname"/d" /etc/profile
-clear
-echo -e "\e[1;37mDone!"
-./start"$setname".sh
-fi
-if [ $vmoption == '4' ]; then
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mThis VM will be deleted after 10 seconds. To cancel, press Ctrl + C."
 echo -e "\e[1;37m--------------------"
