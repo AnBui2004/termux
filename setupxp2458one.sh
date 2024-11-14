@@ -29,7 +29,7 @@ echo -e '\e[1;37mJust a sec...\e[0m'
 cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/root
 curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setup"$setname"two.sh
 chmod +rwx "setup"$setname".sh"
-echo qemu-system-x86_64 -M q35 -usb -device usb-tablet -device usb-kbd -cpu qemu64,+avx,+avx2,+sse,+sse2,+sse4.1,+sse4.2 -smp sockets=1,cores=4,threads=1 -m 4096M -overcommit mem-lock=off -drive file=/storage/emulated/0/VM/WS2016.vhd,aio=threads,cache=unsafe,if=virtio -device qxl-vga,vgamem_mb=128 -device ich9-intel-hda -device hda-duplex -device virtio-net-pci,netdev=n0 -netdev user,id=n0 -accel tcg,thread=multi,tb-size=2048 -device virtio-balloon-pci -device virtio-serial-pci -device virtio-rng-pci -device intel-iommu -vnc :2 > "start"$setname"vm.sh"
+echo qemu-system-x86_64 -usb -device usb-tablet -device usb-kbd -cpu qemu32 -smp sockets=1,cores=1,threads=1 -m 512M -overcommit mem-lock=off -hda /storage/emulated/0/VM/XP2458.qcow2 -cdrom /storage/emulated/0/VM/5.1.2457.0.main.010309-1904_x86fre_client-home_retail_en-us-WB2PLFRE_EN.iso -vga std -device sb16 -device pcnet,netdev=n0 -netdev user,id=n0 -accel tcg,thread=multi,tb-size=2048 -rtc base=2001-03-10t00:00:00 -vnc :2 > "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vm.sh"
 cd ../
 echo "/root/setup"$setname".sh" >> ./etc/profile
