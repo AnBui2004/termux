@@ -1,5 +1,5 @@
-setname='wl4074'
-diskfilename='WL4074.qcow2'
+setname='76469'
+diskfilename='W76469.qcow2'
 sed -i "/start"$setname"/d" /etc/profile
 clear
 echo -e "\e[1;37m--------------------"
