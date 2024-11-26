@@ -17,7 +17,7 @@ echo -e '\e[1;37mDownloading file...\e[0m'
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
 cd /storage/emulated/0/VM
-wget -O a.7z http://192.168.1.111:8080/api/Windows%20Server%202008%20R2%207000.7z
+wget -O a.7z https://archive.org/download/windows-server-2008-r-2-7000.7z/Windows%20Server%202008%20R2%207000.7z
 7z x a.7z
 rm a.7z
 cd
