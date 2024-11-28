@@ -3,7 +3,7 @@ diskfilename='W89200.qcow2'
 sed -i "/start"$setname"/d" /etc/profile
 clear
 echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mDo you want to run Windows Server 2008 R2 build 7000 now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
+echo -e "\e[1;37mDo you want to run Windows 8 now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Edit"
