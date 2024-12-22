@@ -17,7 +17,7 @@ echo -e '\e[1;37mDownloading file...\e[0m'
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
 cd /storage/emulated/0/VM
-wget -O a.7z 'https://www.googleapis.com/drive/v3/files/1CFNWrX44MqDXCRUaRzZq2rV4yBf60I9l?alt=media&key=AIzaSyBg5cJ4QZF7kDgco9Sxrs-cPtV3F65bVSY'
+wget -O a.7z 'https://archive.org/download/windows-8-7746.7znbabtermux/Windows%208%207746.7z'
 7z x a.7z
 rm a.7z
 cd
