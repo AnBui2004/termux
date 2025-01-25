@@ -29,7 +29,7 @@ echo -e '\e[1;37mJust a sec...\e[0m'
 cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/root
 curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setup"$setname"two.sh
 chmod +rwx "setup"$setname".sh"
-echo 'qemu-system-x86_64 -usb -device usb-tablet -device usb-kbd -cpu qemu32,+avx,+avx2,+sse,+sse2,+sse4.1,+sse4.2 -smp sockets=1,cores=1,threads=1 -overcommit mem-lock=off -m 512M -hda /storage/emulated/0/VM/Whistler2257.qcow2 -vga cirrus -device ac97 -device pcnet,netdev=n0 -netdev user,id=n0 -accel tcg,thread=multi,tb-size=2048 -rtc base=2000-08-10t00:00:00 -monitor vc -vnc :2' > "start"$setname"vm.sh"
+echo 'qemu-system-x86_64 -usb -device usb-tablet -device usb-kbd -cpu qemu32,+avx,+avx2,+sse,+sse2,+sse4.1,+sse4.2 -smp sockets=1,cores=1,threads=1 -overcommit mem-lock=off -m 512M -hda /storage/emulated/0/VM/Whistler2257.qcow2 -vga cirrus -device ac97 -device pcnet,netdev=n0 -netdev user,id=n0 -accel tcg,thread=multi,tb-size=2048 -rtc base=2000-08-10t00:00:00 -monitor stdio -vnc :2' > "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vm.sh"
 cd ../
 echo "/root/setup"$setname".sh" >> ./etc/profile
