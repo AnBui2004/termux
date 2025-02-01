@@ -18,4 +18,4 @@ fi
 sleep 3
 export PULSE_SERVER=127.0.0.1
 clear
-echo -e '\\e[1;37mDone!\\e[0m'
+echo -e '\e[1;37mDone!\e[0m'
