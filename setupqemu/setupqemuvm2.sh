@@ -28,5 +28,6 @@ else
     echo -e "\e[0;33m--------------------"
     echo -e "\e[91mError! An error occurred. Please try again later."
 fi
-rm "setup"$setname".sh"
+rm "setup1.sh"
+rm "setup2.sh"
 exit
