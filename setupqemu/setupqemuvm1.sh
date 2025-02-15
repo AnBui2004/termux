@@ -18,7 +18,6 @@ clear
 echo -e '\e[1;37mSetting up Pulseaudio...\e[0m'
 export PULSE_SERVER=127.0.0.1
 clear
-echo -e '\e[1;37mDownloading file...\e[0m'
 mkdir /storage/emulated/0/VM
 mkdir /storage/emulated/0/VM/$setname
 chmod +rwx /storage/emulated/0/VM
@@ -27,7 +26,9 @@ if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
     mkdir /storage/emulated/0/VM
     chmod +rwx /storage/emulated/0/VM/Shared
 fi
+clear
 if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
+    echo -e '\e[1;37mDownloading disk image...\e[0m'
     cd /storage/emulated/0/VM/$setname
     wget -O file.7z $setfileurl
     7z x file.7z
