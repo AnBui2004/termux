@@ -22,11 +22,13 @@ if [ ! -d "/storage/emulated/0/VM" ]; then
     mkdir /storage/emulated/0/VM
     chmod +rwx /storage/emulated/0/VM/Shared
 fi
-cd /storage/emulated/0/VM/$setname
-wget -O a.7z $setfileurl
-7z x a.7z
-rm a.7z
-cd
+if [ ! -e "/storage/emulated/0/VM/"$diskfilename"" ]; then
+    cd /storage/emulated/0/VM/$setname
+    wget $setfileurl
+    7z x $setname.7z
+    rm $setname.7z
+    cd
+fi
 clear
 echo -e '\e[1;37mInstalling Debian...\e[0m'
 proot-distro install debian
