@@ -22,7 +22,7 @@ if [ ! -d "/storage/emulated/0/VM" ]; then
     mkdir /storage/emulated/0/VM
     chmod +rwx /storage/emulated/0/VM/Shared
 fi
-if [ ! -e "/storage/emulated/0/VM/"$diskfilename"" ]; then
+if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd /storage/emulated/0/VM/$setname
     wget $setfileurl
     7z x $setname.7z
