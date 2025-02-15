@@ -29,9 +29,9 @@ if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
 fi
 if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd /storage/emulated/0/VM/$setname
-    wget $setfileurl
-    7z x $setname.7z
-    rm $setname.7z
+    wget -O file.7z $setfileurl
+    7z x file.7z
+    rm file.7z
     cd
 fi
 clear
