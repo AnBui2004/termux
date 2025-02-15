@@ -17,6 +17,10 @@ mkdir /storage/emulated/0/VM
 mkdir /storage/emulated/0/VM/$setname
 chmod +rwx /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM/$setname
+if [ ! -d "/storage/emulated/0/VM" ]; then
+    mkdir /storage/emulated/0/VM
+    chmod +rwx /storage/emulated/0/VM/Shared
+fi
 cd /storage/emulated/0/VM/$setname
 wget -O a.7z $setfileurl
 7z x a.7z
@@ -31,7 +35,10 @@ cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/
 curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/setupqemuvm2.sh
 chmod +rwx "setup"$setname".sh"
 echo $setqemucommand > "start"$setname"vm.sh"
+echo $setqemucommand > "start"$setname"vms.sh"
+echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >> "start"$setname"vms.sh"
 chmod +rwx "start"$setname"vm.sh"
+chmod +rwx "start"$setname"vms.sh"
 cd ../
 echo "diskfilename="$diskfilename" && setname="$setname" && setstartfileurl="$setstartfileurl" && /root/setup"$setname".sh" >> ./etc/profile
 cd
