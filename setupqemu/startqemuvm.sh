@@ -1,12 +1,4 @@
 sed -i "/start"$setname"/d" /etc/profile
-getpermisionsdcard=$(ls -l /sdcard/)
-if [ "$getpermisionsdcard" == "" ]; then
-clear
-echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mAccess to internal storage denied. Please grant Termux access to internal storage."
-echo -e "\e[1;37m--------------------"
-exit
-fi
 clear
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mDo you want to run "$osname" now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
