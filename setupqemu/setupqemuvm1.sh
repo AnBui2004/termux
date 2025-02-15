@@ -23,7 +23,7 @@ mkdir /storage/emulated/0/VM
 mkdir /storage/emulated/0/VM/$setname
 chmod +rwx /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM/$setname
-if [ ! -d "/storage/emulated/0/VM" ]; then
+if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
     mkdir /storage/emulated/0/VM
     chmod +rwx /storage/emulated/0/VM/Shared
 fi
