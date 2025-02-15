@@ -1,4 +1,5 @@
 sed -i "/start"$setname"/d" /etc/profile
+spaceforosname={$osname//_/ }
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
 clear
