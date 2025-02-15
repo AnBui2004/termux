@@ -9,7 +9,7 @@ clear
 echo -e '\e[1;37mJust a sec...\e[0m'
 if [ -e "/storage/emulated/0/VM/"$diskfilename"" ]; then
     cd
-    curl -o "start"$setname".sh" $setstartfileurl
+    curl -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/startqemuvm.sh
     chmod +rwx "start"$setname".sh"
     sed -i -e "1isetname="$setname"" start"$setname".sh
     clear
