@@ -1,4 +1,9 @@
 clear
+echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37mWarning: Please do not run any other commands when this setup begins. If you're running other commands and they haven't finished executing yet, press Ctrl + C now to cancel the setup immediately."
+echo -e "\e[1;37m--------------------"
+sleep 5
+clear
 source ./setup1.sh
 echo -e '\e[1;37mInstalling packages...\e[0m'
 getpermisionsdcard=$(ls -l /sdcard/)
@@ -39,6 +44,7 @@ curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/
 chmod +rwx "setup"$setname".sh"
 sed -i -e "1idiskfilename="$diskfilename"" setup"$setname".sh
 sed -i -e "1isetname="$setname"" setup"$setname".sh
+sed -i -e "1iosname="$osname"" setup"$setname".sh
 echo $setqemucommand > "start"$setname"vm.sh"
 echo $setqemucommand > "start"$setname"vms.sh"
 echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >> "start"$setname"vms.sh"
