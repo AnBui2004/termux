@@ -9,9 +9,9 @@ clear
 echo -e '\e[1;37mJust a sec...\e[0m'
 if [ -e "/storage/emulated/0/VM/"$diskfilename"" ]; then
     cd
-    curl -o "start"$setname".sh" "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/start"$setname".sh"
+    curl -o "start"$setname".sh" $setstartfileurl
     chmod +rwx "start"$setname".sh"
-    echo "/root/start"$setname".sh" >> /etc/profile
+    sed -i -e "1isetname="$setname"" start"$setname".sh
     clear
     echo -e '\e[1;37mDone!\e[0m'
     echo -e "\e[1;37mUse this command to run: "./start"$setname".sh"\e[0m"
