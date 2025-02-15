@@ -44,7 +44,7 @@ curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/
 chmod +rwx "setup"$setname".sh"
 sed -i -e "1idiskfilename="$diskfilename"" setup"$setname".sh
 sed -i -e "1isetname="$setname"" setup"$setname".sh
-sed -i -e "1iosname='"$osname"'" setup"$setname".sh
+sed -i -e "1iosname="$osname"" setup"$setname".sh
 echo $setqemucommand > "start"$setname"vm.sh"
 echo $setqemucommand > "start"$setname"vms.sh"
 echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >> "start"$setname"vms.sh"
