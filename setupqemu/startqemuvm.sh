@@ -50,7 +50,7 @@ cd
 nano start"$setname"vm.sh
 rm start"$setname"vms.sh
 cp start"$setname"vm.sh start"$setname"vms.sh
-echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >> "start"$setname"vms.sh"
+sed -i.bck '$s/$/ -drive file=fat:rw:/storage/emulated/0/VM/Shared/' "start"$setname"vms.sh"
 chmod +rwx "start"$setname"vms.sh"
 clear
 ./start"$setname".sh
