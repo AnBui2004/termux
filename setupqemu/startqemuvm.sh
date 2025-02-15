@@ -18,8 +18,8 @@ echo -e "\e[1;37m4. Remove VM"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
 read -p $'' vmoption
-if [ ! -d "/storage/emulated/0/VM" ]; then
-    mkdir /storage/emulated/0/VM
+if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
+    mkdir /storage/emulated/0/VM/Shared
     chmod +rwx /storage/emulated/0/VM/Shared
 fi
 if [ $vmoption == '1' ]; then
