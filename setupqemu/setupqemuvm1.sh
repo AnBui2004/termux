@@ -28,7 +28,7 @@ proot-distro install debian
 clear
 echo -e '\e[1;37mJust a sec...\e[0m'
 cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/root
-curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setup"$setname"two.sh
+curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/setupqemuvm2.sh
 chmod +rwx "setup"$setname".sh"
 echo $setqemucommand > "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vm.sh"
