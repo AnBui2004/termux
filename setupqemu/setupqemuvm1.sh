@@ -48,6 +48,8 @@ sed -i -e "1iosname="$osname"" setup"$setname".sh
 echo $setqemucommand > "start"$setname"vm.sh"
 echo $setqemucommand > "start"$setname"vms.sh"
 echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >> "start"$setname"vms.sh"
+convertosingleline=$(paste -s -d:" " start101903vms.sh)
+echo convertosingleline > start101903vms.sh
 chmod +rwx "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vms.sh"
 cd ../
