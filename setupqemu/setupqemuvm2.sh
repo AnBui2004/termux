@@ -11,7 +11,7 @@ if [ -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd
     curl -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/startqemuvm.sh
     chmod +rwx "start"$setname".sh"
-    sed -i -e "1isetfileurl="$setfileurl"" start"$setname".sh
+    sed -i -e "1isetfileurl='"$setfileurl"'" start"$setname".sh
     sed -i -e "1isetname="$setname"" start"$setname".sh
     sed -i -e "1iosname="$osname"" start"$setname".sh
     clear
