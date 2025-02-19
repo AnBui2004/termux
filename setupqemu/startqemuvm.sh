@@ -14,7 +14,8 @@ echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Run now with Shared Folder"
 echo -e "\e[1;37m3. Edit"
-echo -e "\e[1;37m4. Remove VM"
+echo -e "\e[1;37m4. Show download links for files"
+echo -e "\e[1;37m5. Remove VM"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
 read -p $'' vmoption
@@ -58,6 +59,19 @@ clear
 ./start"$setname".sh
 fi
 if [ $vmoption == '4' ]; then
+clear
+echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37mLINKS:"
+echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37m"$setfileurl""
+echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37mPress any key to exit."
+echo -e "\e[1;37m--------------------"
+read -n 1
+clear
+./start"$setname".sh
+fi
+if [ $vmoption == '5' ]; then
 clear
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mThis VM will be deleted after 10 seconds. To cancel, press Ctrl + C."
