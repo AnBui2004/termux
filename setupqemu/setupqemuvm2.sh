@@ -13,7 +13,7 @@ if [ -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     chmod +rwx "start"$setname".sh"
     sed -i -e "1isetfileurl='"$setfileurl"'" start"$setname".sh
     sed -i -e "1isetname="$setname"" start"$setname".sh
-    sed -i -e "1iosname="$osname"" start"$setname".sh
+    sed -i -e "1iosname='"$osname"'" start"$setname".sh
     clear
     echo -e '\e[1;37mDone!\e[0m'
     echo -e "\e[1;37mUse this command to run: "./start"$setname".sh"\e[0m"
