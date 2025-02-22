@@ -17,7 +17,7 @@ echo -e '\e[1;37mDownloading file...\e[0m'
 mkdir /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM
 cd /storage/emulated/0/VM
-wget -O a.7z 'https://www.googleapis.com/drive/v3/files/1inRH1Ctx-0YhD9bgRLgMxN1PyEO3wJK4?alt=media&key=AIzaSyBg5cJ4QZF7kDgco9Sxrs-cPtV3F65bVSY'
+wget -O a.7z 'https://archive.org/download/windows-whistler-2257.7z/Windows%20Whistler%202257.7z'
 7z x a.7z
 rm a.7z
 cd
