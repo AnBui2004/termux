@@ -3,6 +3,8 @@ getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
 yes y | termux-setup-storage
 fi
+sleep 3
+clear
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mWarning: Please do not run any other commands when this setup begins. If you're running other commands and they haven't finished executing yet, press Ctrl + C now to cancel the setup immediately."
 echo -e "\e[1;37m--------------------"
