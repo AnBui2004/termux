@@ -1,3 +1,4 @@
+cd
 setname='101903'
 diskfilename='W101903.qcow2'
 setfileurl='https://www.googleapis.com/drive/v3/files/1VI27vtcUrwBJnJ040uDB1VchslM1nIBr?alt=media&key=AIzaSyBg5cJ4QZF7kDgco9Sxrs-cPtV3F65bVSY'
