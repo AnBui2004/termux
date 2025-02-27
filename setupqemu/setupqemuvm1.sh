@@ -1,15 +1,20 @@
 clear
+getpermisionsdcard=$(ls -l /sdcard/)
+if [ "$getpermisionsdcard" == "" ]; then
+yes y | termux-setup-storage
+fi
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mWarning: Please do not run any other commands when this setup begins. If you're running other commands and they haven't finished executing yet, press Ctrl + C now to cancel the setup immediately."
 echo -e "\e[1;37m--------------------"
 sleep 5
 clear
+echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37mBy obtaining and running the virtual machine in any way, you agree to any Agreements provided by the vendor or owner of this operating system. You are responsible for any consequences that may arise from using the virtual machine. The owner of this script is not responsible for any consequences that may arise from using the virtual machine."
+echo -e "\e[1;37m--------------------"
+sleep 5
+clear
 source ./setup1.sh
 echo -e '\e[1;37mInstalling packages...\e[0m'
-getpermisionsdcard=$(ls -l /sdcard/)
-if [ "$getpermisionsdcard" == "" ]; then
-yes y | termux-setup-storage
-fi
 apt update
 apt upgrade -y
 apt install x11-repo -y
