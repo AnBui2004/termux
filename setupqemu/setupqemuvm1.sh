@@ -3,16 +3,19 @@ getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
 yes y | termux-setup-storage
 fi
+echo -e "\e[1;37mAutomatically go to next step after 3 seconds."
 sleep 3
 clear
-echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37m---------\/-----------"
 echo -e "\e[1;37mWarning: Please do not run any other commands when this setup begins. If you're running other commands and they haven't finished executing yet, press Ctrl + C now to cancel the setup immediately."
-echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37m---------/\-----------"
+echo -e "\e[1;37mAutomatically go to next step after 5 seconds and you agreed."
 sleep 5
 clear
-echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37m---------\/-----------"
 echo -e "\e[1;37mBy obtaining and running the virtual machine in any way, you agree to any Agreements and Policies provided by the vendor or owner of this operating system and other related things. You are responsible for any consequences that may arise from using the virtual machine. The owner of this script is not responsible for any consequences that may arise from using the virtual machine or you have edited these scripts. To disagree and cancel the setup, press Ctrl + C."
-echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37m---------/\-----------"
+echo -e "\e[1;37mAutomatically go to next step after 5 seconds and you agreed."
 sleep 5
 clear
 source ./setup1.sh
@@ -25,6 +28,16 @@ clear
 echo -e '\e[1;37mSetting up Pulseaudio...\e[0m'
 export PULSE_SERVER=127.0.0.1
 clear
+getpermisionsdcard=$(ls -l /sdcard/)
+if [ "$getpermisionsdcard" == "" ]; then
+clear
+echo -e "\e[1;37m---------\/-----------"
+echo -e "\e[1;37mSetup was canceled because you did not grant Termux access to storage."
+echo -e "\e[1;37m---------/\-----------"
+rm "setup1.sh"
+rm "setup2.sh"
+exit
+fi
 mkdir /storage/emulated/0/VM
 mkdir /storage/emulated/0/VM/$setname
 chmod +rwx /storage/emulated/0/VM
