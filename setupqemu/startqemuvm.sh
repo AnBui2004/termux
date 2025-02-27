@@ -18,7 +18,7 @@ echo -e "\e[1;37m4. Show download links for files"
 echo -e "\e[1;37m5. Remove VM"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
-read -p $'' vmoption
+read -n 1 vmoption
 if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
     mkdir /storage/emulated/0/VM/Shared
     chmod +rwx /storage/emulated/0/VM/Shared
