@@ -11,7 +11,7 @@ echo -e "\e[1;37m--------------------"
 sleep 5
 clear
 echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mBy obtaining and running the virtual machine in any way, you agree to any Agreements provided by the vendor or owner of this operating system. You are responsible for any consequences that may arise from using the virtual machine. The owner of this script is not responsible for any consequences that may arise from using the virtual machine or you have edited these scripts. To disagree and cancel the setup, press Ctrl + C."
+echo -e "\e[1;37mBy obtaining and running the virtual machine in any way, you agree to any Agreements and Policies provided by the vendor or owner of this operating system and other related things. You are responsible for any consequences that may arise from using the virtual machine. The owner of this script is not responsible for any consequences that may arise from using the virtual machine or you have edited these scripts. To disagree and cancel the setup, press Ctrl + C."
 echo -e "\e[1;37m--------------------"
 sleep 5
 clear
