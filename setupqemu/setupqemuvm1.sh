@@ -9,14 +9,14 @@ clear
 echo -e "\e[1;37m---------\/-----------"
 echo -e "\e[1;37mWarning: Please do not run any other commands when this setup begins. If you're running other commands and they haven't finished executing yet, press Ctrl + C now to cancel the setup immediately."
 echo -e "\e[1;37m---------/\-----------"
-echo -e "\e[1;37mAutomatically go to next step after 5 seconds and you agreed."
-sleep 5
+echo -e "\e[1;37mAutomatically go to next step after 7 seconds and you agreed."
+sleep 7
 clear
 echo -e "\e[1;37m---------\/-----------"
 echo -e "\e[1;37mBy obtaining and running the virtual machine in any way, you agree to any Agreements and Policies provided by the vendor or owner of this operating system and other related things. You are responsible for any consequences that may arise from using the virtual machine. The owner of this script is not responsible for any consequences that may arise from using the virtual machine or you have edited these scripts. To disagree and cancel the setup, press Ctrl + C."
 echo -e "\e[1;37m---------/\-----------"
-echo -e "\e[1;37mAutomatically go to next step after 5 seconds and you agreed."
-sleep 5
+echo -e "\e[1;37mAutomatically go to next step after 10 seconds and you agreed."
+sleep 10
 clear
 source ./setup1.sh
 echo -e '\e[1;37mInstalling packages...\e[0m'
