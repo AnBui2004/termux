@@ -21,7 +21,7 @@ clear
 source ./setup1.sh
 echo -e '\e[1;37mInstalling packages...\e[0m'
 apt update
-apt upgrade -y
+yes y | apt upgrade -y
 apt install x11-repo -y
 apt install proot-distro p7zip wget pulseaudio -y
 clear
