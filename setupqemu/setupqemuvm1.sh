@@ -65,6 +65,26 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     7z x file.7z
     rm file.7z
     cd
+    if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
+        echo -e "\e[1;37m[!] Unable to download"
+        echo -e "\e[1;37m-"
+        if [[ "$setfileurl" =~ "archive.org" ]]; then
+            echo -e "\e[1;37mThis item may be restricted by the Internet Archive. You can try downloading it manually as follows:"
+            echo -e "\e[1;37m[1] Open your browser and go to https://archive.org/ ."
+            echo -e "\e[1;37m[2] Sign in or create a new account."
+            echo -e "\e[1;37m[3] Open this link on your browser to start the download:"
+            echo -e "\e[1;37m$setfileurl"
+            echo -e "\e[1;37m[4] Extract the downloaded file into $setname folder in VM folder on your phone (Internal storage/VM/$setname)."
+            echo -e "\e[1;37m[5] Run this setup command again."
+            echo -e "\e[1;37m-"
+            echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
+        else
+            echo -e "\e[1;37mPlease try again later or join our community for help here: https://anbui.ovh/community ."
+        fi
+        rm "setup1.sh"
+        rm "setup2.sh"
+        exit
+    fi
 fi
 clear
 echo -e '\e[1;37mInstalling Debian...\e[0m'
