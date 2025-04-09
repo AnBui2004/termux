@@ -7,6 +7,7 @@ echo -e "\e[1;37mAccess to internal storage denied. Please grant Termux access t
 echo -e "\e[1;37m--------------------"
 exit
 fi
+export PULSE_SERVER=127.0.0.1
 clear
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mDo you want to run "$osname" now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
