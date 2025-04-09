@@ -100,20 +100,23 @@ sed -i -e "1isetfileurl='"$setfileurl"'" setup"$setname".sh
 sed -i -e "1idiskfilename="$diskfilename"" setup"$setname".sh
 sed -i -e "1isetname="$setname"" setup"$setname".sh
 sed -i -e "1iosname='"$osname"'" setup"$setname".sh
-echo $setqemucommand >"start"$setname"vm.sh"
-echo $setqemucommand >"start"$setname"vms.sh"
-echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >>"start"$setname"vms.sh"
-convertosingleline=$(paste -s -d:" " start101903vms.sh)
-echo ${convertosingleline//: -drive/ -drive} >start101903vms.sh
+architecture=$(uname -m)
+if [[ "$architecture" =~ "64" ]]; then
+    finalqemucommand="$setqemucommand"
+else
+    finalqemucommand="${setqemucommand//-accel tcg,thread=multi/-accel tcg,thread=single}"
+fi
+echo $finalqemucommand > "start"$setname"vm.sh"
+echo "$finalqemucommand -drive file=fat:rw:/storage/emulated/0/VM/Shared" > "start"$setname"vms.sh"
 chmod +rwx "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vms.sh"
 cd ../
-echo "/root/setup"$setname".sh" >>./etc/profile
+echo "/root/setup"$setname".sh" >> ./etc/profile
 cd
-echo 'sed -i '/start"$setname"/d' /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/etc/profile' >"start"$setname".sh"
-echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >>start"$setname".sh
-echo 'echo '/root/start"$setname".sh' >> /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/etc/profile' >>start"$setname".sh
-echo 'proot-distro login debian' >>start"$setname".sh
+echo 'sed -i '/start"$setname"/d' /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/etc/profile' > "start"$setname".sh"
+echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> start"$setname".sh
+echo 'echo '/root/start"$setname".sh' >> /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/etc/profile' >> start"$setname".sh
+echo 'proot-distro login debian' >> start"$setname".sh
 chmod +rwx start"$setname".sh
 clear
 echo -e '\e[1;37mLogin to Debian...\e[0m'
