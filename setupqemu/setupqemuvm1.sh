@@ -66,6 +66,7 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     rm file.7z
     cd
     if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
+        clear
         echo -e "\e[1;37m[!] Unable to download"
         echo -e "\e[1;37m-"
         if [[ "$setfileurl" =~ "archive.org" ]]; then
@@ -81,7 +82,13 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37m-"
             echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
         else
-            echo -e "\e[1;37mPlease try again later or join our community for help here: https://anbui.ovh/community ."
+            if [[ "$setfileurl" =~ "pixeldrain" ]]; then
+                echo -e "\e[1;37mYou are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
+                echo -e "\e[1;37m-"
+                echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
+            else
+                echo -e "\e[1;37mPlease try again later or join our community for help here: https://anbui.ovh/community ."
+            fi
         fi
         rm "setup1.sh"
         rm "setup2.sh"
