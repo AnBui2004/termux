@@ -54,6 +54,9 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     else
         echo -e "\e[1;37m[!] Downloading from slow speed server."
     fi
+    if [[ "$variable" =~ "pixeldrain" ]]; then
+        echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
+    fi
     echo -e "\e[1;37m-"
     cd /storage/emulated/0/VM/$setname
     wget -O file.7z $setfileurl
