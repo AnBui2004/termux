@@ -74,8 +74,8 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
         if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
             echo -e "\e[1;37m-\e[0m"
             echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
+            echo -e "\e[1;37m-\e[0m"
         fi
-        echo -e "\e[1;37m-\e[0m"
         aria2c -x 4 -o file.7z $setfileurl
     fi
     7z x file.7z
@@ -144,8 +144,8 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
         if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
             echo -e "\e[1;37m-\e[0m"
             echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
+            echo -e "\e[1;37m-\e[0m"
         fi
-        echo -e "\e[1;37m-\e[0m"
         aria2c -x 4 -o file.7z $setfileurl
     fi
     7z x file.7z
