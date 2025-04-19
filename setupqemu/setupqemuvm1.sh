@@ -57,11 +57,19 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     if [[ "$setfileurl" == *"pixeldrain"* || "$setfileurl" == *"google"* ]]; then
         echo -e "\e[1;37m[i] Downloading from high speed server."
     else
-        echo -e "\e[1;37m[!] Downloading from slow speed server."
+        if [[ "$setfileurl" == *"anbui.ovh"* ]]; then
+            echo -e "\e[1;37m[i] You are downloading from my test server."
+        else
+            echo -e "\e[1;37m[!] Downloading from slow speed server."
+        fi
     fi
     if [[ "$setfileurl" =~ "pixeldrain" ]]; then
         echo -e "\e[1;37m-\e[0m"
         echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
+    fi
+    if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
     fi
     echo -e "\e[1;37m-\e[0m"
     cd /storage/emulated/0/VM/$setname
