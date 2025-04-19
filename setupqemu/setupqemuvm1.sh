@@ -26,7 +26,7 @@ echo -e '\e[1;37m[i] Installing packages...\e[0m'
 apt update
 yes y | apt upgrade -y
 apt install x11-repo -y
-apt install proot-distro p7zip wget pulseaudio -y
+apt install proot-distro p7zip wget pulseaudio aria2 -y
 clear
 echo -e '\e[1;37m[i] Setting up Pulseaudio...\e[0m'
 export PULSE_SERVER=127.0.0.1
@@ -63,17 +63,21 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37m[!] Downloading from slow speed server."
         fi
     fi
+    echo -e "\e[1;37m-\e[0m"
+    cd /storage/emulated/0/VM/$setname
     if [[ "$setfileurl" =~ "pixeldrain" ]]; then
         echo -e "\e[1;37m-\e[0m"
         echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
-    fi
-    if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
         echo -e "\e[1;37m-\e[0m"
-        echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
+        wget -O file.7z $setfileurl
+    else
+        if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
+            echo -e "\e[1;37m-\e[0m"
+            echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
+        fi
+        echo -e "\e[1;37m-\e[0m"
+        aria2c -x 4 -o file.7z $setfileurl
     fi
-    echo -e "\e[1;37m-\e[0m"
-    cd /storage/emulated/0/VM/$setname
-    wget -O file.7z $setfileurl
     7z x file.7z
     rm file.7z
     cd
@@ -129,17 +133,21 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37m[!] Downloading from slow speed server."
         fi
     fi
+    echo -e "\e[1;37m-\e[0m"
+    cd /storage/emulated/0/VM/$setname
     if [[ "$setfileurl" =~ "pixeldrain" ]]; then
         echo -e "\e[1;37m-\e[0m"
         echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
-    fi
-    if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
         echo -e "\e[1;37m-\e[0m"
-        echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
+        wget -O file.7z $setfileurl
+    else
+        if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
+            echo -e "\e[1;37m-\e[0m"
+            echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
+        fi
+        echo -e "\e[1;37m-\e[0m"
+        aria2c -x 4 -o file.7z $setfileurl
     fi
-    echo -e "\e[1;37m-\e[0m"
-    cd /storage/emulated/0/VM/$setname
-    wget -O file.7z $setfileurl
     7z x file.7z
     rm file.7z
     cd
