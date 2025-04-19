@@ -102,6 +102,72 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
                 echo -e "\e[1;37mPlease try again later or join our community for help here: https://anbui.ovh/community ."
             fi
         fi
+        if [ -z "$setfileurl2" ]; then
+            rm "setup1.sh"
+            rm "setup2.sh"
+            exit
+        else
+            setfileurl=$setfileurl2
+        fi
+    fi
+fi
+clear
+if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
+    echo -e "\e[1;37m[!] Unable to download"
+    echo -e "\e[1;37m-\e[0m"
+    echo -e "\e[1;37mTrying again...\e[0m"
+    sleep 2
+    clear
+    echo -e '\e[1;37m[i] Downloading disk image...\e[0m'
+    echo -e "\e[1;37m-\e[0m"
+    if [[ "$setfileurl" == *"pixeldrain"* || "$setfileurl" == *"google"* ]]; then
+        echo -e "\e[1;37m[i] Downloading from high speed server."
+    else
+        if [[ "$setfileurl" == *"anbui.ovh"* ]]; then
+            echo -e "\e[1;37m[i] You are downloading from my test server."
+        else
+            echo -e "\e[1;37m[!] Downloading from slow speed server."
+        fi
+    fi
+    if [[ "$setfileurl" =~ "pixeldrain" ]]; then
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
+    fi
+    if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
+    fi
+    echo -e "\e[1;37m-\e[0m"
+    cd /storage/emulated/0/VM/$setname
+    wget -O file.7z $setfileurl
+    7z x file.7z
+    rm file.7z
+    cd
+    if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
+        clear
+        echo -e "\e[1;37m[!] Unable to download"
+        echo -e "\e[1;37m-\e[0m"
+        if [[ "$setfileurl" =~ "archive.org" ]]; then
+            echo -e "\e[1;37mThis item may be restricted by the Internet Archive. You can try downloading it manually as follows:"
+            echo -e "\e[1;37m[1] Open your browser and go to https://archive.org/ ."
+            echo -e "\e[1;37m[2] Sign in or create a new account."
+            echo -e "\e[1;37m[3] Open this link on your browser to start the download:"
+            echo -e "\e[1;37m-\e[0m"
+            echo -e "\e[1;37m$setfileurl"
+            echo -e "\e[1;37m-\e[0m"
+            echo -e "\e[1;37m[4] Extract the downloaded file into $setname folder in VM folder on your phone (Internal storage/VM/$setname)."
+            echo -e "\e[1;37m[5] Run this setup command again."
+            echo -e "\e[1;37m-"
+            echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
+        else
+            if [[ "$setfileurl" =~ "pixeldrain" ]]; then
+                echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day, this may have caused the download to fail. You can try again now or tomorrow."
+                echo -e "\e[1;37m-\e[0m"
+                echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
+            else
+                echo -e "\e[1;37mPlease try again later or join our community for help here: https://anbui.ovh/community ."
+            fi
+        fi
         rm "setup1.sh"
         rm "setup2.sh"
         exit
