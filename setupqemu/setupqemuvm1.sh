@@ -96,7 +96,7 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37m[4] Extract the downloaded file into $setname folder in VM folder on your phone (Internal storage/VM/$setname)."
             echo -e "\e[1;37m[5] Run this setup command again."
             echo -e "\e[1;37m-"
-            echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
+            echo -e "\e[1;37mIf the Internet Archive still won't allow the file download or says it's not available, the item may be blocked in your area. Join our community for help here: https://anbui.ovh/community ."
         else
             if [[ "$setfileurl" =~ "pixeldrain" ]]; then
                 echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day, this may have caused the download to fail. You can try again now or tomorrow."
@@ -166,7 +166,7 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37m[4] Extract the downloaded file into $setname folder in VM folder on your phone (Internal storage/VM/$setname)."
             echo -e "\e[1;37m[5] Run this setup command again."
             echo -e "\e[1;37m-"
-            echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
+            echo -e "\e[1;37mIf the Internet Archive still won't allow the file download or says it's not available, the item may be blocked in your area. Join our community for help here: https://anbui.ovh/community ."
         else
             if [[ "$setfileurl" =~ "pixeldrain" ]]; then
                 echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day, this may have caused the download to fail. You can try again now or tomorrow."
@@ -239,7 +239,7 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37m[4] Extract the downloaded file into $setname folder in VM folder on your phone (Internal storage/VM/$setname)."
             echo -e "\e[1;37m[5] Run this setup command again."
             echo -e "\e[1;37m-"
-            echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
+            echo -e "\e[1;37mIf the Internet Archive still won't allow the file download or says it's not available, the item may be blocked in your area. Join our community for help here: https://anbui.ovh/community ."
         else
             if [[ "$setfileurl" =~ "pixeldrain" ]]; then
                 echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day, this may have caused the download to fail. You can try again now or tomorrow."
