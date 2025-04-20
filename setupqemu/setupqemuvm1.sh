@@ -99,7 +99,7 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37mIf the Internet Archive still won't allow the file download or says it's not available, the item may be blocked in your area. Join our community for help here: https://anbui.ovh/community ."
         else
             if [[ "$setfileurl" =~ "pixeldrain" ]]; then
-                echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day, this may have caused the download to fail. You can try again now or tomorrow."
+                echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day or this item is restricted, this may have caused the download to fail. You can try again now or tomorrow."
                 echo -e "\e[1;37m-\e[0m"
                 echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
             else
@@ -169,7 +169,7 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37mIf the Internet Archive still won't allow the file download or says it's not available, the item may be blocked in your area. Join our community for help here: https://anbui.ovh/community ."
         else
             if [[ "$setfileurl" =~ "pixeldrain" ]]; then
-                echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day, this may have caused the download to fail. You can try again now or tomorrow."
+                echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day or this item is restricted, this may have caused the download to fail. You can try again now or tomorrow."
                 echo -e "\e[1;37m-\e[0m"
                 echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
             else
@@ -242,7 +242,7 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
             echo -e "\e[1;37mIf the Internet Archive still won't allow the file download or says it's not available, the item may be blocked in your area. Join our community for help here: https://anbui.ovh/community ."
         else
             if [[ "$setfileurl" =~ "pixeldrain" ]]; then
-                echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day, this may have caused the download to fail. You can try again now or tomorrow."
+                echo -e "\e[1;37mSince this server limits you to a total of 6GB of downloads per day or this item is restricted, this may have caused the download to fail. You can try again now or tomorrow."
                 echo -e "\e[1;37m-\e[0m"
                 echo -e "\e[1;37mOr join our community for help here: https://anbui.ovh/community ."
             else
