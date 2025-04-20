@@ -52,6 +52,7 @@ if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
 fi
 clear
 if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
+    setfileurl1=$setfileurl
     echo -e '\e[1;37m[i] Downloading disk image...\e[0m'
     echo -e "\e[1;37m-\e[0m"
     if [[ "$setfileurl" == *"pixeldrain"* || "$setfileurl" == *"google"* ]]; then
@@ -152,6 +153,11 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     rm file.7z
     cd
     if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
+        if [ -z "$setfileurl3" ]; then
+            if [[ "$setfileurl" == *"anbui.ovh"* ]]; then
+                setfileurl=$setfileurl1
+            fi
+        fi
         clear
         echo -e "\e[1;37m[!] Unable to download"
         echo -e "\e[1;37m-\e[0m"
