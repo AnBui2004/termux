@@ -9,7 +9,7 @@ fi
 clear
 echo -e "\e[1;37m[!] Warning!"
 echo -e "\e[1;37m-\e[0m"
-echo -e "\e[1;37mPlease do not run any other commands when this setup begins. If you're running other commands and they haven't finished executing yet, press Ctrl + C now to cancel the setup immediately."
+echo -e "\e[1;37mPlease do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up, press Ctrl + C now to cancel the setup immediately."
 echo -e "\e[1;37m-\e[0m"
 echo -e "\e[1;37mAutomatically go to next step after 10 seconds and you agreed."
 sleep 10
