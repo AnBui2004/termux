@@ -10,5 +10,6 @@ export setname
 export diskfilename
 export setfileurl
 export setfileurl2
+export setfileurl3
 export setqemucommand
 export osname
