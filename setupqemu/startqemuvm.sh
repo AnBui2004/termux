@@ -85,9 +85,10 @@ clear
 fi
 if [ $vmoption == '5' ]; then
 clear
-echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37m[!] Removing VM..."
+echo -e "\e[1;37m-"
 echo -e "\e[1;37mThis VM will be deleted after 10 seconds. To cancel, press Ctrl + C."
-echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37m-"
 sleep 10
 sed -i "/start"$setname"/d" /etc/profile
 cd
