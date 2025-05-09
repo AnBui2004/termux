@@ -11,15 +11,24 @@ if [ -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd
     curl -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/startqemuvm.sh
     chmod +rwx "start"$setname".sh"
-    sed -i -e "1isetfileurl3='"$setfileurl3"'" start"$setname".sh
-    sed -i -e "1isetfileurl2='"$setfileurl2"'" start"$setname".sh
-    sed -i -e "1isetfileurl='"$setfileurl"'" start"$setname".sh
-    sed -i -e "1isetname="$setname"" start"$setname".sh
-    sed -i -e "1iosname='"$osname"'" start"$setname".sh
+
+    # Use a loop to insert variables into the script
+    declare -A variables=(
+        [setfileurl3]="$setfileurl3"
+        [setfileurl2]="$setfileurl2"
+        [setfileurl]="$setfileurl"
+        [setname]="$setname"
+        [osname]="$osname"
+    )
+
+    for key in "${!variables[@]}"; do
+        sed -i -e "1i$key='${variables[$key]}'" "start"$setname".sh"
+    done
+
     clear
     echo -e '\e[1;37m[i] Done!\e[0m'
     echo -e '\e[1;37m-\e[0m'
-    echo -e "\e[1;37mUse this command to run: "./start"$setname".sh"\e[0m"
+    echo -e "\e[1;37mUse this command to run: \"./start"$setname".sh\"\e[0m"
     echo -e '\e[1;37m-\e[0m'
     echo -e '\e[1;37mThe necessary files are in the VM folder on your phone. Please do not delete the files there if you still use them.\e[0m'
 else

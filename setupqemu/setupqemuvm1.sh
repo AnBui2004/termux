@@ -51,6 +51,23 @@ if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
     chmod +rwx /storage/emulated/0/VM/Shared
 fi
 clear
+
+# Refactor repetitive download logic into a reusable function for better maintainability.
+function download_file {
+    local url=$1
+    local output=$2
+
+    if [[ "$url" =~ "pixeldrain" ]]; then
+        echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
+        wget -O "$output" "$url"
+    else
+        if [[ "$url" =~ "anbui.ovh" ]]; then
+            echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
+        fi
+        aria2c -x 4 -o "$output" "$url"
+    fi
+}
+
 if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     setfileurl1=$setfileurl
     echo -e '\e[1;37m[i] Downloading disk image...\e[0m'
@@ -66,19 +83,9 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     fi
     echo -e "\e[1;37m-\e[0m"
     cd /storage/emulated/0/VM/$setname
-    if [[ "$setfileurl" =~ "pixeldrain" ]]; then
-        echo -e "\e[1;37m-\e[0m"
-        echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
-        echo -e "\e[1;37m-\e[0m"
-        wget -O file.7z $setfileurl
-    else
-        if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
-            echo -e "\e[1;37m-\e[0m"
-            echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
-            echo -e "\e[1;37m-\e[0m"
-        fi
-        aria2c -x 4 -o file.7z $setfileurl
-    fi
+
+    download_file "$setfileurl" "file.7z"
+
     7z x file.7z
     rm file.7z
     cd
@@ -136,19 +143,9 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     fi
     echo -e "\e[1;37m-\e[0m"
     cd /storage/emulated/0/VM/$setname
-    if [[ "$setfileurl" =~ "pixeldrain" ]]; then
-        echo -e "\e[1;37m-\e[0m"
-        echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
-        echo -e "\e[1;37m-\e[0m"
-        wget -O file.7z $setfileurl
-    else
-        if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
-            echo -e "\e[1;37m-\e[0m"
-            echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
-            echo -e "\e[1;37m-\e[0m"
-        fi
-        aria2c -x 4 -o file.7z $setfileurl
-    fi
+
+    download_file "$setfileurl" "file.7z"
+
     7z x file.7z
     rm file.7z
     cd
@@ -211,19 +208,9 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     fi
     echo -e "\e[1;37m-\e[0m"
     cd /storage/emulated/0/VM/$setname
-    if [[ "$setfileurl" =~ "pixeldrain" ]]; then
-        echo -e "\e[1;37m-\e[0m"
-        echo -e "\e[1;37m[!] You are limited to a maximum daily download size of 6GB from this server. If the download fails, please try again tomorrow."
-        echo -e "\e[1;37m-\e[0m"
-        wget -O file.7z $setfileurl
-    else
-        if [[ "$setfileurl" =~ "anbui.ovh" ]]; then
-            echo -e "\e[1;37m-\e[0m"
-            echo -e "\e[1;37m[!] Speeds up to 22 MB/s and may be unstable."
-            echo -e "\e[1;37m-\e[0m"
-        fi
-        aria2c -x 4 -o file.7z $setfileurl
-    fi
+
+    download_file "$setfileurl" "file.7z"
+
     7z x file.7z
     rm file.7z
     cd

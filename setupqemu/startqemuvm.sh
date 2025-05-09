@@ -25,136 +25,143 @@ if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
     mkdir /storage/emulated/0/VM/Shared
     chmod +rwx /storage/emulated/0/VM/Shared
 fi
-if [ $vmoption == '1' ]; then
-cd
-clear
-echo -e "\e[1;37m[i] VM is running..."
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mVNC Server address: localhost:2"
-echo -e "\e[1;37m-"
-sleep 3
-./start"$setname"vm.sh
-clear
-./start"$setname".sh
-fi
-if [ $vmoption == '2' ]; then
-cd
-clear
-echo -e "\e[1;37m[i] VM is running..."
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mVNC Server address: localhost:2"
-echo -e "\e[1;37mThe shared folder is the Shared folder located in the VM folder on your device (/storange/emulated/0/VM/Shared)."
-echo -e "\e[1;37m-"
-sleep 3
-./start"$setname"vms.sh
-clear
-./start"$setname".sh
-fi
-if [ $vmoption == '3' ]; then
-cd
-nano start"$setname"vm.sh
-rm start"$setname"vms.sh
-cp start"$setname"vm.sh start"$setname"vms.sh
-chmod +rwx "start"$setname"vms.sh"
-echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >> "start"$setname"vms.sh"
-convertosingleline=$(paste -s -d:" " start101903vms.sh)
-echo ${convertosingleline//: -drive/ -drive} > start101903vms.sh
-clear
-./start"$setname".sh
-fi
-if [ $vmoption == '4' ]; then
-clear
-echo -e "\e[1;37m[i] Download links for files:"
-echo -e "\e[1;37m--"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m"$setfileurl""
-echo -e "\e[1;37m"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m"$setfileurl2""
-echo -e "\e[1;37m"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m"$setfileurl3""
-echo -e "\e[1;37m"
-echo -e "\e[1;37m--"
-echo -e "\e[1;37mPress any key to exit."
-read -n 1
-clear
-./start"$setname".sh
-fi
-if [ $vmoption == '5' ]; then
-clear
-echo -e "\e[1;37m[!] Removing VM..."
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mThis VM will be deleted after 10 seconds. To cancel, press Ctrl + C."
-echo -e "\e[1;37m-"
-sleep 10
-sed -i "/start"$setname"/d" /etc/profile
-cd
-rm start"$setname"vm.sh
-rm -r /storage/emulated/0/VM/"$setname"
-rm /data/data/com.termux/files/home/start"$setname".sh
-rm start"$setname".sh
-clear
-echo -e "\e[1;37mDone!"
-fi
-if [ $vmoption == '6' ]; then
-clear
-echo -e "\e[1;37mSee instructions:"
-echo -e "\e[1;37m--"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m[1] Control:"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mYou need to connect via VNC Server to port 2."
-echo -e "\e[1;37m"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m[2] Data directory:"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mThe data directory is the VM on your device (/storange/emulated/0/VM)."
-echo -e "\e[1;37m"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m[3] Shared folder:"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mThe shared folder is the Shared folder located in the VM folder on your device (/storange/emulated/0/VM/Shared)."
-echo -e "\e[1;37m"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m[4] Qemu Monitor:"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mUse the command directly here after running it or you can use it in VNC Viewer."
-echo -e "\e[1;37m"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m[5] Download:"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mFiles will be downloaded with up to 4 threads for higher speeds. The setup will not re-download files unless you delete them."
-echo -e "\e[1;37m"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m[6] Remove:"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mIt will only remove files related to this virtual machine and will not remove any packages related to Termux and Debian."
-echo -e "\e[1;37m"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m[7] Password:"
-echo -e "\e[1;37m-"
-echo -e "\e[1;37mThe password is usually one of the following if applicable:"
-echo -e "\e[1;37mqwerty13579"
-echo -e "\e[1;37mqwerty13579."
-echo -e "\e[1;37mqwerty13579!"
-echo -e "\e[1;37mqwerty2468"
-echo -e "\e[1;37mqwerty2468."
-echo -e "\e[1;37mqwerty2468!"
-echo -e "\e[1;37m12345678"
-echo -e "\e[1;37m"
-echo -e "\e[1;37m--"
-echo -e "\e[1;37mPress any key to exit."
-read -n 1
-clear
-./start"$setname".sh
-fi
+
+case "$vmoption" in
+    '1')
+        cd
+        clear
+        echo -e "\e[1;37m[i] VM is running..."
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mVNC Server address: localhost:2"
+        echo -e "\e[1;37m-"
+        sleep 3
+        ./start"$setname"vm.sh
+        clear
+        ./start"$setname".sh
+        ;;
+    '2')
+        cd
+        clear
+        echo -e "\e[1;37m[i] VM is running..."
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mVNC Server address: localhost:2"
+        echo -e "\e[1;37mThe shared folder is the Shared folder located in the VM folder on your device (/storage/emulated/0/VM/Shared)."
+        echo -e "\e[1;37m-"
+        sleep 3
+        ./start"$setname"vms.sh
+        clear
+        ./start"$setname".sh
+        ;;
+    '3')
+        cd
+        nano start"$setname"vm.sh
+        rm start"$setname"vms.sh
+        cp start"$setname"vm.sh start"$setname"vms.sh
+        chmod +rwx "start"$setname"vms.sh"
+        echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >> "start"$setname"vms.sh"
+        convertosingleline=$(paste -s -d:" " start101903vms.sh)
+        echo ${convertosingleline//: -drive/ -drive} > start101903vms.sh
+        clear
+        ./start"$setname".sh
+        ;;
+    '4')
+        clear
+        echo -e "\e[1;37m[i] Download links for files:"
+        echo -e "\e[1;37m--"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m"$setfileurl""
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m"$setfileurl2""
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m"$setfileurl3""
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m--"
+        echo -e "\e[1;37mPress any key to exit."
+        read -n 1
+        clear
+        ./start"$setname".sh
+        ;;
+    '5')
+        clear
+        echo -e "\e[1;37m[!] Removing VM..."
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mThis VM will be deleted after 10 seconds. To cancel, press Ctrl + C."
+        echo -e "\e[1;37m-"
+        sleep 10
+        sed -i "/start"$setname"/d" /etc/profile
+        cd
+        rm start"$setname"vm.sh
+        rm -r /storage/emulated/0/VM/"$setname"
+        rm /data/data/com.termux/files/home/start"$setname".sh
+        rm start"$setname".sh
+        clear
+        echo -e "\e[1;37mDone!"
+        ;;
+    '6')
+        clear
+        echo -e "\e[1;37mSee instructions:"
+        echo -e "\e[1;37m--"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m[1] Control:"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mYou need to connect via VNC Server to port 2."
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m[2] Data directory:"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mThe data directory is the VM on your device (/storage/emulated/0/VM)."
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m[3] Shared folder:"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mThe shared folder is the Shared folder located in the VM folder on your device (/storage/emulated/0/VM/Shared)."
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m[4] Qemu Monitor:"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mUse the command directly here after running it or you can use it in VNC Viewer."
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m[5] Download:"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mFiles will be downloaded with up to 4 threads for higher speeds. The setup will not re-download files unless you delete them."
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m[6] Remove:"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mIt will only remove files related to this virtual machine and will not remove any packages related to Termux and Debian."
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m[7] Password:"
+        echo -e "\e[1;37m-"
+        echo -e "\e[1;37mThe password is usually one of the following if applicable:"
+        echo -e "\e[1;37mqwerty13579"
+        echo -e "\e[1;37mqwerty13579."
+        echo -e "\e[1;37mqwerty13579!"
+        echo -e "\e[1;37mqwerty2468"
+        echo -e "\e[1;37mqwerty2468."
+        echo -e "\e[1;37mqwerty2468!"
+        echo -e "\e[1;37m12345678"
+        echo -e "\e[1;37m"
+        echo -e "\e[1;37m--"
+        echo -e "\e[1;37mPress any key to exit."
+        read -n 1
+        clear
+        ./start"$setname".sh
+        ;;
+    *)
+        clear
+        echo -e "\e[1;37mExiting..."
+        ;;
+esac
 clear
