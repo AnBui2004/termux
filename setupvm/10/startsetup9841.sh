@@ -8,5 +8,6 @@ osname="Windows_10_build_9841"
 export setname
 export diskfilename
 export setfileurl
+export setfileurl2
 export setqemucommand
 export osname
