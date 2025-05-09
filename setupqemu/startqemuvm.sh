@@ -65,8 +65,8 @@ fi
 if [ $vmoption == '4' ]; then
 clear
 echo -e "\e[1;37m[i] Download links for files:"
-echo -e "\e[1;37m"
 echo -e "\e[1;37m--"
+echo -e "\e[1;37m"
 echo -e "\e[1;37m"$setfileurl""
 echo -e "\e[1;37m"
 echo -e "\e[1;37m-"
