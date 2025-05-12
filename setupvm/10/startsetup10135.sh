@@ -1,5 +1,5 @@
 cd
-setname='10135'
+setname='1010135'
 diskfilename='W1010135.qcow2'
 setfileurl='http://192.168.1.111:8080/api/Windows%2010%20build%2010135.7z'
 setfileurl2=''
