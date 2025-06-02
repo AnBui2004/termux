@@ -1,4 +1,7 @@
 clear
+echo "The owner of these scripts will not be responsible for any unintended problems that may occur whether you edit these scripts or not. It will start in 10 seconds and you have agreed to this. To cancel press Ctrl + C."
+sleep 10
+clear
 echo -e "\e[1;37mThis is the original project: https://github.com/YourTeachermd/External-Data-mobox"
 echo -e "\e[1;37mAnd customized by https://github.com/AnBui2004"
 echo -e "\e[0;33m--------------------"
