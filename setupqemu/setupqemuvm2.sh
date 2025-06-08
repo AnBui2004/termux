@@ -33,9 +33,9 @@ if [ -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     echo -e '\e[1;37mThe necessary files are in the VM folder on your phone. Please do not delete the files there if you still use them.\e[0m'
     echo -e '\e[1;37m-\e[0m'
     if [ -n "$notes" ]; then
-        echo ""
+        printf "\n"
         curl $notes
-        echo ""
+        printf "\n"
     fi
 else
     sed -i "/start"$setname"/d" /etc/profile
