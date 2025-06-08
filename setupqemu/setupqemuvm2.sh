@@ -35,7 +35,6 @@ if [ -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     if [ -n "$notes" ]; then
         echo ""
         curl $notes
-        sleep 2
         echo ""
     fi
 else
