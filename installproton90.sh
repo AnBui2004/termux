@@ -1,4 +1,5 @@
 clear
+architecture=$(uname -m)
 if [[ "$architecture" != *64* ]]; then
     echo -e "\e[1;37m[!] Cannot continue!"
     echo -e "\e[1;37m-\e[0m"
