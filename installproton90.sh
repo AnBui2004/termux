@@ -57,6 +57,7 @@ fi
 echo -e '\e[1;37m[i] Installing Proton...\e[0m'
 aria2c -x 4 -o proton.tar.xz https://archive.org/download/proton-9.0-arm64ec-installer-fix-for-termux-nbab/proton-9.0-arm64ec-installer-fix.tar.xz
 tar -xf proton.tar.xz
+rm proton.tar.xz
 cd ./proton-9.0-arm64ec-installer-fix/proton-arm64ec
 chmod +x installer.sh
 ./installer.sh
