@@ -60,7 +60,8 @@ aria2c -x 4 -o proton.tar.xz https://archive.org/download/proton-9.0-arm64ec-ins
 tar -xf proton.tar.xz
 rm proton.tar.xz
 cd ./proton-9.0-arm64ec-installer-fix/proton-arm64ec
-chmod +x installer.sh
+chmod +rwx installer.sh
+sed -i "/termux-setup-storage/d" installer.sh
 ./installer.sh
 cd
 rm -rf proton-9.0-arm64ec-installer-fix
