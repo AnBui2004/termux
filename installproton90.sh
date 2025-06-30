@@ -37,9 +37,9 @@ yes y | apt upgrade -y
 apt install x11-repo -y
 apt install aria2 unzip -y
 clear
+cd
 if [[ -n "$linkdriver" ]]; then
     echo -e '\e[1;37m[i] Installing driver...\e[0m'
-    cd
     cd ../usr
     if [ ! -d "drivers" ]; then
         mkdir drivers
@@ -56,6 +56,13 @@ if [[ -n "$linkdriver" ]]; then
     mv "$(find ./tempdriver -name '*.so' -print -quit)" ../usr/drivers/vulkan.adreno.so
     rm -rf tempdriver
     clear
+fi
+if [ -f "../usr/bin/arm64ec-wine" ]; then
+    echo -e "\e[1;37m[i] No installation required!"
+    echo -e "\e[1;37m-\e[0m"
+    echo -e "\e[1;37mProton is already installed and no further installation is required. Use the command below to run it."
+    echo -e "\e[1;37m-\e[0m"
+    echo -e "\e[1;37marm64ec-wine"
 fi
 echo -e '\e[1;37m[i] Installing Proton...\e[0m'
 aria2c -x 4 -o proton.tar.xz https://archive.org/download/proton-9.0-arm64ec-installer-fix-for-termux-nbab/proton-9.0-arm64ec-installer-fix.tar.xz
