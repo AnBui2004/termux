@@ -13,6 +13,15 @@ echo -e "\e[1;37m-\e[0m"
 echo -e "\e[1;37mPress any key to continue or Ctrl + C to cancel."
 read -n 1
 clear
+getpermisionsdcard=$(ls -l /sdcard/)
+if [ "$getpermisionsdcard" == "" ]; then
+    echo -e "\e[1;37m[!] Please grant access to storage!"
+    yes y | termux-setup-storage
+    sleep 3
+    echo -e "\e[1;37m[i] Automatically go to next step after 3 seconds."
+    sleep 3
+fi
+clear
 echo -e "\e[1;37m[i] Graphics driver."
 echo -e "\e[1;37m-\e[0m"
 echo -e "\e[1;37mIf your device is equipped with Snapdragon CPU with Adreno GPU, you should find the appropriate driver on GitHub, copy the download link of the file containing the driver in zip format, paste it here, press enter and it will be installed. You can skip by pressing enter now."
@@ -25,7 +34,8 @@ yes y | apt upgrade -y
 apt install x11-repo -y
 apt install aria2 unzip -y
 clear
-if [[ -n "$link" ]]; then
+if [[ -n "$linkdriver" ]]; then
+    echo -e '\e[1;37m[i] Installing driver...\e[0m'
     cd
     cd ../usr
     if [ ! -d "drivers" ]; then
@@ -42,7 +52,9 @@ if [[ -n "$link" ]]; then
     cd
     mv "$(find ./tempdriver -name '*.so' -print -quit)" ../usr/drivers/vulkan.adreno.so
     rm -rf tempdriver
+    clear
 fi
+echo -e '\e[1;37m[i] Installing Proton...\e[0m'
 aria2c -x 4 -o proton.tar.xz https://archive.org/download/proton-9.0-arm64ec-installer-fix-for-termux-nbab/proton-9.0-arm64ec-installer-fix.tar.xz
 tar -xf proton.tar.xz
 cd ./proton-9.0-arm64ec-installer-fix/proton-arm64ec
