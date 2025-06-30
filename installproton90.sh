@@ -28,7 +28,7 @@ clear
 if [[ -n "$link" ]]; then
     cd
     cd ../usr
-    if [ ! -d "./drivers" ]; then
+    if [ ! -d "drivers" ]; then
         mkdir drivers
         chmod +rwx drivers
     else
