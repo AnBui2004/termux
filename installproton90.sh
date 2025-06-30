@@ -62,6 +62,7 @@ rm proton.tar.xz
 cd ./proton-9.0-arm64ec-installer-fix/proton-arm64ec
 chmod +rwx installer.sh
 sed -i "/termux-setup-storage/d" installer.sh
+sed -i "/am start/d" installer.sh
 ./installer.sh
 cd
 rm -rf proton-9.0-arm64ec-installer-fix
