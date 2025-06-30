@@ -29,6 +29,8 @@ echo -e "\e[1;37mIf your device is equipped with Snapdragon CPU with Adreno GPU,
 echo -e "\e[1;37m-\e[0m"
 echo -e "\e[1;37mIf your phone is not equipped with Snapdragon CPU and Adreno GPU, press enter to skip and continue.\e[0m"
 echo -e "\e[1;37m-\e[0m"
+echo -e "\e[1;37mIf you want to install or change a driver after Proton is installed, run this script again and it will only install the driver and not reinstall Proton.\e[0m"
+echo -e "\e[1;37m-\e[0m"
 read linkdriver
 clear
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
