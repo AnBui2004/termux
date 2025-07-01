@@ -8,7 +8,11 @@ if [[ "$architecture" != *64* ]]; then
 fi
 echo -e "\e[1;37m[!] Warning!"
 echo -e "\e[1;37m-\e[0m"
-echo -e "\e[1;37mThe author of this script will not be responsible for any unintended problems that occur or if this script has been modified. Please do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up. The Proton version that will be installed is from doo99 on sharemods.com."
+echo -e "\e[1;37mPlease do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up."
+echo ""
+echo -e "\e[1;37mThe Proton version that will be installed is from doo99 on sharemods.com."
+echo ""
+echo -e "\e[1;37mThe author of this script will not be responsible for any unintended problems that occur or if this script has been modified."
 echo -e "\e[1;37m-\e[0m"
 echo -e "\e[1;37mPress any key to continue or Ctrl + C to cancel."
 read -n 1
