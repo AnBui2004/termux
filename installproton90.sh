@@ -29,7 +29,7 @@ fi
 clear
 echo -e "\e[1;37m[i] Graphics driver."
 echo -e "\e[1;37m-\e[0m"
-echo -e "\e[1;37mIf your device is equipped with Snapdragon CPU with Adreno GPU, you should find the appropriate driver on GitHub, copy the download link of the file containing the driver in zip format, paste it here, press enter and it will be installed. You can skip by pressing enter now but black screen error may occur."
+echo -e "\e[1;37mIf your device is equipped with Snapdragon CPU with Adreno GPU, you should find the appropriate driver on GitHub, copy the download link of the file containing the driver in zip format, paste it here, press enter and it will be installed (old drivers will be deleted). You can skip by pressing enter now but black screen error may occur."
 echo -e "\e[1;37m-\e[0m"
 echo -e "\e[1;37mIf your phone is not equipped with Snapdragon CPU and Adreno GPU, press enter to skip and continue but black screen error may occur.\e[0m"
 echo -e "\e[1;37m-\e[0m"
