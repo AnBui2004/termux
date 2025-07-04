@@ -32,7 +32,10 @@ case "$vmoption" in
         clear
         echo -e "\e[1;37m[i] VM is running..."
         echo -e "\e[1;37m-"
-        echo -e "\e[1;37mVNC Server address: localhost:2"
+        echo -e "\e[1;37mVNC Server address:"
+        echo -e "\e[1;37mlocalhost:2"
+        echo -e "\e[1;37mOr"
+        echo -e "\e[1;37mlocalhost:5902"
         echo -e "\e[1;37m-"
         sleep 3
         ./start"$setname"vm.sh
