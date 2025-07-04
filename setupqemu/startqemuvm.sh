@@ -47,7 +47,11 @@ case "$vmoption" in
         clear
         echo -e "\e[1;37m[i] VM is running..."
         echo -e "\e[1;37m-"
-        echo -e "\e[1;37mVNC Server address: localhost:2"
+        echo -e "\e[1;37mVNC Server address:"
+        echo -e "\e[1;37mlocalhost:2"
+        echo -e "\e[1;37mOr"
+        echo -e "\e[1;37mlocalhost:5902"
+        echo -e ""
         echo -e "\e[1;37mThe shared folder is the Shared folder located in the VM folder on your device (/storage/emulated/0/VM/Shared)."
         echo -e "\e[1;37m-"
         sleep 3
