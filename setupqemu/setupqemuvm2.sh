@@ -1,9 +1,13 @@
 clear
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
 sed -i "/setup"$setname"/d" /etc/profile
-apt update
-apt upgrade -y
-apt install pulseaudio qemu-system-x86 -y
+if dpkg -s qemu-system-x86 | grep -q "Status: install ok installed"; then
+    echo "qemu-system-x86_64 is already installed."
+else
+    apt update
+    apt upgrade -y
+    apt install pulseaudio qemu-system-x86 -y
+fi
 export PULSE_SERVER=127.0.0.1
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'

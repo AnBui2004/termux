@@ -1,21 +1,21 @@
 clear
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
 sed -i "/setup"$setname"/d" /etc/profile
-apt update
 if dpkg -s qemu-system-x86 | grep -q "Status: install ok installed"; then
-    echo "qemu-system-x86_64 installed and do not update to keep the old version."
+    echo "qemu-system-x86_64 is already installed."
 else
+    apt update
     apt upgrade -y
+    apt install pulseaudio libbpf1 libglib2.0-0 libibverbs1 libjpeg62-turbo libnuma1 libpixman-1-0 libpmem1 libpng16-16 librdmacm1 libsasl2-2 libslirp0 liburing2 libvdeplug2 libbrlapi0.8 libcacard0 libepoxy0 libgbm1 libncursesw6 libsndio7.0 libspice-server1 libusb-1.0-0 libusbredirparser1 libfdt1 seabios ipxe-qemu libgtk-3-0 libsdl2-2.0-0 libvirglrenderer1 libvte-2.91-0 -y
+    cd temp7
+    ARCH=$(dpkg --print-architecture)
+    dpkg -i lib*_${ARCH}.deb
+    dpkg -i *_all.deb
+    dpkg -i *common*_${ARCH}.deb
+    dpkg -i qemu*_${ARCH}.deb
+    cd ../
+    rm -rf temp7
 fi
-apt install pulseaudio libbpf1 libglib2.0-0 libibverbs1 libjpeg62-turbo libnuma1 libpixman-1-0 libpmem1 libpng16-16 librdmacm1 libsasl2-2 libslirp0 liburing2 libvdeplug2 libbrlapi0.8 libcacard0 libepoxy0 libgbm1 libncursesw6 libsndio7.0 libspice-server1 libusb-1.0-0 libusbredirparser1 libfdt1 seabios ipxe-qemu -y
-cd temp7
-ARCH=$(dpkg --print-architecture)
-dpkg -i lib*_${ARCH}.deb
-dpkg -i *_all.deb
-dpkg -i *common*_${ARCH}.deb
-dpkg -i qemu*_${ARCH}.deb
-cd ../
-rm -rf temp7
 export PULSE_SERVER=127.0.0.1
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
