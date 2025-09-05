@@ -259,6 +259,7 @@ if [[ "$forceqemu7" == "1" ]]; then
     cd temp7
     aria2c -x 4 -o "file.7z" "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/qemu7.7z"
     7z x file.7z
+    rm file.7z
     cd ../
     unset forceqemu7
 else
