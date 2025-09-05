@@ -4,13 +4,12 @@ sed -i "/setup"$setname"/d" /etc/profile
 apt update
 apt upgrade -y
 apt install aria2 unzip pulseaudio tightvncserver libbpf1 libglib2.0-0 libibverbs1 libjpeg62-turbo libnuma1 libpixman-1-0 libpmem1 libpng16-16 librdmacm1 libsasl2-2 libslirp0 liburing2 libvdeplug2 libbrlapi0.8 libcacard0 libepoxy0 libgbm1 libncursesw6 libsndio7.0 libspice-server1 libusb-1.0-0 libusbredirparser1 libfdt1 seabios ipxe-qemu -y
-mkdir temp
-cd temp
-aria2c -x 4 -o "a.zip" "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/qemu7.zip"
-unzip a.zip
-dpkg -i *.deb
+cd temp7
+ARCH=$(dpkg --print-architecture)
+dpkg -i *_${ARCH}.deb
+dpkg -i *_all.deb
 cd ../
-rm -rf temp
+rm -rf temp7
 export PULSE_SERVER=127.0.0.1
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
