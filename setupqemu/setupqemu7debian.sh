@@ -11,8 +11,8 @@ apt install pulseaudio libbpf1 libglib2.0-0 libibverbs1 libjpeg62-turbo libnuma1
 cd temp7
 ARCH=$(dpkg --print-architecture)
 dpkg -i lib*_${ARCH}.deb
-dpkg -i *common*_${ARCH}.deb
 dpkg -i *_all.deb
+dpkg -i *common*_${ARCH}.deb
 dpkg -i qemu*_${ARCH}.deb
 cd ../
 rm -rf temp7
