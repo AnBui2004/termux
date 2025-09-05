@@ -257,7 +257,8 @@ if [[ "$forceqemu7" == "1" ]]; then
     curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/setupqemu7debian.sh
     mkdir temp7
     cd temp7
-    aria2c -x 4 -o "a.zip" "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/qemu7.zip"
+    aria2c -x 4 -o "file.7z" "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/qemu7.7z"
+    7z x file.7z
     cd ../
     unset forceqemu7
 else
