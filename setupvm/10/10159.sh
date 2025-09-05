@@ -1,6 +1,6 @@
 cd
-setname='1010158'
-diskfilename='W1010158.qcow2'
+setname='1010159'
+diskfilename='W1010159.qcow2'
 setfileurl='http://192.168.1.188//termux/qemu/windows/nt10/Windows%2010%20build%2010159.7z'
 setfileurl2=''
 setfileurl3=''
