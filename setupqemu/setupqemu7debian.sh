@@ -7,7 +7,7 @@ if dpkg -s qemu-system-x86 | grep -q "Status: install ok installed"; then
 else
     apt upgrade -y
 fi
-apt install pulseaudio tightvncserver libbpf1 libglib2.0-0 libibverbs1 libjpeg62-turbo libnuma1 libpixman-1-0 libpmem1 libpng16-16 librdmacm1 libsasl2-2 libslirp0 liburing2 libvdeplug2 libbrlapi0.8 libcacard0 libepoxy0 libgbm1 libncursesw6 libsndio7.0 libspice-server1 libusb-1.0-0 libusbredirparser1 libfdt1 seabios ipxe-qemu -y
+apt install pulseaudio libbpf1 libglib2.0-0 libibverbs1 libjpeg62-turbo libnuma1 libpixman-1-0 libpmem1 libpng16-16 librdmacm1 libsasl2-2 libslirp0 liburing2 libvdeplug2 libbrlapi0.8 libcacard0 libepoxy0 libgbm1 libncursesw6 libsndio7.0 libspice-server1 libusb-1.0-0 libusbredirparser1 libfdt1 seabios ipxe-qemu -y
 cd temp7
 ARCH=$(dpkg --print-architecture)
 dpkg -i lib*_${ARCH}.deb
