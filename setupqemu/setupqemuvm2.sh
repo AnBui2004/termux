@@ -3,7 +3,7 @@ echo -e '\e[1;37m[i] Installing packages...\e[0m'
 sed -i "/setup"$setname"/d" /etc/profile
 apt update
 apt upgrade -y
-apt install pulseaudio tightvncserver qemu-system-x86 -y
+apt install pulseaudio qemu-system-x86 -y
 export PULSE_SERVER=127.0.0.1
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
