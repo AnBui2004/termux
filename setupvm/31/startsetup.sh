@@ -6,6 +6,7 @@ setqemucommand='
 qemu-system-x86_64 -cpu qemu32 -smp sockets=1,cores=1,threads=1 -m 128M -hda /storage/emulated/0/VM/w31/Windows3.1.vdi -vga cirrus -device sb16 -device pcnet,netdev=n0 -netdev user,id=n0 -accel tcg,thread=multi,tb-size=2048 -monitor stdio -vnc :2'
 osname="Windows_3.1"
 export setname
+forceqemu7='1'
 export diskfilename
 export setfileurl
 export setqemucommand

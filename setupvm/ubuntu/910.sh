@@ -8,6 +8,7 @@ setqemucommand='qemu-system-x86_64 -M q35 -usb -device usb-tablet -device usb-kb
 osname="Ubuntu_9.10"
 notes="https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupvm/ubuntu/910.txt"
 export setname
+forceqemu7='1'
 export diskfilename
 export setfileurl
 export setfileurl2

@@ -2,12 +2,18 @@ clear
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
 sed -i "/setup"$setname"/d" /etc/profile
 apt update
-apt upgrade -y
+if dpkg -s qemu-system-x86 | grep -q "Status: install ok installed"; then
+    echo "qemu-system-x86_64 installed and do not update to keep the old version."
+else
+    apt upgrade -y
+fi
 apt install pulseaudio tightvncserver libbpf1 libglib2.0-0 libibverbs1 libjpeg62-turbo libnuma1 libpixman-1-0 libpmem1 libpng16-16 librdmacm1 libsasl2-2 libslirp0 liburing2 libvdeplug2 libbrlapi0.8 libcacard0 libepoxy0 libgbm1 libncursesw6 libsndio7.0 libspice-server1 libusb-1.0-0 libusbredirparser1 libfdt1 seabios ipxe-qemu -y
 cd temp7
 ARCH=$(dpkg --print-architecture)
-dpkg -i *_${ARCH}.deb
+dpkg -i lib*_${ARCH}.deb
+dpkg -i *common*_${ARCH}.deb
 dpkg -i *_all.deb
+dpkg -i qemu*_${ARCH}.deb
 cd ../
 rm -rf temp7
 export PULSE_SERVER=127.0.0.1

@@ -7,6 +7,7 @@ setfileurl3='https://go.anbui.ovh/termux/qemu/windows/ce/Windows%20CE%206.0.7z'
 setqemucommand='qemu-system-x86_64 -usb -cpu pentium3 -smp sockets=1,cores=1,threads=1 -overcommit mem-lock=off -m 128M -hda /storage/emulated/0/VM/wce6/WCE60.vhd -vga cirrus -device sb16 -device e1000-82544gc,netdev=n0 -netdev user,id=n0 -accel tcg,thread=single,tb-size=1024 -monitor stdio -vnc :2'
 osname="Windows_CE_6.0"
 export setname
+forceqemu7='1'
 export diskfilename
 export setfileurl
 export setfileurl2
