@@ -22,6 +22,11 @@ echo -e "\e[1;37mAutomatically go to next step after 20 seconds and you agreed."
 sleep 20
 clear
 source ./setup1.sh
+if [[ -z "$distro" ]]; then
+    prootdistroname="debian"
+else
+    prootdistroname="$distro"
+fi
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
 apt update
 yes y | apt upgrade -y
@@ -47,7 +52,7 @@ mkdir /storage/emulated/0/VM/$setname
 chmod +rwx /storage/emulated/0/VM
 chmod +rwx /storage/emulated/0/VM/$setname
 if [ ! -d "/storage/emulated/0/VM/Shared" ]; then
-    mkdir /storage/emulated/0/VM
+    mkdir /storage/emulated/0/VM/Shared
     chmod +rwx /storage/emulated/0/VM/Shared
 fi
 clear
@@ -249,24 +254,18 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
 fi
 clear
 echo -e '\e[1;37m[i] Installing Debian...\e[0m'
-proot-distro install debian
+if [[ "$prootdistroname" == "debian" ]]; then
+    proot-distro install debian
+else
+    cd $PREFIX/etc/proot-distro
+    aria2c "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro/"$prootdistroname".sh"
+    cd
+    proot-distro install "$prootdistroname"
+fi
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
-cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/root
-if [[ "$forceqemu7" == "1" ]]; then
-    curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/setupqemu7debian.sh
-    if [ ! -e /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/bin/qemu* ]; then
-        mkdir temp7
-        cd temp7
-        aria2c -x 4 -o "file.7z" "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/qemu7.7z"
-        7z x file.7z
-        rm file.7z
-        cd ../
-    fi
-    unset forceqemu7
-else
-    curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/setupqemuvm2.sh
-fi
+cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/root
+curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/setupqemuvm2.sh
 chmod +rwx "setup"$setname".sh"
 sed -i -e "1inotes='"$notes"'" setup"$setname".sh
 sed -i -e "1isetfileurl3='"$setfileurl3"'" setup"$setname".sh
@@ -288,12 +287,13 @@ chmod +rwx "start"$setname"vms.sh"
 cd ../
 echo "/root/setup"$setname".sh" >> ./etc/profile
 cd
-echo 'sed -i '/start"$setname"/d' /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/etc/profile' > "start"$setname".sh"
+echo 'sed -i "/start"$setname"/d" /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile' > "start"$setname".sh"
 echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> start"$setname".sh
-echo 'echo '/root/start"$setname".sh' >> /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/etc/profile' >> start"$setname".sh
-echo 'proot-distro login debian' >> start"$setname".sh
+echo "echo '/root/start"$setname".sh' >> /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" >> start"$setname".sh
+echo "proot-distro login "$prootdistroname"" >> start"$setname".sh
 chmod +rwx start"$setname".sh
+unset forceqemu7
 clear
 echo -e '\e[1;37m[i] Login to Debian...\e[0m'
-proot-distro login debian
-rm /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian/root/setup"$setname".sh
+proot-distro login "$prootdistroname"
+rm /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/root/setup"$setname".sh
