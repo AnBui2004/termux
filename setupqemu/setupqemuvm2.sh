@@ -11,7 +11,7 @@ fi
 export PULSE_SERVER=127.0.0.1
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
-if [ -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
+if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd
     curl -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/startqemuvm.sh
     chmod +rwx "start"$setname".sh"

@@ -257,9 +257,11 @@ echo -e '\e[1;37m[i] Installing Debian...\e[0m'
 if [[ "$prootdistroname" == "debian" ]]; then
     proot-distro install debian
 else
-    cd $PREFIX/etc/proot-distro
-    aria2c "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro/"$prootdistroname".sh"
-    cd
+    if [ ! -f "$PREFIX/etc/proot-distro/"$prootdistroname".sh" ]; then
+        cd $PREFIX/etc/proot-distro
+        aria2c "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro/"$prootdistroname".sh"
+        cd
+    fi
     proot-distro install "$prootdistroname"
 fi
 clear
