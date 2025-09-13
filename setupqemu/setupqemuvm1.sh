@@ -7,19 +7,14 @@ if [ "$getpermisionsdcard" == "" ]; then
     sleep 5
 fi
 clear
-echo -e "\e[1;37m[!] Warning!"
+echo -e "\e[1;37m[!] Warning and do not ignore!"
 echo -e "\e[1;37m-\e[0m"
 echo -e "\e[1;37mPlease do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up, press Ctrl + C now to cancel the setup immediately."
-echo -e "\e[1;37m-\e[0m"
-echo -e "\e[1;37mAutomatically go to next step after 10 seconds and you agreed."
-sleep 10
-clear
-echo -e "\e[1;37m[!] Do not miss out!"
-echo -e "\e[1;37m-\e[0m"
+echo -e "\e[1;37m\e[0m"
 echo -e "\e[1;37mBy obtaining and running the virtual machine in any way, you agree to any Agreements and Policies provided by the vendor or owner of this operating system and other related things. You are responsible for any consequences that may arise from using the virtual machine. The owner of this script is not responsible for any consequences that may arise from using the virtual machine or you have edited these scripts. To disagree and cancel the setup, press Ctrl + C."
 echo -e "\e[1;37m-\e[0m"
-echo -e "\e[1;37mAutomatically go to next step after 20 seconds and you agreed."
-sleep 20
+echo -e "\e[1;37mAutomatically go to next step after 60 seconds and you agreed."
+sleep 60
 clear
 source ./setup1.sh
 if [[ -z "$distro" ]]; then
