@@ -289,7 +289,6 @@ echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.
 echo "echo '/root/start"$setname".sh' >> /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" >> start"$setname".sh
 echo "proot-distro login "$prootdistroname"" >> start"$setname".sh
 chmod +rwx start"$setname".sh
-unset forceqemu7
 clear
 echo -e '\e[1;37m[i] Login to Debian...\e[0m'
 proot-distro login "$prootdistroname"
