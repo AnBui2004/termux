@@ -22,7 +22,7 @@ if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
         [setfileurl2]="$setfileurl2"
         [setfileurl]="$setfileurl"
         [setname]="$setname"
-        [osname]="${osname}"
+        [osname]="$osname"
     )
 
     for key in "${!variables[@]}"; do
