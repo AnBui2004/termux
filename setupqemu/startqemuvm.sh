@@ -115,7 +115,7 @@ case "$vmoption" in
         echo -e "\e[1;37m"
         echo -e "\e[1;37m[1] Control:"
         echo -e "\e[1;37m-"
-        echo -e "\e[1;37mYou need to connect via VNC Server to port 2."
+        echo -e "\e[1;37mYou need to connect via VNC Server to port 5902 or 2."
         echo -e "\e[1;37m"
         echo -e "\e[1;37m-"
         echo -e "\e[1;37m"
