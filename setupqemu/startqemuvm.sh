@@ -102,6 +102,7 @@ case "$vmoption" in
         sed -i "/start"$setname"/d" /etc/profile
         cd
         rm start"$setname"vm.sh
+        rm start"$setname"vms.sh
         rm -r /storage/emulated/0/VM/"$setname"
         rm /data/data/com.termux/files/home/start"$setname".sh
         rm start"$setname".sh

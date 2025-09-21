@@ -29,7 +29,7 @@ if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
         sed -i -e "1i$key='${variables[$key]}'" "start"$setname".sh"
     done
 
-    sed -i '/^osname=/ s/_//g' "start"$setname".sh"
+    sed -i '/^osname=/ s/_/ /g' "start"$setname".sh"
 
     clear
     echo -e '\e[1;37m[i] Done!\e[0m'
