@@ -21,6 +21,11 @@ apt update
 yes y | apt upgrade -y
 apt install x11-repo -y
 apt install proot-distro termux-x11 pulseaudio -y
+pkg install virglrenderer-android -y
+pkg install tur-repo -y
+pkg update
+yes y | pkg upgrade -y
+pkg install mesa-zink virglrenderer-mesa-zink vulkan-loader-android -y
 clear
 echo -e '\e[1;37m[i] Installing Ubuntu...\e[0m'
 proot-distro install ubuntu
@@ -29,12 +34,12 @@ echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
 echo "clear && sed -i \"/startsetup.sh/d\" /etc/profile && export PULSE_SERVER=127.0.0.1 && apt update && apt upgrade -y && apt install lxde firefox fastfetch pulseaudio thunar -y && rm -rf startsetup.sh" > startsetup.sh
 echo "clear" >> startsetup.sh
-echo "[i] Done!" >> startsetup.sh
-echo "---" >> startsetup.sh
-echo "Run this command to start: ./startubuntu.sh" >> startsetup.sh
+echo "echo -e '\e[1;37m[i] Done!\e[0m'" >> startsetup.sh
+echo "echo -e '\e[1;37m---\e[0m'" >> startsetup.sh
+echo "echo -e '\e[1;37mRun this command to start: ./startubuntu.sh\e[0m'" >> startsetup.sh
 chmod +rwx startsetup.sh
 echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity" > startdisplay.sh
-echo "export PULSE_SERVER=127.0.0.1 && termux-x11 :0 -xstartup \"startlxde\"" >> startdisplay.sh
+echo "export PULSE_SERVER=127.0.0.1 && GALLIUM_DRIVER=virpipe && MESA_GL_VERSION_OVERRIDE=4.0 && termux-x11 :0 -xstartup \"startlxde\" && clear" >> startdisplay.sh
 chmod +rwx startdisplay.sh
 echo "./startdisplay.sh" > "startubuntu.sh"
 chmod +rwx startubuntu.sh
