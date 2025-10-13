@@ -27,7 +27,7 @@ proot-distro install ubuntu
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
-echo "sed -i \"/startsetup.sh/d\" /etc/profile && export PULSE_SERVER=127.0.0.1 && apt update && apt upgrade -y && apt install lxde firefox fastfetch pulseaudio thunar -y && rm -rf startsetup.sh" > startsetup.sh
+echo "clear && sed -i \"/startsetup.sh/d\" /etc/profile && export PULSE_SERVER=127.0.0.1 && apt update && apt upgrade -y && apt install lxde firefox fastfetch pulseaudio thunar -y && rm -rf startsetup.sh" > startsetup.sh
 echo "clear" >> startsetup.sh
 echo "[i] Done!" >> startsetup.sh
 echo "---" >> startsetup.sh
@@ -43,6 +43,8 @@ echo "echo '/root/startdisplay.sh' >> /data/data/com.termux/files/usr/var/lib/pr
 echo "proot-distro login ubuntu" >> startubuntu.sh
 chmod +rwx startubuntu.sh
 echo "/root/startsetup.sh" | tee -a /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/profile > /dev/null
+clear
+echo -e '\e[1;37m[i] Logging into Ubuntu...\e[0m'
 proot-distro login ubuntu
 rm quicksetupubuntu.sh
 rm /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root/startsetup.sh
