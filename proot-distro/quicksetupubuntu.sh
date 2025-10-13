@@ -31,7 +31,7 @@ echo "clear && sed -i \"/startsetup.sh/d\" /etc/profile && export PULSE_SERVER=1
 echo "clear" >> startsetup.sh
 echo "[i] Done!" >> startsetup.sh
 echo "---" >> startsetup.sh
-echo "Run this command to start: startubuntu.sh" >> startsetup.sh
+echo "Run this command to start: ./startubuntu.sh" >> startsetup.sh
 chmod +rwx startsetup.sh
 echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity" > startdisplay.sh
 echo "export PULSE_SERVER=127.0.0.1 && termux-x11 :0 -xstartup \"startlxde\"" >> startdisplay.sh
