@@ -27,13 +27,14 @@ proot-distro install ubuntu
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/root
-echo "sed -i \"/startsetup.sh/d\" /etc/profile && export PULSE_SERVER=127.0.0.1 && apt update && apt upgrade -y && apt install lxde firefox fastfetch pulseaudio -y && rm -rf startsetup.sh" > startsetup.sh
+echo "sed -i \"/startsetup.sh/d\" /etc/profile && export PULSE_SERVER=127.0.0.1 && apt update && apt upgrade -y && apt install lxde firefox fastfetch pulseaudio thunar -y && rm -rf startsetup.sh" > startsetup.sh
 echo "clear" >> startsetup.sh
 echo "[i] Done!" >> startsetup.sh
 echo "---" >> startsetup.sh
 echo "Run this command to start: startdisplay.sh" >> startsetup.sh
 chmod +rwx startsetup.sh
-echo "export PULSE_SERVER=127.0.0.1 && termux-x11 :0 -xstartup \"startlxde\"" > startdisplay.sh
+echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity" > startdisplay.sh
+echo "export PULSE_SERVER=127.0.0.1 && termux-x11 :0 -xstartup \"startlxde\"" >> startdisplay.sh
 chmod +rwx startdisplay.sh
 cd
 echo "sed -i \"/startdisplay/d\" /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/profile" > "startubuntu.sh"
