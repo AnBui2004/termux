@@ -37,9 +37,14 @@ echo "clear" >> startsetup.sh
 echo "echo -e '\e[1;37m[i] Done!\e[0m'" >> startsetup.sh
 echo "echo -e '\e[1;37m---\e[0m'" >> startsetup.sh
 echo "echo -e '\e[1;37mRun this command to start: ./startubuntu.sh\e[0m'" >> startsetup.sh
+echo "echo -e '\e[1;37m---\e[0m'" >> startsetup.sh
+echo "echo -e '\e[1;37mYou are still on Ubuntu. Run this command to return to Termux if you want: exit\e[0m'" >> startsetup.sh
 chmod +rwx startsetup.sh
 echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity" > startdisplay.sh
 echo "export PULSE_SERVER=127.0.0.1 && GALLIUM_DRIVER=virpipe && MESA_GL_VERSION_OVERRIDE=4.0 && termux-x11 :0 -xstartup \"startlxde\" && clear" >> startdisplay.sh
+echo "echo -e '\e[1;37m[i] You are still on Ubuntu.\e[0m'" >> startdisplay.sh
+echo "echo -e '\e[1;37m---\e[0m'" >> startdisplay.sh
+echo "echo -e '\e[1;37mRun this command to return to Termux if you want: exit\e[0m'" >> startdisplay.sh
 chmod +rwx startdisplay.sh
 echo "./startdisplay.sh" > "startubuntu.sh"
 chmod +rwx startubuntu.sh
