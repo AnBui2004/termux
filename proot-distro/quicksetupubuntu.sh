@@ -31,11 +31,13 @@ echo "clear && sed -i \"/startsetup.sh/d\" /etc/profile && export PULSE_SERVER=1
 echo "clear" >> startsetup.sh
 echo "[i] Done!" >> startsetup.sh
 echo "---" >> startsetup.sh
-echo "Run this command to start: startdisplay.sh" >> startsetup.sh
+echo "Run this command to start: startubuntu.sh" >> startsetup.sh
 chmod +rwx startsetup.sh
 echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity" > startdisplay.sh
 echo "export PULSE_SERVER=127.0.0.1 && termux-x11 :0 -xstartup \"startlxde\"" >> startdisplay.sh
 chmod +rwx startdisplay.sh
+echo "./startdisplay.sh" > "startubuntu.sh"
+chmod +rwx startubuntu.sh
 cd
 echo "sed -i \"/startdisplay/d\" /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/profile" > "startubuntu.sh"
 echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> startubuntu.sh
