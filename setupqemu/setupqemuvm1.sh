@@ -22,6 +22,17 @@ if [[ -z "$distro" ]]; then
 else
     prootdistroname="$distro"
 fi
+if [[ "$prootdistroname" =~ alpine ]]; then
+    if [[ ! "$architecture" =~ 64 ]]; then
+        echo -e "\e[1;37m[!] Unsupported architecture!"
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37mAlpine only supports 64-bit architecture. Your device's architecture is not supported."
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37mSetup was canceled."
+        rm -f setup1.sh setup2.sh
+        exit
+    fi
+fi
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
 apt update
 yes y | apt upgrade -y
