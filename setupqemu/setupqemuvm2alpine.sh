@@ -16,6 +16,7 @@ else
     aria2c -x 4 --async-dns=false --disable-ipv6 --check-certificate=false -o setup.tar.gz $qemulink
     tar -xzvf setup.tar.gz -C /
     rm setup.tar.gz
+    chmod +x /usr/local/bin/*
 fi
 export PULSE_SERVER=127.0.0.1
 clear
