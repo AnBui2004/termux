@@ -15,7 +15,7 @@ else
 fi
 clear
 echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mDo you want to run "${osname}" now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using $thisdistro."
+echo -e "\e[1;37mDo you want to run "${osname}" now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using "${thisdistro}"."
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Run now with Shared Folder"
