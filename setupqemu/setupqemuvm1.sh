@@ -13,8 +13,12 @@ echo -e "\e[1;37mPlease do not run any other commands when this setup begins. If
 echo -e "\e[1;37m\e[0m"
 echo -e "\e[1;37mBy obtaining and running the virtual machine in any way, you agree to any Agreements and Policies provided by the vendor or owner of this operating system and other related things. You are responsible for any consequences that may arise from using the virtual machine. The owner of this script is not responsible for any consequences that may arise from using the virtual machine or you have edited these scripts. To disagree and cancel the setup, press Ctrl + C."
 echo -e "\e[1;37m-\e[0m"
-echo -e "\e[1;37mAutomatically go to next step after 60 seconds and you agreed."
-sleep 60
+echo -e "\e[1;37mAutomatically go to next step after 60 seconds or continue immediately by pressing any key and you agree to the above."
+if read -r -t 60 -n 1 _; then
+    echo "Pressed the key and continued immediately."
+else
+    echo "60 seconds elapsed, auto continue."
+fi
 clear
 source ./setup1.sh
 if [[ -z "$distro" ]]; then
