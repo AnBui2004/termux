@@ -8,9 +8,14 @@ echo -e "\e[1;37m--------------------"
 exit
 fi
 export PULSE_SERVER=127.0.0.1
+if grep -q "Alpine" /etc/os-release 2>/dev/null; then
+    thisdistro="Alpine"
+else
+    thisdistro="Debian"
+fi
 clear
 echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mDo you want to run "${osname}" now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
+echo -e "\e[1;37mDo you want to run "${osname}" now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using $thisdistro."
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Run now with Shared Folder"
@@ -66,8 +71,8 @@ case "$vmoption" in
         cp start"$setname"vm.sh start"$setname"vms.sh
         chmod +rwx "start"$setname"vms.sh"
         echo -n " -drive file=fat:rw:/storage/emulated/0/VM/Shared" >> "start"$setname"vms.sh"
-        convertosingleline=$(paste -s -d:" " start101903vms.sh)
-        echo ${convertosingleline//: -drive/ -drive} > start101903vms.sh
+        convertosingleline=$(paste -s -d:" " "start${setname}vms.sh")
+        echo "${convertosingleline//: -drive/ -drive}" > "start${setname}vms.sh"
         clear
         ./start"$setname".sh
         ;;
