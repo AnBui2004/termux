@@ -261,7 +261,7 @@ else
 fi
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
-cd /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/root
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/root
 if [[ "$prootdistroname" =~ "alpine" ]]; then
     curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/setupqemuvm2alpine.sh
 else
@@ -292,12 +292,12 @@ else
     echo "/root/setup"$setname".sh" >> ./etc/profile
 fi
 cd
-echo "sed -i \"/start"$setname"/d\" /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" > "start"$setname".sh"
+echo "sed -i \"/start"$setname"/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" > "start"$setname".sh"
 echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> start"$setname".sh
-echo "echo '/root/start"$setname".sh' >> /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" >> start"$setname".sh
+echo "echo '/root/start"$setname".sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" >> start"$setname".sh
 echo "proot-distro login "$prootdistroname"" >> start"$setname".sh
 chmod +rwx start"$setname".sh
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login "$prootdistroname"
-rm /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/root/setup"$setname".sh
+rm $PREFIX/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/root/setup"$setname".sh
