@@ -27,6 +27,7 @@ else
     prootdistroname="$distro"
 fi
 if [[ "$prootdistroname" =~ "alpine" ]]; then
+    architecture=$(uname -m)
     if [[ ! "$architecture" =~ "64" ]]; then
         echo -e "\e[1;37m[!] Unsupported architecture!"
         echo -e "\e[1;37m-\e[0m"
