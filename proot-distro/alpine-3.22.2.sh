@@ -11,7 +11,6 @@ TARBALL_URL['x86_64']="https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/x86_
 TARBALL_SHA256['x86_64']="412454ed98025ad9cd910d13f3d448b184e81502baa83180e89f98d0f13674be"
 
 distro_setup() {
-    mkdir ./root
     echo "nameserver 8.8.8.8" > ./etc/resolv.conf
     echo "nameserver 8.8.4.4" >> ./etc/resolv.conf
 }
