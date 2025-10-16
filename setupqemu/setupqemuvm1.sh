@@ -248,7 +248,7 @@ if [ ! -e "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     fi
 fi
 clear
-echo -e '\e[1;37m[i] Installing Debian...\e[0m'
+echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 if [[ "$prootdistroname" == "debian" ]]; then
     proot-distro install debian
 else
@@ -298,6 +298,6 @@ echo "echo '/root/start"$setname".sh' >> /data/data/com.termux/files/usr/var/lib
 echo "proot-distro login "$prootdistroname"" >> start"$setname".sh
 chmod +rwx start"$setname".sh
 clear
-echo -e '\e[1;37m[i] Login to Debian...\e[0m'
+echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login "$prootdistroname"
 rm /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/root/setup"$setname".sh
