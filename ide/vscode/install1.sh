@@ -36,6 +36,8 @@ echo "proot-distro login debian" >> startvscode.sh
 chmod +rwx startvscode.sh
 sed -i "/installvscode.sh/d" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile
 echo "/root/installvscode.sh" >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile
+clear
+echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login debian
 rm installvscode.sh
 clear
