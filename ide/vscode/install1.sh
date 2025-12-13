@@ -53,7 +53,7 @@ echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
 aria2c -o installvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/install2.sh
 aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
-chmod +rwx installvscode.sh
+chmod +x installvscode.sh
 chmod -x startvscode.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
 echo "chmod +x /etc/profile.d/startvscode.sh" > startvscode.sh
