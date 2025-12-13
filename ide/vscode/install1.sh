@@ -37,7 +37,7 @@ rm vscode.tar.gz
 cd VSCode-linux-arm64
 chmod +rwx bin/code
 chmod +rwx bin/code-tunnel
-echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && termux-x11 -xstartup \"xterm -e bash -c 'fluxbox & thunar & VSCode-linux-arm64/bin/code --no-sandbox --user-data-dir /root/code && sleep infinity'\"" > code.sh
+echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && termux-x11 -xstartup \"bash -c 'fluxbox & thunar & VSCode-linux-arm64/bin/code --no-sandbox --user-data-dir /root/code && sleep infinity'" > code.sh
 chmod +rwx code.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
 mkdir code
