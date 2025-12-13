@@ -19,14 +19,14 @@ case "$vmoption" in
         cd
         clear
         echo -e "\e[1;37m[i] Visual Studio Code is running..."
-        ./code.sh
+        Apps/IDE/VSCode-linux-arm64/code.sh
         clear
         ./startvscode.sh
         ;;
     '2')
         cd
         clear
-        rm -r VSCode-linux-arm64 code.sh startvscode.sh
+        rm -r Apps/IDE/VSCode-linux-arm64 startvscode.sh
         ;;
     *)
         clear
