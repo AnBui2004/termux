@@ -43,9 +43,9 @@ am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
 termux-x11 -xstartup "bash -c 'fluxbox & thunar & cd /Apps/IDE/VSCode-linux-arm64/bin/ && ./code --no-sandbox --user-data-dir $HOME/.vscode && sleep infinity'"
 EOF
 chmod -R 755 $PREFIX/var/lib/proot-distro/installed-rootfs/debian/Apps
-chmod +rwx bin/code
-chmod +rwx bin/code-tunnel
-chmod +rwx code.sh
+chmod +x bin/code
+chmod +x bin/code-tunnel
+chmod +x code.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
 mkdir .vscode
 clear
