@@ -1,4 +1,4 @@
-rm /etc/profile.d/startvscode.sh
+sed -i "/startvscode.sh/d" $HOME/profile
 clear
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then

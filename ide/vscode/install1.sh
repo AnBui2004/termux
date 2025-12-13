@@ -40,7 +40,7 @@ rm vscode.tar.gz
 cd VSCode-linux-arm64
 cat > code.sh <<'EOF'
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
-termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/VSCode-linux-arm64/bin/code --no-sandbox --user-data-dir $HOME/.vscode && sleep infinity'"
+termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/VSCode-linux-arm64/bin/code --no-sandbox && sleep infinity'"
 EOF
 aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
 aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/uninstall.sh
@@ -51,20 +51,21 @@ chmod +x startvscode.sh
 chmod +x uninstall.sh
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
-mkdir .vscode
+mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
 aria2c -o installvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/install2.sh
 chmod +x installvscode.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
+echo "echo "/Apps/IDE/VSCode-linux-arm64/startvscode.sh" >> /home/devroom/.profile" > code.sh
+echo "su devroom" >> code.sh
+chmod +x code.sh
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
 echo "/Apps/IDE/VSCode-linux-arm64/startvscode.sh" > code.sh
 chmod +x code.sh
 cd
-echo "cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d" > code.sh
-echo "echo \"/Apps/IDE/VSCode-linux-arm64/startvscode.sh\" > startvscode.sh" >> code.sh
-echo "chmod +x startvscode.sh" >> code.sh
-echo "proot-distro login debian" >> code.sh
-echo "rm $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d/startvscode.sh" >> code.sh
+echo "sed -i \"/startvscode.sh/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" > "code.sh"
+echo "echo '/Apps/IDE/VSCode-linux-arm64/startvscode.sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" >> code.sh
+echo "proot-distro login debian --user devroom" >> code.sh
 echo "clear" >> code.sh
 chmod +x code.sh
 clear
