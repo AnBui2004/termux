@@ -59,13 +59,13 @@ cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
 echo "chmod +x /etc/profile.d/startvscode.sh" > startvscode.sh
 echo "/etc/profile.d/startvscode.sh" >> startvscode.sh
 echo "chmod -x /etc/profile.d/startvscode.sh" >> startvscode.sh
-chmod +rwx startvscode.sh
+chmod +x startvscode.sh
 cd
 echo "chmod +x $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d/startvscode.sh" > startvscode.sh
 echo "proot-distro login debian" >> startvscode.sh
 echo "chmod -x $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d/startvscode.sh" >> startvscode.sh
 echo "clear" >> startvscode.sh
-chmod +rwx startvscode.sh
+chmod +x startvscode.sh
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login debian
