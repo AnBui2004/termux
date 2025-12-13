@@ -7,7 +7,7 @@ apt install xterm thunar fluxbox aria2 libasound2 libatk-bridge2.0-0 libatk1.0-0
 clear
 echo -e '\e[1;37m[i] Done!\e[0m'
 echo -e '\e[1;37m-\e[0m'
-echo -e "\e[1;37mUse this command to run: \"./startvscode.sh\"\e[0m"
+echo -e "\e[1;37mUse this command to run: \"./code.sh\"\e[0m"
 echo -e '\e[1;37m-\e[0m'
 rm /etc/profile.d/installvscode.sh
 rm /data/data/com.termux/files/home/installvscode.sh
