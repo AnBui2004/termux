@@ -57,7 +57,7 @@ aria2c -o installvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/re
 chmod +x installvscode.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
 echo "sed -i \"/startvscode.sh/d\" /home/devroom/.profile" > "code.sh"
-echo "echo "/Apps/IDE/VSCode-linux-arm64/startvscode.sh" >> /home/devroom/.profile" > code.sh
+echo "echo "/Apps/IDE/VSCode-linux-arm64/startvscode.sh" >> /home/devroom/.profile" >> code.sh
 echo "su devroom" >> code.sh
 chmod +x code.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
