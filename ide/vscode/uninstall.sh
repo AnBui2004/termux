@@ -12,8 +12,8 @@ case "$option" in
         clear
         echo -e "\e[1;37m[i] Uninstalling Visual Studio Code..."
         sed -i "/startvscode.sh/d" $HOME/.profile
-        rm -r $HOME/code.sh /data/data/com.termux/files/home/code.sh
-        sudo rm /root/code.sh
+        rm -r $HOME/code.sh
+        sudo rm /root/code.sh /data/data/com.termux/files/home/code.sh
         sudo rm -r /Apps/IDE/VSCode-linux-arm64
         clear
         echo -e "\e[1;37m[i] Visual Studio Code has been uninstalled."
@@ -22,8 +22,8 @@ case "$option" in
         clear
         echo -e "\e[1;37m[i] Uninstalling Visual Studio Code..."
         sed -i "/startvscode.sh/d" $HOME/.profile
-        rm -r $HOME/code.sh $HOME/.vscode /data/data/com.termux/files/home/code.sh
-        sudo rm /root/code.sh /root/.vscode
+        rm -r $HOME/code.sh $HOME/.vscode 
+        sudo rm /root/code.sh /root/.vscode /data/data/com.termux/files/home/code.sh
         sudo rm -r /Apps/IDE/VSCode-linux-arm64
         clear
         echo -e "\e[1;37m[i] Visual Studio Code has been uninstalled."
