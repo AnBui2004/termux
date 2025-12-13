@@ -1,4 +1,4 @@
-sed -i "/startvscode.sh/d" $HOME/profile
+sed -i "/startvscode.sh/d" $HOME/.profile
 clear
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then

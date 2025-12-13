@@ -6,6 +6,7 @@ apt upgrade -y
 apt install sudo xterm thunar fluxbox aria2 libasound2 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 libcairo2 libcurl3-gnutls libcurl4 libdbus-1-3 libexpat1 libgbm1 libglib2.0-0 libgtk-3-0 libgtk-4-1 libnspr4 libnss3 libpango-1.0-0 libx11-6 libxcb1 libxcomposite1 libxdamage1 libxext6 libxfixes3 libxkbcommon0 libxkbfile1 libxrandr2 xdg-utils -y
 useradd -m devroom
 passwd -d devroom
+usermod -s /bin/bash devroom
 echo 'devroom ALL=(ALL) ALL' | tee /etc/sudoers.d/devroom
 chmod 440 /etc/sudoers.d/devroom
 clear
