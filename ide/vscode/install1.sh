@@ -46,7 +46,7 @@ chmod -R 755 $PREFIX/var/lib/proot-distro/installed-rootfs/debian/Apps
 chmod +x bin/code
 chmod +x bin/code-tunnel
 chmod +x code.sh
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
 mkdir .vscode
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
