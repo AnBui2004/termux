@@ -25,9 +25,16 @@ apt install x11-repo -y
 apt install proot-distro aria2 termux-x11 -y
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install debian
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
 echo -e '\e[1;37m[i] Downloading Visual Studio Code...\e[0m'
 aria2c -x 4 -o vscode.tar.gz https://vscode.download.prss.microsoft.com/dbazure/download/stable/618725e67565b290ba4da6fe2d29f8fa1d4e3622/code-stable-arm64-1765353456.tar.gz
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
+echo -e '\e[1;37m[i] Installing Visual Studio Code...\e[0m'
+tar -xvzf vscode.tar.gz
+chmod +rwx VSCode-linux-arm64/bin/code
+chmod +rwx VSCode-linux-arm64/bin/code-tunnel
+echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && termux-x11 -xstartup \"xterm -e bash -c 'fluxbox & thunar & VSCode-linux-arm64/bin/code --no-sandbox --user-data-dir /root/code\"'" > code.sh
+chmod +rwx code.sh
+mkdir code
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 aria2c -o installvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/install2.sh
 aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
