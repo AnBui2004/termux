@@ -2,6 +2,7 @@ clear
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
     echo -e "\e[1;37m[!] You should grant access to storage on this device."
+    clear
     yes y | termux-setup-storage
     echo -e "\e[1;37m[i] Automatically go to next step after 5 seconds."
     sleep 5
