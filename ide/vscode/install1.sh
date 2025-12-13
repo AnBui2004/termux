@@ -63,8 +63,8 @@ cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
 echo "/Apps/IDE/VSCode-linux-arm64/startvscode.sh" > code.sh
 chmod +x code.sh
 cd
-echo "sed -i \"/startvscode.sh/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" > "code.sh"
-echo "echo '/Apps/IDE/VSCode-linux-arm64/startvscode.sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/"$prootdistroname"/etc/profile" >> code.sh
+echo "sed -i \"/startvscode.sh/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" > "code.sh"
+echo "echo '/Apps/IDE/VSCode-linux-arm64/startvscode.sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" >> code.sh
 echo "proot-distro login debian --user devroom" >> code.sh
 echo "clear" >> code.sh
 chmod +x code.sh
