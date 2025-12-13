@@ -25,7 +25,9 @@ case "$vmoption" in
     '2')
         cd
         clear
+        echo -e "\e[1;37m[i] Uninstalling Visual Studio Code..."
         rm -r Apps/IDE/VSCode-linux-arm64 /etc/profile.d/startvscode.sh startvscode.sh /data/data/com.termux/files/home/startvscode.sh
+        clear
         echo -e "\e[1;37m[i] Visual Studio Code has been uninstalled."
         ;;
     *)
