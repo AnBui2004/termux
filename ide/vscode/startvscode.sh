@@ -1,3 +1,4 @@
+rm /etc/profile.d/startvscode.sh
 clear
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
@@ -15,7 +16,6 @@ read -n 1 vmoption
 
 case "$vmoption" in
     '1')
-        cd
         clear
         echo -e "\e[1;37m[i] Visual Studio Code is running..."
         /Apps/IDE/VSCode-linux-arm64/code.sh
@@ -24,10 +24,9 @@ case "$vmoption" in
         clear
         ;;
     '2')
-        cd
         clear
         echo -e "\e[1;37m[i] Uninstalling Visual Studio Code..."
-        rm -r Apps/IDE/VSCode-linux-arm64 /etc/profile.d/startvscode.sh startvscode.sh /data/data/com.termux/files/home/startvscode.sh
+        rm -r /etc/profile.d/startvscode.sh $HOME/startvscode.sh /data/data/com.termux/files/home/startvscode.sh /Apps/IDE/VSCode-linux-arm64
         clear
         echo -e "\e[1;37m[i] Visual Studio Code has been uninstalled."
         ;;
@@ -36,6 +35,3 @@ case "$vmoption" in
         clear
         ;;
 esac
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
-mv startvscode.sh startvscode.sh.disabled
-cd

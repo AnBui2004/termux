@@ -40,31 +40,32 @@ rm vscode.tar.gz
 cd VSCode-linux-arm64
 cat > code.sh <<'EOF'
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
-termux-x11 -xstartup "bash -c 'fluxbox & thunar & cd /Apps/IDE/VSCode-linux-arm64/bin/ && ./code --no-sandbox --user-data-dir $HOME/.vscode && sleep infinity'"
+termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/VSCode-linux-arm64/bin/code --no-sandbox --user-data-dir $HOME/.vscode && sleep infinity'"
 EOF
+aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
 chmod -R 755 $PREFIX/var/lib/proot-distro/installed-rootfs/debian/Apps
 chmod +x bin/code
 chmod +x bin/code-tunnel
 chmod +x code.sh
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
-mkdir .vscode
+chmod +x startvscode.sh
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
+mkdir .vscode
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
 aria2c -o installvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/install2.sh
-aria2c -o startvscode.sh.disabled https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
 chmod +x installvscode.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
-echo "cd /etc/profile.d && mv startvscode.sh.disabled startvscode.sh" > startvscode.sh
-echo "/etc/profile.d/startvscode.sh" >> startvscode.sh
-echo "/etc/profile.d && mv startvscode.sh startvscode.sh.disabled" >> startvscode.sh
-chmod +x startvscode.sh
+echo "/Apps/IDE/VSCode-linux-arm64/startvscode.sh" > code.sh
+chmod +x code.sh
 cd
-echo "cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d && mv startvscode.sh.disabled startvscode.sh" > startvscode.sh
-echo "proot-distro login debian" >> startvscode.sh
-echo "cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d && mv startvscode.sh startvscode.sh.disabled" >> startvscode.sh
-echo "clear" >> startvscode.sh
-chmod +x startvscode.sh
+echo "cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d" > code.sh
+echo "echo \"/Apps/IDE/VSCode-linux-arm64/startvscode.sh\" > startvscode.sh" >> code.sh
+echo "chmod +x startvscode.sh" >> code.sh
+echo "proot-distro login debian" >> code.sh
+echo "rm $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d/startvscode.sh" >> code.sh
+echo "clear" >> code.sh
+chmod +x code.sh
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login debian
