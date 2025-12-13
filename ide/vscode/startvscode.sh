@@ -21,6 +21,7 @@ case "$vmoption" in
         /Apps/IDE/VSCode-linux-arm64/code.sh
         clear
         ./startvscode.sh
+        clear
         ;;
     '2')
         cd
@@ -31,9 +32,8 @@ case "$vmoption" in
         echo -e "\e[1;37m[i] Visual Studio Code has been uninstalled."
         ;;
     *)
-        clear
         echo -e "\e[1;37mExiting..."
+        clear
         ;;
 esac
 chmod -x /etc/profile.d/startvscode.sh
-clear
