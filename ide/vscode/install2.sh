@@ -12,7 +12,7 @@ echo -e '\e[1;37m[i] Installing Visual Studio Code...\e[0m'
 tar -xvzf vscode.tar.gz
 chmod +rwx VSCode-linux-arm64/bin/code
 chmod +rwx VSCode-linux-arm64/bin/code-tunnel
-echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && termux-x11 -xstartup \"xterm -e bash -c 'thunar & VSCode-linux-arm64/bin/code --no-sandbox --user-data-dir /root/code\"'" > code.sh
+echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && termux-x11 -xstartup \"xterm -e bash -c 'fluxbox & thunar & VSCode-linux-arm64/bin/code --no-sandbox --user-data-dir /root/code\"'" > code.sh
 chmod +rwx code.sh
 mkdir -p /root/code
 clear
