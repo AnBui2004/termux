@@ -43,11 +43,12 @@ am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
 termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/VSCode-linux-arm64/bin/code --no-sandbox --user-data-dir $HOME/.vscode && sleep infinity'"
 EOF
 aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
-chmod -R 755 $PREFIX/var/lib/proot-distro/installed-rootfs/debian/Apps
+aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/uninstall.sh
 chmod +x bin/code
 chmod +x bin/code-tunnel
 chmod +x code.sh
 chmod +x startvscode.sh
+chmod +x uninstall.sh
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root

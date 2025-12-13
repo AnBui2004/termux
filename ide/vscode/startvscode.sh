@@ -20,14 +20,10 @@ case "$option" in
         echo -e "\e[1;37m[i] Visual Studio Code is running..."
         /Apps/IDE/VSCode-linux-arm64/code.sh
         clear
-        ./startvscode.sh
+        /Apps/IDE/VSCode-linux-arm64/startvscode.sh
         ;;
     '2')
-        clear
-        echo -e "\e[1;37m[i] Uninstalling Visual Studio Code..."
-        rm -r /etc/profile.d/startvscode.sh $HOME/code.sh /data/data/com.termux/files/home/code.sh /Apps/IDE/VSCode-linux-arm64
-        clear
-        echo -e "\e[1;37m[i] Visual Studio Code has been uninstalled."
+        /Apps/IDE/VSCode-linux-arm64/uninstall.sh
         ;;
     *)
         clear
