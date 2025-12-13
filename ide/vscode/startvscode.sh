@@ -1,4 +1,3 @@
-sed -i "/startvscode.sh/d" /etc/profile
 clear
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
@@ -19,18 +18,20 @@ case "$vmoption" in
         cd
         clear
         echo -e "\e[1;37m[i] Visual Studio Code is running..."
-        Apps/IDE/VSCode-linux-arm64/code.sh
+        /Apps/IDE/VSCode-linux-arm64/code.sh
         clear
         ./startvscode.sh
         ;;
     '2')
         cd
         clear
-        rm -r Apps/IDE/VSCode-linux-arm64 startvscode.sh
+        rm -r Apps/IDE/VSCode-linux-arm64 /etc/profile.d/startvscode.sh startvscode.sh /data/data/com.termux/files/home/startvscode.sh
+        echo -e "\e[1;37m[i] Visual Studio Code has been uninstalled."
         ;;
     *)
         clear
         echo -e "\e[1;37mExiting..."
         ;;
 esac
+chmod -x /etc/profile.d/startvscode.sh
 clear

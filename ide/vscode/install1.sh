@@ -2,8 +2,8 @@ clear
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
     echo -e "\e[1;37m[!] You should grant access to storage on this device."
-    clear
     yes y | termux-setup-storage
+    clear
     echo -e "\e[1;37m[i] Automatically go to next step after 5 seconds."
     sleep 5
 fi
@@ -24,35 +24,48 @@ apt update
 yes y | apt upgrade -y
 apt install x11-repo -y
 apt install proot-distro aria2 termux-x11 -y
+clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install debian
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
+clear
 echo -e '\e[1;37m[i] Downloading Visual Studio Code...\e[0m'
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
 mkdir -p Apps/IDE
 cd Apps/IDE
 aria2c -x 4 -o vscode.tar.gz https://vscode.download.prss.microsoft.com/dbazure/download/stable/618725e67565b290ba4da6fe2d29f8fa1d4e3622/code-stable-arm64-1765353456.tar.gz
+clear
 echo -e '\e[1;37m[i] Installing Visual Studio Code...\e[0m'
 tar -xvzf vscode.tar.gz
 rm vscode.tar.gz
 cd VSCode-linux-arm64
+cat > code.sh <<'EOF'
+am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
+termux-x11 -xstartup "bash -c 'fluxbox & thunar & cd /Apps/IDE/VSCode-linux-arm64/bin/ && ./code --no-sandbox --user-data-dir $HOME/.vscode && sleep infinity'"
+EOF
+chmod -R 755 $PREFIX/var/lib/proot-distro/installed-rootfs/debian/Apps
 chmod +rwx bin/code
 chmod +rwx bin/code-tunnel
-echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && termux-x11 -xstartup \"bash -c 'fluxbox & thunar & cd /root/Apps/IDE/VSCode-linux-arm64/bin/ && ./code --no-sandbox --user-data-dir /root/code && sleep infinity'" > code.sh
 chmod +rwx code.sh
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
-mkdir code
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
+mkdir .vscode
+clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
 aria2c -o installvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/install2.sh
 aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
 chmod +rwx installvscode.sh
+chmod -x startvscode.sh
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
+echo "chmod +x /etc/profile.d/startvscode.sh" > startvscode.sh
+echo "/etc/profile.d/startvscode.sh" >> startvscode.sh
+echo "chmod -x /etc/profile.d/startvscode.sh" >> startvscode.sh
 chmod +rwx startvscode.sh
 cd
-echo "sed -i \"/startvscode.sh/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile" > "startvscode.sh"
-echo "echo '/root/startvscode.sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile" >> startvscode.sh
+echo "chmod +x $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d/startvscode.sh" > startvscode.sh
 echo "proot-distro login debian" >> startvscode.sh
+echo "chmod -x $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d/startvscode.sh" >> startvscode.sh
+echo "clear" >> startvscode.sh
 chmod +rwx startvscode.sh
-sed -i "/installvscode.sh/d" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile
-echo "/root/installvscode.sh" >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login debian

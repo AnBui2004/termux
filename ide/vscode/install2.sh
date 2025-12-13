@@ -1,4 +1,4 @@
-sed -i "/installvscode.sh/d" /etc/profile
+chmod -x /etc/profile.d/installvscode.sh
 clear
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
 apt update
@@ -9,5 +9,5 @@ echo -e '\e[1;37m[i] Done!\e[0m'
 echo -e '\e[1;37m-\e[0m'
 echo -e "\e[1;37mUse this command to run: \"./startvscode.sh\"\e[0m"
 echo -e '\e[1;37m-\e[0m'
-rm installvscode.sh
+rm /etc/profile.d/installvscode.sh
 rm "/data/data/com.termux/files/home/installvscode.sh"
