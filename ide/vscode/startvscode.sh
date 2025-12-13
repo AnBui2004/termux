@@ -19,7 +19,6 @@ case "$option" in
         clear
         echo -e "\e[1;37m[i] Visual Studio Code is running..."
         /Apps/IDE/VSCode-linux-arm64/code.sh
-        clear
         /Apps/IDE/VSCode-linux-arm64/startvscode.sh
         ;;
     '2')
