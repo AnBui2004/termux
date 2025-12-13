@@ -36,4 +36,6 @@ case "$vmoption" in
         clear
         ;;
 esac
-chmod -x /etc/profile.d/startvscode.sh
+cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
+mv startvscode.sh startvscode.sh.disabled
+cd

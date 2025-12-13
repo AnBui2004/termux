@@ -52,18 +52,17 @@ clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
 aria2c -o installvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/install2.sh
-aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
+aria2c -o startvscode.sh.disabled https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
 chmod +x installvscode.sh
-chmod -x startvscode.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
-echo "chmod +x /etc/profile.d/startvscode.sh" > startvscode.sh
+echo "cd /etc/profile.d && mv startvscode.sh.disabled startvscode.sh" > startvscode.sh
 echo "/etc/profile.d/startvscode.sh" >> startvscode.sh
-echo "chmod -x /etc/profile.d/startvscode.sh" >> startvscode.sh
+echo "/etc/profile.d && mv startvscode.sh startvscode.sh.disabled" >> startvscode.sh
 chmod +x startvscode.sh
 cd
-echo "chmod +x $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d/startvscode.sh" > startvscode.sh
+echo "cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d && mv startvscode.sh.disabled startvscode.sh" > startvscode.sh
 echo "proot-distro login debian" >> startvscode.sh
-echo "chmod -x $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d/startvscode.sh" >> startvscode.sh
+echo "cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d && mv startvscode.sh startvscode.sh.disabled" >> startvscode.sh
 echo "clear" >> startvscode.sh
 chmod +x startvscode.sh
 clear
