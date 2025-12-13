@@ -12,16 +12,15 @@ echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Uninstall"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
-read -n 1 vmoption
+read -n 1 option
 
-case "$vmoption" in
+case "$option" in
     '1')
         clear
         echo -e "\e[1;37m[i] Visual Studio Code is running..."
         /Apps/IDE/VSCode-linux-arm64/code.sh
         clear
         ./startvscode.sh
-        clear
         ;;
     '2')
         clear
@@ -31,7 +30,8 @@ case "$vmoption" in
         echo -e "\e[1;37m[i] Visual Studio Code has been uninstalled."
         ;;
     *)
-        echo -e "\e[1;37mExiting..."
         clear
+        echo -e "\e[1;37mExiting..."
         ;;
 esac
+clear
