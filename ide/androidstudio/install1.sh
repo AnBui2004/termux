@@ -28,52 +28,51 @@ clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install debian
 clear
-echo -e '\e[1;37m[i] Downloading Visual Studio Code...\e[0m'
+echo -e '\e[1;37m[i] Downloading Android Studio...\e[0m'
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
 mkdir -p Apps/IDE
 cd Apps/IDE
-aria2c -x 4 -o vscode.tar.gz https://vscode.download.prss.microsoft.com/dbazure/download/stable/618725e67565b290ba4da6fe2d29f8fa1d4e3622/code-stable-arm64-1765353456.tar.gz
+aria2c -x 4 -o studio.tar.gz https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2025.2.2.8/android-studio-2025.2.2.8-linux.tar.gz
 clear
-echo -e '\e[1;37m[i] Installing Visual Studio Code...\e[0m'
-tar -xvzf vscode.tar.gz
-rm vscode.tar.gz
-cd VSCode-linux-arm64
-cat > code.sh <<'EOF'
+echo -e '\e[1;37m[i] Installing Android Studio...\e[0m'
+tar -xvzf studio.tar.gz
+rm studio.tar.gz
+cd android-studio
+cat > studio.sh <<'EOF'
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
-termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/VSCode-linux-arm64/bin/code --no-sandbox && sleep infinity'"
+termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/android-studio/bin/studio && sleep infinity'"
 EOF
-aria2c -o startvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/startvscode.sh
-aria2c -o uninstall.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/uninstall.sh
-chmod +x bin/code
-chmod +x bin/code-tunnel
-chmod +x code.sh
-chmod +x startvscode.sh
+aria2c -o startstudio.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/startstudio.sh
+aria2c -o uninstall.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/studio/uninstall.sh
+chmod +x bin/studio
+chmod +x studio.sh
+chmod +x startstudio.sh
 chmod +x uninstall.sh
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
-aria2c -o installvscode.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/vscode/install2.sh
-chmod +x installvscode.sh
+aria2c -o installstudio.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/install2.sh
+chmod +x installstudio.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
-echo "sed -i \"/startvscode.sh/d\" /home/devroom/.profile" > "code.sh"
-echo "echo "/Apps/IDE/VSCode-linux-arm64/startvscode.sh" >> /home/devroom/.profile" >> code.sh
-echo "clear" >> code.sh
-echo "su - devroom" >> code.sh
-echo "clear" >> code.sh
-chmod +x code.sh
+echo "sed -i \"/startstudio.sh/d\" /home/devroom/.profile" > "studio.sh"
+echo "echo "/Apps/IDE/android-studio/startstudio.sh" >> /home/devroom/.profile" >> studio.sh
+echo "clear" >> studio.sh
+echo "su - devroom" >> studio.sh
+echo "clear" >> studio.sh
+chmod +x studio.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
-echo "/Apps/IDE/VSCode-linux-arm64/startvscode.sh" > code.sh
-chmod +x code.sh
+echo "/Apps/IDE/android-studio/startstudio.sh" > studio.sh
+chmod +x studio.sh
 cd
-echo "sed -i \"/startvscode.sh/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" > "code.sh"
-echo "echo '/Apps/IDE/VSCode-linux-arm64/startvscode.sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" >> code.sh
-echo "clear" >> code.sh
-echo "proot-distro login debian --user devroom" >> code.sh
-echo "clear" >> code.sh
-chmod +x code.sh
+echo "sed -i \"/startstudio.sh/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" > "studio.sh"
+echo "echo '/Apps/IDE/android-studio/startstudio.sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" >> studio.sh
+echo "clear" >> studio.sh
+echo "proot-distro login debian --user devroom" >> studio.sh
+echo "clear" >> studio.sh
+chmod +x studio.sh
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login debian
-rm installvscode.sh
+rm installstudio.sh
 clear
