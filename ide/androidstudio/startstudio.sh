@@ -19,7 +19,7 @@ case "$option" in
         clear
         echo -e "\e[1;37m[i] Android Studio is running..."
         /Apps/IDE/android-studio/studio.sh
-        /Apps/IDE/android-studio/startvsstudio.sh
+        /Apps/IDE/android-studio/startstudio.sh
         ;;
     '2')
         /Apps/IDE/android-studio/uninstall.sh
