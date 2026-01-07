@@ -32,7 +32,7 @@ echo -e '\e[1;37m[i] Downloading Android Studio...\e[0m'
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
 mkdir -p Apps/IDE
 cd Apps/IDE
-aria2c -x 4 -o studio.tar.gz https://edgedl.me.gvt1.com/edgedl/android/studio/ide-zips/2024.2.2.15/android-studio-2024.2.2.15-linux.tar.gz
+aria2c -x 4 -o studio.tar.gz https://edgedl.me.gvt1.com/edgedl/android/studio/ide-zips/2024.2.2.14/android-studio-2024.2.2.14-linux.tar.gz
 clear
 echo -e '\e[1;37m[i] Installing Android Studio...\e[0m'
 tar -xvzf studio.tar.gz
@@ -41,7 +41,7 @@ cd android-studio
 mv jbr jbr.bak
 cat > studio.sh <<'EOF'
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
-termux-x11 -xstartup "bash -c 'fluxbox & thunar & STUDIO_JDK=/usr/lib/jvm/java-21-openjdk-arm64 && /Apps/IDE/android-studio/bin/studio.sh && sleep infinity'"
+termux-x11 -xstartup "bash -c 'fluxbox & thunar && /Apps/IDE/android-studio/bin/studio.sh && sleep infinity'"
 EOF
 aria2c -o startstudio.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/startstudio.sh
 aria2c -o uninstall.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/uninstall.sh
