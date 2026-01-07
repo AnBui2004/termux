@@ -10,7 +10,7 @@ fi
 clear
 echo -e "\e[1;37m[!] Warning and do not ignore!"
 echo -e "\e[1;37m-\e[0m"
-echo -e "\e[1;37mPlease do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up, press Ctrl + C now to cancel the setup immediately."
+echo -e "\e[1;37mMake sure you have at least 4 GB of free storage on your device. Please do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up, press Ctrl + C now to cancel the setup immediately."
 echo -e "\e[1;37m\e[0m"
 echo -e "\e[1;37mAutomatically go to next step after 60 seconds or continue immediately by pressing any key and you agree to the above."
 if read -r -t 60 -n 1 _; then

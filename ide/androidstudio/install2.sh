@@ -3,7 +3,7 @@ clear
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
 apt update
 apt upgrade -y
-apt install sudo xterm thunar fluxbox default-jdk -y
+apt install sudo xterm thunar fluxbox default-jdk android-tools-adb aapt -y
 useradd -m devroom
 passwd -d devroom
 usermod -s /bin/bash devroom

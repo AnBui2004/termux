@@ -12,6 +12,7 @@ case "$option" in
         clear
         echo -e "\e[1;37m[i] Uninstalling Android Studio..."
         sed -i "/startstudio.sh/d" $HOME/.profile
+        chmod -R +w $HOME/Android
         rm -r $HOME/studio.sh $HOME/.gradle $HOME/Android
         sudo rm /root/studio.sh /data/data/com.termux/files/home/studio.sh
         sudo rm -r /Apps/IDE/android-studio
@@ -22,6 +23,7 @@ case "$option" in
         clear
         echo -e "\e[1;37m[i] Uninstalling Android Studio..."
         sed -i "/startstudio.sh/d" $HOME/.profile
+        chmod -R +w $HOME/Android
         rm -r $HOME/studio.sh $HOME/.android $HOME/.gradle $HOME/Android
         sudo rm /root/studio.sh /root/.studio /data/data/com.termux/files/home/studio.sh
         sudo rm -r /Apps/IDE/android-studio

@@ -10,7 +10,7 @@ fi
 clear
 echo -e "\e[1;37m[!] Warning and do not ignore!"
 echo -e "\e[1;37m-\e[0m"
-echo -e "\e[1;37mPlease do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up, press Ctrl + C now to cancel the setup immediately."
+echo -e "\e[1;37mMake sure you have at least 10 GB of free storage on your device. Please do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up, press Ctrl + C now to cancel the setup immediately."
 echo -e "\e[1;37m\e[0m"
 echo -e "\e[1;37mAutomatically go to next step after 60 seconds or continue immediately by pressing any key and you agree to the above."
 if read -r -t 60 -n 1 _; then
@@ -32,15 +32,16 @@ echo -e '\e[1;37m[i] Downloading Android Studio...\e[0m'
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
 mkdir -p Apps/IDE
 cd Apps/IDE
-aria2c -x 4 -o studio.tar.gz https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2025.2.2.8/android-studio-2025.2.2.8-linux.tar.gz
+aria2c -x 4 -o studio.tar.gz https://edgedl.me.gvt1.com/edgedl/android/studio/ide-zips/2024.2.2.15/android-studio-2024.2.2.15-linux.tar.gz
 clear
 echo -e '\e[1;37m[i] Installing Android Studio...\e[0m'
 tar -xvzf studio.tar.gz
 rm studio.tar.gz
 cd android-studio
+mv jbr jbr.bak
 cat > studio.sh <<'EOF'
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
-termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/android-studio/bin/studio.sh && sleep infinity'"
+termux-x11 -xstartup "bash -c 'fluxbox & thunar & STUDIO_JDK=/usr/lib/jvm/java-21-openjdk-arm64 && /Apps/IDE/android-studio/bin/studio.sh && sleep infinity'"
 EOF
 aria2c -o startstudio.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/startstudio.sh
 aria2c -o uninstall.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/uninstall.sh
