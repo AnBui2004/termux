@@ -4,6 +4,7 @@ if [ -L "$HOME/Android/Sdk/platform-tools/adb" ]; then
     cp adb adb.bak
     ln -s /usr/bin/adb ./adb
     chmod -w ./adb
+    cd
 fi
 sed -i "/startstudio.sh/d" $HOME/.profile
 clear
