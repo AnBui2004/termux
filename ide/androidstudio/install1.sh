@@ -40,11 +40,12 @@ rm studio.tar.gz
 cd android-studio
 cat > studio.sh <<'EOF'
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
-termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/android-studio/bin/studio && sleep infinity'"
+termux-x11 -xstartup "bash -c 'fluxbox & thunar & /Apps/IDE/android-studio/bin/studio.sh && sleep infinity'"
 EOF
 aria2c -o startstudio.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/startstudio.sh
 aria2c -o uninstall.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/uninstall.sh
 chmod +x bin/studio
+chmod +x bin/studio.sh
 chmod +x studio.sh
 chmod +x startstudio.sh
 chmod +x uninstall.sh
