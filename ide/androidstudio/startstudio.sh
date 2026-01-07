@@ -1,4 +1,4 @@
-if [ -L "$HOME/Android/Sdk/platform-tools/adb" ]; then
+if [ ! -L "$HOME/Android/Sdk/platform-tools/adb" ]; then
     mkdir -p $HOME/Android/Sdk/platform-tools
     cd $HOME/Android/Sdk/platform-tools
     cp adb adb.bak
