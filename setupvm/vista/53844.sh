@@ -1,5 +1,5 @@
 cd
-setname='WV53844'
+setname='wv53844'
 diskfilename='WV5384.4.qcow2'
 setfileurl='http://192.168.1.110/termux/qemu/windows/nt6/Windows%20Vista%205384.4.7z'
 setfileurl2=''
