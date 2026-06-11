@@ -8,6 +8,7 @@ echo -e "\e[1;37m--------------------"
 exit
 fi
 export PULSE_SERVER=127.0.0.1
+pulseaudio --start --disable-shm=1 --exit-idle-time=-1
 if grep -q "Alpine" /etc/os-release 2>/dev/null; then
     thisdistro="Alpine"
 else
