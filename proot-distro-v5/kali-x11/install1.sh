@@ -54,10 +54,6 @@ echo "clear" >> startkali.sh
 echo "proot-distro login kali-rolling --user kaliroom" >> startkali.sh
 echo "clear" >> startkali.sh
 chmod +x startkali.sh
-sed -i "/PULSE_SERVER=/d" $PREFIX/var/lib/proot-distro/installed-rootfs/kali-rolling/home/kaliroom/.profile
-sed -i "/pulseaudio/d" $PREFIX/var/lib/proot-distro/installed-rootfs/kali-rolling/home/kaliroom/.profile
-echo "export PULSE_SERVER=127.0.0.1" >> $PREFIX/var/lib/proot-distro/installed-rootfs/kali-rolling/home/kaliroom/.profile
-echo "pulseaudio --start --disable-shm=1 --exit-idle-time=-1" >> $PREFIX/var/lib/proot-distro/installed-rootfs/kali-rolling/home/kaliroom/.profile
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login kali-rolling
