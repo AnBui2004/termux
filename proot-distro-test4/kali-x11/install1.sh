@@ -31,22 +31,21 @@ proot-distro install kalilinux/kali-rolling
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 mkdir -p $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom
 cd $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/etc/profile.d
-aria2c -o installkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro-test3/kali-x11/install2.sh
+aria2c -o installkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro-test4/kali-x11/install2.sh
 chmod +x installkali.sh
 cd $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/root
-echo "sed -i \"/com.termux.x11/d\" /home/kaliroom/.profile" > "startkali.sh"
-echo "sed -i \"/termux-x11/d\" /home/kaliroom/.profile" >> "startkali.sh"
-echo 'echo "am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity" >> /home/kaliroom/.profile' >> startkali.sh
-echo 'echo "termux-x11 -xstartup "fluxbox" &" >> /home/kaliroom/.profile' >> startkali.sh
+echo "sed -i \"/startkali.sh/d\" /home/kaliroom/.profile" > "startkali.sh"
+echo 'echo "./startkali.sh" >> /home/kaliroom/.profile' >> startkali.sh
 echo "" >> startkali.sh
 echo "su - kaliroom" >> startkali.sh
 echo "" >> startkali.sh
 chmod +x startkali.sh
+cd $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom
+aria2c -o startkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro-test4/kali-x11/startx.sh
+chmod +x startkali.sh
 cd
-echo "sed -i \"/com.termux.x11/d\" $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom/.profile" > "startkali.sh"
-echo "sed -i \"/termux-x11/d\" $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom/.profile" >> "startkali.sh"
-echo "echo 'am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity' >> $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom/.profile" >> startkali.sh
-echo "echo 'termux-x11 -xstartup \"fluxbox\" &' >> $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom/.profile" >> startkali.sh
+echo "sed -i \"/startkali.sh/d\" $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom/.profile" > "startkali.sh"
+echo "echo './startkali.sh' >> $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom/.profile" >> startkali.sh
 echo "export PULSE_SERVER=127.0.0.1" >> startkali.sh
 echo "pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1" >> startkali.sh
 echo "pactl load-module module-aaudio-sink" >> startkali.sh
