@@ -311,6 +311,7 @@ fi
 cd
 echo "sed -i \"/start"$setname"/d\" $PREFIX/var/lib/proot-distro/containers/"$prootdistroname"/rootfs/etc/profile" > "start"$setname".sh"
 echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> start"$setname".sh
+echo 'pactl load-module module-aaudio-sink' >> start"$setname".sh
 echo "echo '/root/start"$setname".sh' >> $PREFIX/var/lib/proot-distro/containers/"$prootdistroname"/rootfs/etc/profile" >> start"$setname".sh
 echo "proot-distro login "$prootdistroname"" >> start"$setname".sh
 chmod +rwx start"$setname".sh
