@@ -1,4 +1,5 @@
-
+#Check access permissions to storage.
+clear
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
     echo -e "\e[1;37m[!] You should grant access to storage on this device."
@@ -7,7 +8,8 @@ if [ "$getpermisionsdcard" == "" ]; then
     echo -e "\e[1;37m[i] Automatically go to next step after 5 seconds."
     sleep 5
 fi
-
+#Readme.
+clear
 echo -e "\e[1;37m[!] Warning and do not ignore!"
 echo -e "\e[1;37m-\e[0m"
 echo -e "\e[1;37mMake sure you have at least 16 GB of free storage on your device. Please do not run any other commands when this setup begins. If you're running other commands, they haven't finished executing yet or don't want some packages to be forced to be updated when setting up, press Ctrl + C now to cancel the setup immediately."
@@ -18,21 +20,29 @@ if read -r -t 60 -n 1 _; then
 else
     echo "60 seconds elapsed, auto continue."
 fi
-
+clear
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
+#Update.
 apt update
 yes y | apt upgrade -y
+#Install packages.
 apt install x11-repo -y
-apt install proot-distro termux-x11 aria2 -y
-
+apt install proot-distro termux-x11 aria2 pulseaudio -y
+#Start Pulseaudio.
+pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
+pactl load-module module-aaudio-sink
+#Install Kali Linux.
+clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install kalilinux/kali-rolling
-
+clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
+#Initial setup in Kali Linux.
 mkdir -p $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom
 cd $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/etc/profile.d
-aria2c -o installkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro-test4/kali-x11/install2.sh
+aria2c -o installkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro-ver5/kali-x11/install2.sh
 chmod +x installkali.sh
+#Create startkali.sh for root in Kali Linux.
 cd $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/root
 echo "sed -i \"/startkali.sh/d\" /home/kaliroom/.profile" > "startkali.sh"
 echo 'echo "./startkali.sh" >> /home/kaliroom/.profile' >> startkali.sh
@@ -40,20 +50,22 @@ echo "" >> startkali.sh
 echo "su - kaliroom" >> startkali.sh
 echo "" >> startkali.sh
 chmod +x startkali.sh
+#Create startkali.sh for kaliroom in Kali Linux.
 cd $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom
-aria2c -o startkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro-test4/kali-x11/startx.sh
+aria2c -o startkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro-ver5/kali-x11/startx.sh
 chmod +x startkali.sh
+#Create startkali.sh for Termux.
 cd
 echo "sed -i \"/startkali.sh/d\" $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom/.profile" > "startkali.sh"
 echo "echo './startkali.sh' >> $PREFIX/var/lib/proot-distro/containers/kali-rolling/rootfs/home/kaliroom/.profile" >> startkali.sh
-echo "export PULSE_SERVER=127.0.0.1" >> startkali.sh
-echo "pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1" >> startkali.sh
+echo "pulseaudio --start --load=\"module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1\" --exit-idle-time=-1" >> startkali.sh
 echo "pactl load-module module-aaudio-sink" >> startkali.sh
 echo "" >> startkali.sh
 echo "proot-distro login kali-rolling --user kaliroom" >> startkali.sh
 echo "" >> startkali.sh
 chmod +x startkali.sh
-
+#Login.
+clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login kali-rolling
 rm installkali.sh

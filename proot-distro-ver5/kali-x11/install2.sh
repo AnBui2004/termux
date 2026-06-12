@@ -1,18 +1,19 @@
+#Remove the initial setup.
 chmod -x /etc/profile.d/installkali.sh
 clear
 echo -e '\e[1;37m[i] Installing packages...\e[0m'
+#Update.
 apt update
 apt upgrade -y
-apt install sudo xterm thunar fluxbox firefox-esr -y
+#Install packages.
+apt install sudo xterm thunar fluxbox firefox-esr pulseaudio -y
+#Setup kaliroom.
 useradd -m kaliroom
 passwd -d kaliroom
 usermod -s /bin/bash kaliroom
 echo 'kaliroom ALL=(ALL) ALL' | tee /etc/sudoers.d/kaliroom
 chmod 440 /etc/sudoers.d/kaliroom
-sed -i "/PULSE_SERVER=/d" /home/kaliroom/.profile
-sed -i "/pulseaudio/d" /home/kaliroom/.profile
-echo "export PULSE_SERVER=127.0.0.1" >> /home/kaliroom/.profile
-echo "pulseaudio --start --disable-shm=1 --exit-idle-time=-1" >> /home/kaliroom/.profile
+#Done.
 clear
 echo -e '\e[1;37m[i] Done!\e[0m'
 echo -e '\e[1;37m-\e[0m'
