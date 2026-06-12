@@ -29,7 +29,7 @@ echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install debian
 clear
 echo -e '\e[1;37m[i] Downloading Android Studio...\e[0m'
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
+cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs
 mkdir -p Apps/IDE
 cd Apps/IDE
 aria2c -x 4 -o studio.tar.gz https://edgedl.me.gvt1.com/edgedl/android/studio/ide-zips/2024.2.2.14/android-studio-2024.2.2.14-linux.tar.gz

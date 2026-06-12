@@ -29,7 +29,7 @@ echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install debian
 clear
 echo -e '\e[1;37m[i] Downloading Visual Studio Code...\e[0m'
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian
+cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs
 mkdir -p Apps/IDE
 cd Apps/IDE
 aria2c -x 4 -o vscode.tar.gz https://vscode.download.prss.microsoft.com/dbazure/download/stable/618725e67565b290ba4da6fe2d29f8fa1d4e3622/code-stable-arm64-1765353456.tar.gz
