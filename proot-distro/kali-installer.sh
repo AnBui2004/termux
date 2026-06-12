@@ -22,6 +22,7 @@ echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 cd $PREFIX/etc/proot-distro
 cp kali.sh kali.sh.old
 curl -H 'Cache-Control: no-cache' -o kali.sh "https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro/kali-2026-1.sh"
+cd
 proot-distro install kali
 clear
 if [ -d "$PREFIX/var/lib/proot-distro/installed-rootfs/kali/home" ]; then
