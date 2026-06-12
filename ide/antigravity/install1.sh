@@ -50,23 +50,23 @@ chmod +x antigravity.sh
 chmod +x uninstall.sh
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
-mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
+mkdir -p $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom
+cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/etc/profile.d
 aria2c -o installantigravity.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/antigravity/install2.sh
 chmod +x installantigravity.sh
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
+cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/root
 echo "sed -i \"/startantigravity.sh/d\" /home/devroom/.profile" > "antigravity.sh"
 echo "echo "/Apps/IDE/Antigravity/startantigravity.sh" >> /home/devroom/.profile" >> antigravity.sh
 echo "clear" >> antigravity.sh
 echo "su - devroom" >> antigravity.sh
 echo "clear" >> antigravity.sh
 chmod +x antigravity.sh
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
+cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom
 echo "/Apps/IDE/Antigravity/startantigravity.sh" > antigravity.sh
 chmod +x antigravity.sh
 cd
-echo "sed -i \"/startantigravity.sh/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" > "antigravity.sh"
-echo "echo '/Apps/IDE/Antigravity/startantigravity.sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" >> antigravity.sh
+echo "sed -i \"/startantigravity.sh/d\" $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom/.profile" > "antigravity.sh"
+echo "echo '/Apps/IDE/Antigravity/startantigravity.sh' >> $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom/.profile" >> antigravity.sh
 echo "clear" >> antigravity.sh
 echo "proot-distro login debian --user devroom" >> antigravity.sh
 echo "clear" >> antigravity.sh

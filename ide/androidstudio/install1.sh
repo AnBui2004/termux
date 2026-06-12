@@ -52,23 +52,23 @@ chmod +x startstudio.sh
 chmod +x uninstall.sh
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
-mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/profile.d
+mkdir -p $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom
+cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/etc/profile.d
 aria2c -o installstudio.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/androidstudio/install2.sh
 chmod +x installstudio.sh
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/root
+cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/root
 echo "sed -i \"/startstudio.sh/d\" /home/devroom/.profile" > "studio.sh"
 echo "echo "/Apps/IDE/android-studio/startstudio.sh" >> /home/devroom/.profile" >> studio.sh
 echo "clear" >> studio.sh
 echo "su - devroom" >> studio.sh
 echo "clear" >> studio.sh
 chmod +x studio.sh
-cd $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom
+cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom
 echo "/Apps/IDE/android-studio/startstudio.sh" > studio.sh
 chmod +x studio.sh
 cd
-echo "sed -i \"/startstudio.sh/d\" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" > "studio.sh"
-echo "echo '/Apps/IDE/android-studio/startstudio.sh' >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/devroom/.profile" >> studio.sh
+echo "sed -i \"/startstudio.sh/d\" $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom/.profile" > "studio.sh"
+echo "echo '/Apps/IDE/android-studio/startstudio.sh' >> $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom/.profile" >> studio.sh
 echo "clear" >> studio.sh
 echo "proot-distro login debian --user devroom" >> studio.sh
 echo "clear" >> studio.sh
