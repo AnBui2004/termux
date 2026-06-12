@@ -31,7 +31,7 @@ clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 mkdir -p $PREFIX/var/lib/proot-distro/installed-rootfs/kali/home/kaliroom
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/kali/etc/profile.d
-aria2c -o installkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro/kali-x11/install2.sh
+aria2c -o installkali.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/proot-distro-v5/kali-x11/install2.sh
 chmod +x installkali.sh
 cd $PREFIX/var/lib/proot-distro/installed-rootfs/kali/root
 echo "sed -i \"/com.termux.x11/d\" /home/kaliroom/.profile" > "startkali.sh"
