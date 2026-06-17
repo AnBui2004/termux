@@ -51,6 +51,11 @@ chmod +rwx /storage/emulated/0/VM/$setname
 clear
 echo -e '\e[1;37m[i] Downloading files...\e[0m'
 cd /storage/emulated/0/VM/$setname
+rm bootrom_s5l8900
+rm iboot_204_n45ap.bin
+rm nand_n45ap.zip
+rm nor_n45ap.bin
+rm -r nand
 aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/bootrom_s5l8900
 if [ -e "bootrom_s5l8900.aria2" ]; then
     echo -e '\e[1;37m[!] Error!\e[0m'
