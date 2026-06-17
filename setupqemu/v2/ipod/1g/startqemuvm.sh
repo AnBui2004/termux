@@ -20,6 +20,7 @@ echo -e "\e[1;37m3. Remove VM"
 echo -e "\e[1;37m4. See instructions"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
+echo -e "\e[1;37mCopy -> hhhhhhhhhhhhhhhhhhhhh <- to the clipboard, and each time you want to press the Home button, paste it from the keyboard clipboard into VNC Viewer. If pasting it once doesn't work, paste it repeatedly. If you're using VNC Viewer on a PC, just keep pressing the 'h' key repeatedly."
 read -n 1 vmoption
 
 case "$vmoption" in
