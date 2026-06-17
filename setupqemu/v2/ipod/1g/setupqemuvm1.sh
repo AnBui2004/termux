@@ -90,6 +90,7 @@ fi
 clear
 echo -e '\e[1;37m[i] Extracting...\e[0m'
 unzip nand_n45ap.zip
+rm nand_n45ap.zip
 clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install debian:11
