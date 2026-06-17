@@ -28,5 +28,4 @@ echo -e '\e[1;37mThe necessary files are in the VM folder on your phone. Please 
 echo -e '\e[1;37m-\e[0m'
 rm "setup"$setname".sh"
 rm "/data/data/com.termux/files/home/setup1.sh"
-rm "/data/data/com.termux/files/home/setup2.sh"
 exit
