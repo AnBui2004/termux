@@ -1,4 +1,15 @@
 clear
+architecture=$(uname -m)
+if [[ ! "$architecture" =~ "64" ]]; then
+    rm -f setup1.sh
+    clear
+    echo -e "\e[1;37m[!] Unsupported architecture!"
+    echo -e "\e[1;37m-\e[0m"
+    echo -e "\e[1;37mAlpine only supports ARM 64-bit architecture. Your device's architecture is not supported."
+    echo -e "\e[1;37m-\e[0m"
+    echo -e "\e[1;37mSetup was canceled."
+    exit
+fi
 getpermisionsdcard=$(ls -l /sdcard/)
 if [ "$getpermisionsdcard" == "" ]; then
     echo -e "\e[1;37m[!] Please grant access to storage!"
@@ -132,16 +143,8 @@ echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
 curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/ipod/1g/setupqemuvm2.sh
 chmod +rwx "setup"$setname".sh"
-
 setqemucommand='qemu-system-arm-aipt1g -M iPod-Touch,bootrom=/sdcard/VM/ipod1g/bootrom_s5l8900,iboot=/sdcard/VM/ipod1g/iboot_204_n45ap.bin,nand=/sdcard/VM/ipod1g/nand -serial mon:stdio -cpu max -m 1G -d unimp -pflash /sdcard/VM/ipod1g/nor_n45ap.bin -accel tcg,thread=single,tb-size=2048 -monitor vc -vnc :2'
-
-architecture=$(uname -m)
-if [[ "$architecture" =~ "64" ]]; then
-    finalqemucommand="$setqemucommand"
-else
-    finalqemucommand="${setqemucommand//-accel tcg,thread=multi/-accel tcg,thread=single}"
-fi
-echo $finalqemucommand > "start"$setname"vm.sh"
+echo $setqemucommand > "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vm.sh"
 cd ../
 echo "/root/setup"$setname".sh" >> ./etc/profile

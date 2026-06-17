@@ -6,14 +6,14 @@ if dpkg -s qemu-system-x86 | grep -q "Status: install ok installed"; then
 else
     apt update
     apt upgrade -y
-    apt install pulseaudio qemu-system-x86 -y
+    apt install aria2 pulseaudio qemu-system-x86 -y
 fi
 export PULSE_SERVER=127.0.0.1
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd
-    curl -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/startqemuvm.sh
+    aria2c -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/startqemuvm.sh
     chmod +rwx "start"$setname".sh"
 
     # Use a loop to insert variables into the script
