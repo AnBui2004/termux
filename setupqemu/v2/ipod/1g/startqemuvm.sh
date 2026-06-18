@@ -73,7 +73,7 @@ case "$vmoption" in
         echo -e "\e[1;37m"
         echo -e "\e[1;37m[2] Data directory:"
         echo -e "\e[1;37m-"
-        echo -e "\e[1;37mThe data directory is the VM on your device (/storage/emulated/0/VM)."
+        echo -e "\e[1;37mThe virtual machine directory is located at /root/VM/"$setname"."
         echo -e "\e[1;37m"
         echo -e "\e[1;37m-"
         echo -e "\e[1;37m"
