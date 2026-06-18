@@ -5,6 +5,8 @@ echo -e '\e[1;37m[i] Installing packages...\e[0m'
 sed -i "/setup"$setname"/d" /etc/profile
 if [ -e "/usr/local/bin/qemu-system-arm-aipt1g" ]; then
     echo "qemu-system-arm-aipt1g is already installed."
+    rm qemu-system.tar.gz
+    rm qemu-tools.tar.gz
 else
     apt update
     apt upgrade -y
