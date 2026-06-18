@@ -115,7 +115,7 @@ cd
 rm -r $setname-temp
 clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
-proot-distro install debian:11
+proot-distro install debian:11 --name debian11
 clear
 echo -e '\e[1;37m[i] Downloading QEMU...\e[0m'
 if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/bin/qemu-system-arm-aipt1g" ]; then
