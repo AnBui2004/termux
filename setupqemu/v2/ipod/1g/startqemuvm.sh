@@ -12,7 +12,7 @@ echo -e "\e[1;37m3. Remove"
 echo -e "\e[1;37m4. See instructions"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mCopy -> hhhhhhhhhhhhhhhhhhhhh <- to the clipboard, and each time you want to press the Home button, paste it from the keyboard clipboard into VNC Viewer. If pasting it once doesn't work, paste it repeatedly. If you're using VNC Viewer on a PC, just keep pressing the 'h' key repeatedly."
+echo -e "\e[1;37mCopy -> hhhhhhhhhhhhhhhhhhhhh <- to the clipboard, and each time you want to press the Home button, paste it from the keyboard clipboard into VNC Viewer. If pasting it once doesn't work, paste it repeatedly. If you're using VNC Viewer on a PC, just keep pressing the 'h' key repeatedly. But sometimes the 'h' key works very effectively on PC."
 read -n 1 vmoption
 
 case "$vmoption" in
@@ -79,7 +79,7 @@ case "$vmoption" in
         echo -e "\e[1;37m"
         echo -e "\e[1;37m[3] Press home button:"
         echo -e "\e[1;37m-"
-        echo -e "\e[1;37mCopy -> hhhhhhhhhhhhhhhhhhhhh <- to the clipboard, and each time you want to press the Home button, paste it from the keyboard clipboard into VNC Viewer. If pasting it once doesn't work, paste it repeatedly. If you're using VNC Viewer on a PC, just keep pressing the 'h' key repeatedly."
+        echo -e "\e[1;37mCopy -> hhhhhhhhhhhhhhhhhhhhh <- to the clipboard, and each time you want to press the Home button, paste it from the keyboard clipboard into VNC Viewer. If pasting it once doesn't work, paste it repeatedly. If you're using VNC Viewer on a PC, just keep pressing the 'h' key repeatedly. But sometimes the 'h' key works very effectively on PC."
         echo -e "\e[1;37m"
         echo -e "\e[1;37m-"
         echo -e "\e[1;37m"
