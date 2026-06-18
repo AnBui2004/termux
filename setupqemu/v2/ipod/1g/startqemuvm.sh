@@ -1,13 +1,5 @@
 setname='ipod1g'
 sed -i "/start"$setname"/d" /etc/profile
-getpermisionsdcard=$(ls -l /sdcard/)
-if [ "$getpermisionsdcard" == "" ]; then
-clear
-echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mAccess to internal storage denied. Please grant Termux access to internal storage."
-echo -e "\e[1;37m--------------------"
-exit
-fi
 export PULSE_SERVER=127.0.0.1
 pulseaudio --start --disable-shm=1 --exit-idle-time=-1
 clear
@@ -35,14 +27,17 @@ case "$vmoption" in
         echo -e "\e[1;37mlocalhost:5902"
         echo -e "\e[1;37m-"
         sleep 3
+        cd /root/VM/$setname
         ./start"$setname"vm.sh
         clear
+        cd
         ./start"$setname".sh
         ;;
     '2')
-        cd
+        cd /root/VM/$setname
         nano start"$setname"vm.sh
         clear
+        cd
         ./start"$setname".sh
         ;;
     '3')
@@ -54,8 +49,7 @@ case "$vmoption" in
         sleep 10
         sed -i "/start"$setname"/d" /etc/profile
         cd
-        rm start"$setname"vm.sh
-        rm -r /storage/emulated/0/VM/"$setname"
+        rm -r /root/VM/$setname
         rm /data/data/com.termux/files/home/start"$setname".sh
         rm start"$setname".sh
         clear

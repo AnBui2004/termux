@@ -10,13 +10,6 @@ if [[ ! "$architecture" =~ "64" ]]; then
     echo -e "\e[1;37mSetup was canceled."
     exit
 fi
-getpermisionsdcard=$(ls -l /sdcard/)
-if [ "$getpermisionsdcard" == "" ]; then
-    echo -e "\e[1;37m[!] Please grant access to storage!"
-    yes y | termux-setup-storage
-    echo -e "\e[1;37m[i] Automatically go to next step after 5 seconds."
-    sleep 5
-fi
 clear
 echo -e "\e[1;37m[!] Warning and do not ignore!"
 echo -e "\e[1;37m-\e[0m"
@@ -44,78 +37,8 @@ echo -e '\e[1;37m[i] Setting up Pulseaudio...\e[0m'
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 pactl load-module module-aaudio-sink
 clear
-getpermisionsdcard=$(ls -l /sdcard/)
-if [ "$getpermisionsdcard" == "" ]; then
-    clear
-    echo -e "\e[1;37m[!] Canceled!"
-    echo -e "\e[1;37m-\e[0m"
-    echo -e "\e[1;37mSetup was canceled because you did not grant Termux access to storage."
-    echo -e "\e[1;37m-\e[0m"
-    rm "setup1.sh"
-    rm "setup2.sh"
-    exit
-fi
-mkdir /storage/emulated/0/VM
-mkdir /storage/emulated/0/VM/$setname
-chmod +rwx /storage/emulated/0/VM
-chmod +rwx /storage/emulated/0/VM/$setname
-clear
-echo -e '\e[1;37m[i] Downloading files...\e[0m'
-cd /storage/emulated/0/VM/$setname
-rm bootrom_s5l8900
-rm iboot_204_n45ap.bin
-rm nor_n45ap.bin
-rm -r nand
-aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/bootrom_s5l8900
-if [ -e "bootrom_s5l8900.aria2" ]; then
-    echo -e '\e[1;37m[!] Error!\e[0m'
-    echo -e '\e[1;37m--\e[0m'
-    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
-    rm -r ./*
-    cd
-    exit
-fi
-aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/iboot_204_n45ap.bin
-if [ -e "iboot_204_n45ap.bin.aria2" ]; then
-    echo -e '\e[1;37m[!] Error!\e[0m'
-    echo -e '\e[1;37m--\e[0m'
-    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
-    rm -r ./*
-    cd
-    exit
-fi
-aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nor_n45ap.bin
-if [ -e "nor_n45ap.bin.aria2" ]; then
-    echo -e '\e[1;37m[!] Error!\e[0m'
-    echo -e '\e[1;37m--\e[0m'
-    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
-    rm -r ./*
-    cd
-    exit
-fi
-clear
-echo -e '\e[1;37m[i] Downloading nand...\e[0m'
-cd
-mv $setname-temp $setname-temp-bak
-mkdir $setname-temp
-cd $setname-temp
-aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nand_n45ap.zip
-if [ -e "nand_n45ap.zip.aria2" ]; then
-    echo -e '\e[1;37m[!] Error!\e[0m'
-    echo -e '\e[1;37m--\e[0m'
-    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
-    rm -r ./*
-    cd
-    rm $setname-temp
-    exit
-fi
-unzip nand_n45ap.zip
-mv nand /storage/emulated/0/VM/$setname
-cd
-rm -r $setname-temp
-clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
-proot-distro install debian:11 --name debian11
+proot-distro install debian:11
 clear
 echo -e '\e[1;37m[i] Downloading QEMU...\e[0m'
 if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/bin/qemu-system-arm-aipt1g" ]; then
@@ -145,11 +68,64 @@ if [ ! -d ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/s
     cd
 fi
 clear
+echo -e '\e[1;37m[i] Downloading files...\e[0m'
+cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
+mkdir VM
+cd VM
+mkdir $setname
+cd $setname
+rm bootrom_s5l8900
+rm iboot_204_n45ap.bin
+rm nand_n45ap.zip
+rm nor_n45ap.bin
+rm -r nand
+aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/bootrom_s5l8900
+if [ -e "bootrom_s5l8900.aria2" ]; then
+    echo -e '\e[1;37m[!] Error!\e[0m'
+    echo -e '\e[1;37m--\e[0m'
+    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
+    rm -r ./*
+    cd
+    exit
+fi
+aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/iboot_204_n45ap.bin
+if [ -e "iboot_204_n45ap.bin.aria2" ]; then
+    echo -e '\e[1;37m[!] Error!\e[0m'
+    echo -e '\e[1;37m--\e[0m'
+    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
+    rm -r ./*
+    cd
+    exit
+fi
+aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nand_n45ap.zip
+if [ -e "nand_n45ap.zip.aria2" ]; then
+    echo -e '\e[1;37m[!] Error!\e[0m'
+    echo -e '\e[1;37m--\e[0m'
+    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
+    rm -r ./*
+    cd
+    exit
+fi
+aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nor_n45ap.bin
+if [ -e "nor_n45ap.bin.aria2" ]; then
+    echo -e '\e[1;37m[!] Error!\e[0m'
+    echo -e '\e[1;37m--\e[0m'
+    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
+    rm -r ./*
+    cd
+    exit
+fi
+clear
+echo -e '\e[1;37m[i] Extracting...\e[0m'
+unzip nand_n45ap.zip
+rm nand_n45ap.zip
+clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
 curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/ipod/1g/setupqemuvm2.sh
 chmod +rwx "setup"$setname".sh"
-setqemucommand='qemu-system-arm-aipt1g -M iPod-Touch,bootrom=/sdcard/VM/ipod1g/bootrom_s5l8900,iboot=/sdcard/VM/ipod1g/iboot_204_n45ap.bin,nand=/sdcard/VM/ipod1g/nand -serial mon:stdio -cpu max -m 1G -d unimp -pflash /sdcard/VM/ipod1g/nor_n45ap.bin -accel tcg,thread=single,tb-size=2048 -monitor vc -vnc :2'
+setqemucommand='qemu-system-arm-aipt1g -M iPod-Touch,bootrom=bootrom_s5l8900,iboot=iboot_204_n45ap.bin,nand=nand -serial mon:stdio -cpu max -m 1G -d unimp -pflash nor_n45ap.bin -accel tcg,thread=single,tb-size=2048 -monitor vc -vnc :2'
+cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root/VM/$setname
 echo $setqemucommand > "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vm.sh"
 cd ../
