@@ -16,7 +16,7 @@ echo -e "\e[1;37mDo you want to run Apple iPod Touch 1G emulator now? Enter the 
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Edit"
-echo -e "\e[1;37m3. Remove VM"
+echo -e "\e[1;37m3. Remove"
 echo -e "\e[1;37m4. See instructions"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
