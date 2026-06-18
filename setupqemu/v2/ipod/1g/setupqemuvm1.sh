@@ -110,7 +110,7 @@ if [ -e "nand_n45ap.zip.aria2" ]; then
     exit
 fi
 unzip nand_n45ap.zip
-mv nand cd /storage/emulated/0/VM/$setname
+mv nand /storage/emulated/0/VM/$setname
 cd
 rm -r $setname-temp
 clear
