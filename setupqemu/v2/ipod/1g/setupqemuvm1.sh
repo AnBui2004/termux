@@ -128,8 +128,7 @@ setqemucommand='qemu-system-arm-aipt1g -M iPod-Touch,bootrom=bootrom_s5l8900,ibo
 cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root/VM/$setname
 echo $setqemucommand > "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vm.sh"
-cd
-cd ../
+cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs
 echo "/root/setup"$setname".sh" >> ./etc/profile
 cd
 echo "sed -i \"/start"$setname"/d\" $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/etc/profile" > "start"$setname".sh"
