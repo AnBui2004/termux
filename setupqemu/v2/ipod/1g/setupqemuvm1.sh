@@ -64,7 +64,6 @@ echo -e '\e[1;37m[i] Downloading files...\e[0m'
 cd /storage/emulated/0/VM/$setname
 rm bootrom_s5l8900
 rm iboot_204_n45ap.bin
-rm nand_n45ap.zip
 rm nor_n45ap.bin
 rm -r nand
 aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/bootrom_s5l8900
@@ -85,15 +84,6 @@ if [ -e "iboot_204_n45ap.bin.aria2" ]; then
     cd
     exit
 fi
-aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nand_n45ap.zip
-if [ -e "nand_n45ap.zip.aria2" ]; then
-    echo -e '\e[1;37m[!] Error!\e[0m'
-    echo -e '\e[1;37m--\e[0m'
-    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
-    rm -r ./*
-    cd
-    exit
-fi
 aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nor_n45ap.bin
 if [ -e "nor_n45ap.bin.aria2" ]; then
     echo -e '\e[1;37m[!] Error!\e[0m'
@@ -104,9 +94,25 @@ if [ -e "nor_n45ap.bin.aria2" ]; then
     exit
 fi
 clear
-echo -e '\e[1;37m[i] Extracting...\e[0m'
+echo -e '\e[1;37m[i] Downloading nand...\e[0m'
+cd
+mv $setname-temp $setname-temp-bak
+mkdir $setname-temp
+cd $setname-temp
+aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nand_n45ap.zip
+if [ -e "nand_n45ap.zip.aria2" ]; then
+    echo -e '\e[1;37m[!] Error!\e[0m'
+    echo -e '\e[1;37m--\e[0m'
+    echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
+    rm -r ./*
+    cd
+    rm $setname-temp
+    exit
+fi
 unzip nand_n45ap.zip
-rm nand_n45ap.zip
+mv nand cd /storage/emulated/0/VM/$setname
+cd
+rm -r $setname-temp
 clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install debian:11
