@@ -38,7 +38,7 @@ pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth
 pactl load-module module-aaudio-sink
 clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
-proot-distro install debian:11
+proot-distro install debian:11 --name debian11
 clear
 echo -e '\e[1;37m[i] Downloading QEMU...\e[0m'
 if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/bin/qemu-system-arm-aipt1g" ]; then
