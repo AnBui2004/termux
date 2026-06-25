@@ -45,7 +45,7 @@ clear
 echo -e '\e[1;37m[i] Downloading QEMU...\e[0m'
 if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/bin/qemu-system-arm-aipt1g" ]; then
     cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
-    aria2c -x 4 -o qemu-system.tar.gz http://192.168.1.188/linux/package/debian/11/qemu/qemu-system-arm-aipt1g_6.2.50_debian11_aarch64.tar.gz
+    aria2c -x 4 -o qemu-system.tar.gz https://go.anbui.ovh/linux/package/debian/11/qemu/qemu-system-arm-aipt1g_6.2.50_debian11_aarch64.tar.gz
     if [ -e "qemu-system.tar.gz.aria2" ]; then
         echo -e '\e[1;37m[!] Error!\e[0m'
         echo -e '\e[1;37m--\e[0m'
@@ -58,7 +58,7 @@ if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/b
 fi
 if [ ! -d ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/share/qemu/keymaps" ]; then
     cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
-    aria2c -x 4 -o qemu-tools.tar.gz http://192.168.1.188/linux/package/debian/11/qemu/qemu-tools_6.2.50_debian11_aarch64.tar.gz
+    aria2c -x 4 -o qemu-tools.tar.gz https://go.anbui.ovh/linux/package/debian/11/qemu/qemu-tools_6.2.50_debian11_aarch64.tar.gz
     if [ -e "qemu-tools.tar.gz.aria2" ]; then
         echo -e '\e[1;37m[!] Error!\e[0m'
         echo -e '\e[1;37m--\e[0m'
