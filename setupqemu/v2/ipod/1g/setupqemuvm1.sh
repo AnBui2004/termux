@@ -58,6 +58,14 @@ if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/b
         cd
         exit
     fi
+    if [ ! -e "qemu-system.tar.gz" ]; then
+        echo -e '\e[1;37m[!] Error!\e[0m'
+        echo -e '\e[1;37m--\e[0m'
+        echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
+        rm -r ./qemu-system*
+        cd
+        exit
+    fi
     cd
 fi
 if [ ! -d ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/share/qemu/keymaps" ]; then
@@ -68,6 +76,14 @@ if [ ! -d ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/s
         aria2c -x 4 -o qemu-tools.tar.gz https://go.anbui.ovh/linux/package/debian/11/qemu/qemu-tools_6.2.50_debian11_aarch64.tar.gz
     fi
     if [ -e "qemu-tools.tar.gz.aria2" ]; then
+        echo -e '\e[1;37m[!] Error!\e[0m'
+        echo -e '\e[1;37m--\e[0m'
+        echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
+        rm -r ./qemu-tools*
+        cd
+        exit
+    fi
+    if [ ! -e "qemu-tools.tar.gz" ]; then
         echo -e '\e[1;37m[!] Error!\e[0m'
         echo -e '\e[1;37m--\e[0m'
         echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
