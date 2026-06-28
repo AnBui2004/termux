@@ -160,7 +160,7 @@ echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
 curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/ipod/1g/setupqemuvm2.sh
 chmod +rwx "setup"$setname".sh"
-setqemucommand='qemu-system-arm-aipt1g -M iPod-Touch,bootrom=bootrom_240_4,iboot=iboot_204_n45ap.bin,nand=nand -serial mon:stdio -cpu max -m 1G -d unimp -pflash nor_n72ap.bin -accel tcg,thread=single,tb-size=2048 -monitor vc -vnc :2'
+setqemucommand='qemu-system-arm-aipt2g -M iPod-Touch,bootrom=bootrom_240_4,nand=nand,nor=nor_n72ap.bin -serial mon:stdio -cpu max -m 2G -d unimp -accel tcg,thread=single,tb-size=2048 -monitor vc -vnc :2'
 cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root/VM/$setname
 echo $setqemucommand > "start"$setname"vm.sh"
 chmod +rwx "start"$setname"vm.sh"
