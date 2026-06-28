@@ -26,7 +26,7 @@ echo -e '\e[1;37m[i] Done!\e[0m'
 echo -e '\e[1;37m-\e[0m'
 echo -e "\e[1;37mUse this command to run: \"./start"$setname".sh\"\e[0m"
 echo -e '\e[1;37m-\e[0m'
-echo -e '\e[1;37mThe necessary files are in the VM folder on your phone. Please do not delete the files there if you still use them.\e[0m'
+echo -e '\e[1;37mThe necessary files are in the VM folder in Debian. Please do not delete the files there if you still use them.\e[0m'
 echo -e '\e[1;37m-\e[0m'
 rm "setup"$setname".sh"
 rm "/data/data/com.termux/files/home/setup1.sh"
