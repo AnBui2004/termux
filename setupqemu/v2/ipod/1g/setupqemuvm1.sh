@@ -44,11 +44,29 @@ proot-distro install debian:11 --name debian11
 clear
 echo -e '\e[1;37m[i] Downloading QEMU...\e[0m'
 if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/bin/qemu-system-arm-aipt1g" ]; then
+    architecture=$(uname -m)
+    if [[ "$architecture" =~ "aarch64" ]]; then
+        url0='https://github.com/AnBui2004/qemu-ios/releases/download/n45ap_v1/qemu-system-arm-aipt1g_6.2.50_debian11_aarch64.tar.gz'
+        url1='https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-system-arm-aipt1g_6.2.50_debian11_aarch64.tar.gz'
+    elif [[ "$architecture" =~ "x86_64" ]]; then
+        url0='https://github.com/AnBui2004/qemu-ios/releases/download/n45ap_v1/qemu-system-arm-aipt1g_6.2.50_debian11_amd64.tar.gz'
+        url1='https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-system-arm-aipt1g_6.2.50_debian11_amd64.tar.gz'
+    else
+        rm -f setup1.sh
+        clear
+        echo -e "\e[1;37m[!] Unsupported architecture!"
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37mAlpine only supports ARM 64-bit architecture. Your device's architecture is not supported."
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37mSetup was canceled."
+        exit
+        cd
+    fi
     cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
-    aria2c -x 4 -o qemu-system.tar.gz https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-system-arm-aipt1g_6.2.50_debian11_aarch64.tar.gz
+    aria2c -x 4 -o qemu-system.tar.gz $url0
     if [ -e "qemu-system.tar.gz.aria2" ] || [ ! -e "qemu-system.tar.gz" ]; then
         rm -r ./qemu-system*
-        aria2c -x 4 -o qemu-system.tar.gz https://go.anbui.ovh/linux/package/debian/11/qemu/qemu-system-arm-aipt1g_6.2.50_debian11_aarch64.tar.gz
+        aria2c -x 4 -o qemu-system.tar.gz $url1
     fi
     if [ -e "qemu-system.tar.gz.aria2" ] || [ ! -e "qemu-system.tar.gz" ]; then
         echo -e '\e[1;37m[!] Error!\e[0m'
@@ -61,11 +79,29 @@ if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/b
     cd
 fi
 if [ ! -d ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/share/qemu/keymaps" ]; then
+    architecture=$(uname -m)
+    if [[ "$architecture" =~ "aarch64" ]]; then
+        url0='https://github.com/AnBui2004/qemu-ios/releases/download/n45ap_v1/qemu-tools_6.2.50_debian11_aarch64.tar.gz'
+        url1='https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-tools_6.2.50_debian11_aarch64.tar.gz'
+    elif [[ "$architecture" =~ "x86_64" ]]; then
+        url0='https://github.com/AnBui2004/qemu-ios/releases/download/n45ap_v1/qemu-tools_6.2.50_debian11_amd64.tar.gz'
+        url1='https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-tools_6.2.50_debian11_amd64.tar.gz'
+    else
+        rm -f setup1.sh
+        clear
+        echo -e "\e[1;37m[!] Unsupported architecture!"
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37mAlpine only supports ARM 64-bit architecture. Your device's architecture is not supported."
+        echo -e "\e[1;37m-\e[0m"
+        echo -e "\e[1;37mSetup was canceled."
+        exit
+        cd
+    fi
     cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
-    aria2c -x 4 -o qemu-tools.tar.gz https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-tools_6.2.50_debian11_aarch64.tar.gz
+    aria2c -x 4 -o qemu-tools.tar.gz $url0
     if [ -e "qemu-tools.tar.gz.aria2" ] || [ ! -e "qemu-tools.tar.gz" ]; then
         rm -r ./qemu-tools*
-        aria2c -x 4 -o qemu-tools.tar.gz https://go.anbui.ovh/linux/package/debian/11/qemu/qemu-tools_6.2.50_debian11_aarch64.tar.gz
+        aria2c -x 4 -o qemu-tools.tar.gz $url1
     fi
     if [ -e "qemu-tools.tar.gz.aria2" ] || [ ! -e "qemu-tools.tar.gz" ]; then
         echo -e '\e[1;37m[!] Error!\e[0m'
