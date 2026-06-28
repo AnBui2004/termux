@@ -19,7 +19,7 @@ fi
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd
-aria2c -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/ipod/1g/startqemuvm.sh
+aria2c -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/ipod/2g/startqemuvm.sh
 chmod +rwx "start"$setname".sh"
 clear
 echo -e '\e[1;37m[i] Done!\e[0m'
