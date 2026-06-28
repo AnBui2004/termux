@@ -47,10 +47,10 @@ if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/b
     architecture=$(uname -m)
     if [[ "$architecture" =~ "aarch64" ]]; then
         url0='https://github.com/AnBui2004/qemu-ios/releases/download/n72ap_v1/qemu-system-arm-aipt2g_8.2.0_debian11_aarch64.tar.gz'
-        url1='https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-system-arm-aipt2g_8.2.0_debian11_aarch64.tar.gz'
+        url1='https://archive.org/download/qemu-system-arm-8.2.0-debian11-aarch64-ipod-touch-2g-emulator/qemu-system-arm-aipt2g_8.2.0_debian11_aarch64.tar.gz'
     elif [[ "$architecture" =~ "x86_64" ]]; then
         url0='https://github.com/AnBui2004/qemu-ios/releases/download/n72ap_v1/qemu-system-arm-aipt2g_8.2.0_debian11_amd64.tar.gz'
-        url1='https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-system-arm-aipt2g_8.2.0_debian11_amd64.tar.gz'
+        url1='https://archive.org/download/qemu-system-arm-8.2.0-debian11-aarch64-ipod-touch-2g-emulator/qemu-system-arm-aipt2g_8.2.0_debian11_amd64.tar.gz'
     else
         rm -f setup1.sh
         clear
@@ -82,10 +82,10 @@ if [ ! -d ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/s
     architecture=$(uname -m)
     if [[ "$architecture" =~ "aarch64" ]]; then
         url0='https://github.com/AnBui2004/qemu-ios/releases/download/n72ap_v1/qemu-tools_8.2.0_debian11_aarch64.tar.gz'
-        url1='https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-tools_8.2.0_debian11_aarch64.tar.gz'
+        url1='https://archive.org/download/qemu-system-arm-8.2.0-debian11-aarch64-ipod-touch-2g-emulator/qemu-tools_8.2.0_debian11_aarch64.tar.gz'
     elif [[ "$architecture" =~ "x86_64" ]]; then
         url0='https://github.com/AnBui2004/qemu-ios/releases/download/n72ap_v1/qemu-tools_8.2.0_debian11_amd64.tar.gz'
-        url1='https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-tools_8.2.0_debian11_amd64.tar.gz'
+        url1='https://archive.org/download/qemu-system-arm-8.2.0-debian11-aarch64-ipod-touch-2g-emulator/qemu-tools_8.2.0_debian11_amd64.tar.gz'
     else
         rm -f setup1.sh
         clear
