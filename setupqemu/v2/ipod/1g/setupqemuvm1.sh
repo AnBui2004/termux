@@ -46,19 +46,11 @@ echo -e '\e[1;37m[i] Downloading QEMU...\e[0m'
 if [ ! -e ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/bin/qemu-system-arm-aipt1g" ]; then
     cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
     aria2c -x 4 -o qemu-system.tar.gz https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-system-arm-aipt1g_6.2.50_debian11_aarch64.tar.gz
-    if [ -e "qemu-system.tar.gz.aria2" ]; then
+    if [ -e "qemu-system.tar.gz.aria2" ] || [ ! -e "qemu-system.tar.gz" ]; then
         rm -r ./qemu-system*
         aria2c -x 4 -o qemu-system.tar.gz https://go.anbui.ovh/linux/package/debian/11/qemu/qemu-system-arm-aipt1g_6.2.50_debian11_aarch64.tar.gz
     fi
-    if [ -e "qemu-system.tar.gz.aria2" ]; then
-        echo -e '\e[1;37m[!] Error!\e[0m'
-        echo -e '\e[1;37m--\e[0m'
-        echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
-        rm -r ./qemu-system*
-        cd
-        exit
-    fi
-    if [ ! -e "qemu-system.tar.gz" ]; then
+    if [ -e "qemu-system.tar.gz.aria2" ] || [ ! -e "qemu-system.tar.gz" ]; then
         echo -e '\e[1;37m[!] Error!\e[0m'
         echo -e '\e[1;37m--\e[0m'
         echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
@@ -71,19 +63,11 @@ fi
 if [ ! -d ""$PREFIX"/var/lib/proot-distro/containers/debian11/rootfs/usr/local/share/qemu/keymaps" ]; then
     cd $PREFIX/var/lib/proot-distro/containers/debian11/rootfs/root
     aria2c -x 4 -o qemu-tools.tar.gz https://archive.org/download/qemu-system-arm-6.2.50-debian11-aarch64-ipod-touch-1g-emulator/qemu-tools_6.2.50_debian11_aarch64.tar.gz
-    if [ -e "qemu-tools.tar.gz.aria2" ]; then
+    if [ -e "qemu-tools.tar.gz.aria2" ] || [ ! -e "qemu-tools.tar.gz" ]; then
         rm -r ./qemu-tools*
         aria2c -x 4 -o qemu-tools.tar.gz https://go.anbui.ovh/linux/package/debian/11/qemu/qemu-tools_6.2.50_debian11_aarch64.tar.gz
     fi
-    if [ -e "qemu-tools.tar.gz.aria2" ]; then
-        echo -e '\e[1;37m[!] Error!\e[0m'
-        echo -e '\e[1;37m--\e[0m'
-        echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
-        rm -r ./qemu-tools*
-        cd
-        exit
-    fi
-    if [ ! -e "qemu-tools.tar.gz" ]; then
+    if [ -e "qemu-tools.tar.gz.aria2" ] || [ ! -e "qemu-tools.tar.gz" ]; then
         echo -e '\e[1;37m[!] Error!\e[0m'
         echo -e '\e[1;37m--\e[0m'
         echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
@@ -115,7 +99,7 @@ if [ -e "bootrom_s5l8900.aria2" ]; then
     exit
 fi
 aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/iboot_204_n45ap.bin
-if [ -e "iboot_204_n45ap.bin.aria2" ]; then
+if [ -e "iboot_204_n45ap.bin.aria2" ] || [ ! -e "iboot_204_n45ap.bin" ]; then
     echo -e '\e[1;37m[!] Error!\e[0m'
     echo -e '\e[1;37m--\e[0m'
     echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
@@ -124,7 +108,7 @@ if [ -e "iboot_204_n45ap.bin.aria2" ]; then
     exit
 fi
 aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nand_n45ap.zip
-if [ -e "nand_n45ap.zip.aria2" ]; then
+if [ -e "nand_n45ap.zip.aria2" ] || [ ! -e "nand_n45ap.zip" ]; then
     echo -e '\e[1;37m[!] Error!\e[0m'
     echo -e '\e[1;37m--\e[0m'
     echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'
@@ -133,7 +117,7 @@ if [ -e "nand_n45ap.zip.aria2" ]; then
     exit
 fi
 aria2c -x 4 https://github.com/devos50/qemu-ios/releases/download/n45ap_v1/nor_n45ap.bin
-if [ -e "nor_n45ap.bin.aria2" ]; then
+if [ -e "nor_n45ap.bin.aria2" ] || [ ! -e "nor_n45ap.bin" ]; then
     echo -e '\e[1;37m[!] Error!\e[0m'
     echo -e '\e[1;37m--\e[0m'
     echo -e '\e[1;37mDownload failed. Please try again later.\e[0m'

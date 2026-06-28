@@ -29,6 +29,7 @@ case "$vmoption" in
         sleep 3
         cd /root/VM/$setname
         ./start"$setname"vm.sh
+        sleep 5
         clear
         cd
         ./start"$setname".sh
