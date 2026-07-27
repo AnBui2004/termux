@@ -253,7 +253,7 @@ proot-distro install alpine:3.19 -n alpine319vm
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 cd $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/root
-curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/setupqemuvm2.sh
+curl -o "setup"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemuv2/setupqemuvm2.sh
 chmod +rwx "setup"$setname".sh"
 sed -i -e "1inotes='"$notes"'" setup"$setname".sh
 sed -i -e "1isetfileurl3='"$setfileurl3"'" setup"$setname".sh
