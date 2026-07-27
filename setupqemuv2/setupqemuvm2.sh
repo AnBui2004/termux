@@ -5,7 +5,7 @@ if [ -e "/usr/local/bin/qemu-system-x86_64" ]; then
     echo "qemu-system-x86_64 is already installed."
 else
     apk update
-    apk add aria2 nano libslirp curl libnfs libssh vde2-libs pixman sdl2 sdl2_image libepoxy virglrenderer gtk+3.0 libusb usbredir pulseaudio jack libaio liburing fuse3-libs snappy lzo zlib capstone libcbor keyutils-libs ndctl rdma-core linux-pam spice libseccomp libbpf vte3 sndio
+    apk add aria2 nano libslirp curl libnfs libssh vde2-libs pixman libusb usbredir pulseaudio jack libaio liburing fuse3-libs snappy lzo zlib capstone libcbor keyutils-libs ndctl rdma-core linux-pam spice libseccomp libbpf vte3 sndio
     
     architecture=$(uname -m)
     if [[ "$architecture" =~ "aarch64" ]]; then
