@@ -35,7 +35,7 @@ clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd
-    curl -o "start"$setname"" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/startqemuvm.sh
+    curl -o "start"$setname"" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemuv2/startqemuvm.sh
     mv "start"$setname"" /usr/local/bin
     chmod 755 /usr/local/bin/start"$setname"
 
