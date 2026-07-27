@@ -6,6 +6,7 @@ if [ -e "/usr/local/bin/qemu-system-x86_64" ]; then
 else
     apk update
     apk add aria2 nano libslirp curl libnfs libssh vde2-libs pixman sdl2 sdl2_image libepoxy virglrenderer gtk+3.0 libusb usbredir pulseaudio jack libaio liburing fuse3-libs snappy lzo zlib capstone libcbor keyutils-libs ndctl rdma-core linux-pam
+    
     architecture=$(uname -m)
     if [[ "$architecture" =~ "aarch64" ]]; then
         qemuurl="https://github.com/AnBui2004/Vectras-VM-Emu-Android/releases/download/4.4.7/base-qemu-7.2.22-3dfx-july-2026-vectras-vm-arm64-v8a.tar.gz"
@@ -18,9 +19,11 @@ else
     elif [[ "$architecture" =~ "i386" || "$architecture" =~ "i686" ]]; then
         qemuurl="https://github.com/AnBui2004/Vectras-VM-Emu-Android/releases/download/4.4.7/base-qemu-7.2.22-july-2026-vectras-vm-x86.tar.gz"
     fi
+
     clear
     echo -e '\e[1;37m[i] Downloading QEMU...\e[0m'
     aria2c -x 4 --async-dns=false --disable-ipv6 --check-certificate=false -o setup.tar.gz "$qemuurl"
+    
     clear
     echo -e '\e[1;37m[i] Installing QEMU...\e[0m'
     tar -xzvf setup.tar.gz -C /
@@ -35,20 +38,11 @@ if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     curl -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/startqemuvm.sh
     chmod +rwx "start"$setname".sh"
 
-    # Use a loop to insert variables into the script
-    declare -A variables=(
-        [setfileurl3]="$setfileurl3"
-        [setfileurl2]="$setfileurl2"
-        [setfileurl]="$setfileurl"
-        [setname]="$setname"
-        [osname]="$osname"
-    )
-
-    for key in "${!variables[@]}"; do
-        sed -i -e "1i$key='${variables[$key]}'" "start"$setname".sh"
-    done
-
-    sed -i '/^osname=/ s/_/ /g' "start"$setname".sh"
+    sed -i -e "1iosname='$osname'" "start"$setname".sh"
+    sed -i -e "1isetname='$setname'" "start"$setname".sh"
+    sed -i -e "1isetfileurl='$setfileurl'" "start"$setname".sh"
+    sed -i -e "1isetfileurl2='$setfileurl2'" "start"$setname".sh"
+    sed -i -e "1isetfileurl3='$setfileurl3'" "start"$setname".sh"
 
     clear
     echo -e '\e[1;37m[i] Done!\e[0m'
