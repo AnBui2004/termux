@@ -262,6 +262,8 @@ sed -i -e "1isetfileurl='"$setfileurl"'" setup"$setname".sh
 sed -i -e "1idiskfilename="$diskfilename"" setup"$setname".sh
 sed -i -e "1isetname="$setname"" setup"$setname".sh
 sed -i -e "1iosname='"$osname"'" setup"$setname".sh
+mkdir -p $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/vm
+cd $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/vm
 architecture=$(uname -m)
 if [[ "$architecture" =~ "64" ]]; then
     finalqemucommand="$setqemucommand"
@@ -278,9 +280,9 @@ cd
 echo "sed -i \"/start"$setname"/d\" $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" > "start"$setname""
 echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> start"$setname"
 echo 'pactl load-module module-aaudio-sink' >> start"$setname"
-echo "echo '/root/start"$setname".sh' >> $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" >> start"$setname".sh
+echo "echo 'start"$setname"' >> $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" >> start"$setname"
 echo "proot-distro login alpine319vm" >> start"$setname"
-chmod +rwx start"$setname"
+mv start"$setname" ../usr/bin
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login alpine319vm

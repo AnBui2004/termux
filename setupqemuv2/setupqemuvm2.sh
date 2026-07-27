@@ -36,7 +36,8 @@ echo -e '\e[1;37m[i] Just a sec...\e[0m'
 if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd
     curl -o "start"$setname"" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/startqemuvm.sh
-    chmod +rwx "start"$setname""
+    mv "start"$setname"" /usr/local/bin
+    chmod 755 /usr/local/bin/start"$setname"
 
     sed -i -e "1iosname='$osname'" "start"$setname""
     sed -i -e "1isetname='$setname'" "start"$setname""
@@ -49,7 +50,7 @@ if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     clear
     echo -e '\e[1;37m[i] Done!\e[0m'
     echo -e '\e[1;37m-\e[0m'
-    echo -e "\e[1;37mUse this command to run: \"./start"$setname"\"\e[0m"
+    echo -e "\e[1;37mUse this command to run: \"start"$setname"\"\e[0m"
     echo -e '\e[1;37m-\e[0m'
     echo -e '\e[1;37mThe necessary files are in the VM folder on your phone. Please do not delete the files there if you still use them.\e[0m'
     echo -e '\e[1;37m-\e[0m'
@@ -61,11 +62,11 @@ if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
 else
     sed -i "/start"$setname"/d" /etc/profile
     cd
-    rm start"$setname"vm.sh
-    rm start"$setname"vms.sh
+    rm /vm/start"$setname"vm.sh
+    rm /vm/start"$setname"vms.sh
     rm -r /storage/emulated/0/VM/"$setname"
-    rm start"$setname"
-    rm /data/data/com.termux/files/home/start"$setname"
+    rm /usr/local/bin/start"$setname"
+    rm /data/data/com.termux/files/usr/bin/start"$setname"
     clear
     echo -e "\e[0;33m[!] Unsuccessful!"
     echo -e "\e[1;37m-\e[0m"

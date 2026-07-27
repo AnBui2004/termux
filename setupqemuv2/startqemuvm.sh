@@ -11,7 +11,7 @@ export PULSE_SERVER=127.0.0.1
 pulseaudio --start --disable-shm=1 --exit-idle-time=-1
 clear
 echo -e "\e[1;37m--------------------"
-echo -e "\e[1;37mDo you want to run "${osname}" now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
+echo -e "\e[1;37mDo you want to run "${osname}" now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Alpine Linux 3.19."
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
 echo -e "\e[1;37m2. Run now with Shared Folder"
@@ -39,9 +39,9 @@ case "$vmoption" in
         echo -e "\e[1;37mlocalhost:5902"
         echo -e "\e[1;37m-"
         sleep 3
-        ./start"$setname"vm.sh
+        /vm/start"$setname"vm.sh
         clear
-        ./start"$setname".sh
+        start"$setname"
         ;;
     '2')
         cd
@@ -56,9 +56,9 @@ case "$vmoption" in
         echo -e "\e[1;37mThe shared folder is the Shared folder located in the VM folder on your device (/storage/emulated/0/VM/Shared)."
         echo -e "\e[1;37m-"
         sleep 3
-        ./start"$setname"vms.sh
+        /vm/start"$setname"vms.sh
         clear
-        ./start"$setname".sh
+        start"$setname"
         ;;
     '3')
         cd
@@ -70,7 +70,7 @@ case "$vmoption" in
         convertosingleline=$(paste -s -d:" " "start${setname}vms.sh")
         echo "${convertosingleline//: -drive/ -drive}" > "start${setname}vms.sh"
         clear
-        ./start"$setname".sh
+        start"$setname"
         ;;
     '4')
         clear
@@ -91,7 +91,7 @@ case "$vmoption" in
         echo -e "\e[1;37mPress any key to exit."
         read -n 1
         clear
-        ./start"$setname".sh
+        start"$setname"
         ;;
     '5')
         clear
@@ -102,11 +102,11 @@ case "$vmoption" in
         sleep 10
         sed -i "/start"$setname"/d" /etc/profile
         cd
-        rm start"$setname"vm.sh
-        rm start"$setname"vms.sh
+        rm /vm/start"$setname"vm.sh
+        rm /vm/start"$setname"vms.sh
         rm -r /storage/emulated/0/VM/"$setname"
-        rm /data/data/com.termux/files/home/start"$setname".sh
-        rm start"$setname".sh
+        rm /data/data/com.termux/files/usr/bin/start"$setname"
+        rm /usr/local/bin/start"$setname"
         clear
         echo -e "\e[1;37mDone!"
         ;;
@@ -166,7 +166,7 @@ case "$vmoption" in
         echo -e "\e[1;37mPress any key to exit."
         read -n 1
         clear
-        ./start"$setname".sh
+        start"$setname"
         ;;
     *)
         clear
