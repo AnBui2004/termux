@@ -275,12 +275,12 @@ chmod +rwx "start"$setname"vms.sh"
 cd ../
 echo "/root/setup"$setname".sh" >> ./etc/profile
 cd
-echo "sed -i \"/start"$setname"/d\" $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" > "start"$setname".sh"
-echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> start"$setname".sh
-echo 'pactl load-module module-aaudio-sink' >> start"$setname".sh
+echo "sed -i \"/start"$setname"/d\" $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" > "start"$setname""
+echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> start"$setname"
+echo 'pactl load-module module-aaudio-sink' >> start"$setname"
 echo "echo '/root/start"$setname".sh' >> $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" >> start"$setname".sh
-echo "proot-distro login alpine319vm" >> start"$setname".sh
-chmod +rwx start"$setname".sh
+echo "proot-distro login alpine319vm" >> start"$setname"
+chmod +rwx start"$setname"
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login alpine319vm

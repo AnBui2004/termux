@@ -35,21 +35,21 @@ clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
 if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd
-    curl -o "start"$setname".sh" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/startqemuvm.sh
-    chmod +rwx "start"$setname".sh"
+    curl -o "start"$setname"" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemu/v2/startqemuvm.sh
+    chmod +rwx "start"$setname""
 
-    sed -i -e "1iosname='$osname'" "start"$setname".sh"
-    sed -i -e "1isetname='$setname'" "start"$setname".sh"
-    sed -i -e "1isetfileurl='$setfileurl'" "start"$setname".sh"
-    sed -i -e "1isetfileurl2='$setfileurl2'" "start"$setname".sh"
-    sed -i -e "1isetfileurl3='$setfileurl3'" "start"$setname".sh"
+    sed -i -e "1iosname='$osname'" "start"$setname""
+    sed -i -e "1isetname='$setname'" "start"$setname""
+    sed -i -e "1isetfileurl='$setfileurl'" "start"$setname""
+    sed -i -e "1isetfileurl2='$setfileurl2'" "start"$setname""
+    sed -i -e "1isetfileurl3='$setfileurl3'" "start"$setname""
 
-    sed -i '/^osname=/ s/_/ /g' "start"$setname".sh"
+    sed -i '/^osname=/ s/_/ /g' "start"$setname""
 
     clear
     echo -e '\e[1;37m[i] Done!\e[0m'
     echo -e '\e[1;37m-\e[0m'
-    echo -e "\e[1;37mUse this command to run: \"./start"$setname".sh\"\e[0m"
+    echo -e "\e[1;37mUse this command to run: \"./start"$setname"\"\e[0m"
     echo -e '\e[1;37m-\e[0m'
     echo -e '\e[1;37mThe necessary files are in the VM folder on your phone. Please do not delete the files there if you still use them.\e[0m'
     echo -e '\e[1;37m-\e[0m'
@@ -62,15 +62,16 @@ else
     sed -i "/start"$setname"/d" /etc/profile
     cd
     rm start"$setname"vm.sh
+    rm start"$setname"vms.sh
     rm -r /storage/emulated/0/VM/"$setname"
-    rm start"$setname".sh
-    rm /data/data/com.termux/files/home/start"$setname".sh
+    rm start"$setname"
+    rm /data/data/com.termux/files/home/start"$setname"
     clear
     echo -e "\e[0;33m[!] Unsuccessful!"
     echo -e "\e[1;37m-\e[0m"
     echo -e "\e[91mError! An error occurred. Please try again later."
 fi
-rm "setup"$setname".sh" >/dev/null 2>&1
+rm "setup"$setname"" >/dev/null 2>&1
 rm "/data/data/com.termux/files/home/setup1.sh" >/dev/null 2>&1
 rm "/data/data/com.termux/files/home/setup2.sh" >/dev/null 2>&1
 exit
