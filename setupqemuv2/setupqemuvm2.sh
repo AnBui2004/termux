@@ -36,8 +36,6 @@ echo -e '\e[1;37m[i] Just a sec...\e[0m'
 if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     cd
     curl -o "start"$setname"" https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/setupqemuv2/startqemuvm.sh
-    mv "start"$setname"" /usr/local/bin
-    chmod 755 /usr/local/bin/start"$setname"
 
     sed -i -e "1iosname='$osname'" "start"$setname""
     sed -i -e "1isetname='$setname'" "start"$setname""
@@ -46,6 +44,9 @@ if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     sed -i -e "1isetfileurl3='$setfileurl3'" "start"$setname""
 
     sed -i '/^osname=/ s/_/ /g' "start"$setname""
+    
+    mv "start"$setname"" /usr/local/bin
+    chmod 755 /usr/local/bin/start"$setname"
 
     clear
     echo -e '\e[1;37m[i] Done!\e[0m'
