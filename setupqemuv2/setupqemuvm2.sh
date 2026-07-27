@@ -5,7 +5,7 @@ if [ -e "/usr/local/bin/qemu-system-x86_64" ]; then
     echo "qemu-system-x86_64 is already installed."
 else
     apk update
-    apk add aria2 nano libslirp curl libnfs libssh vde2-libs pixman libusb usbredir pulseaudio jack libaio liburing fuse3-libs snappy lzo zlib capstone libcbor keyutils-libs ndctl rdma-core linux-pam spice libseccomp libbpf vte3 sndio
+    apk add aria2 nano virglrenderer sdl2 sdl2_image libslirp curl libnfs libssh vde2-libs pixman libusb usbredir pulseaudio jack libaio liburing fuse3-libs snappy lzo zlib capstone libcbor keyutils-libs ndctl rdma-core linux-pam spice libseccomp libbpf vte3 sndio
     
     architecture=$(uname -m)
     if [[ "$architecture" =~ "aarch64" ]]; then
@@ -44,7 +44,7 @@ if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     sed -i -e "1isetfileurl3='$setfileurl3'" "start"$setname""
 
     sed -i '/^osname=/ s/_/ /g' "start"$setname""
-    
+
     mv "start"$setname"" /usr/local/bin
     chmod 755 /usr/local/bin/start"$setname"
 
