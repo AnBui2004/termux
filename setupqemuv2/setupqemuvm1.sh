@@ -283,6 +283,7 @@ echo 'pactl load-module module-aaudio-sink' >> start"$setname"
 echo "echo 'start"$setname"' >> $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" >> start"$setname"
 echo "proot-distro login alpine319vm" >> start"$setname"
 mv start"$setname" ../usr/bin
+chmod +rwx ../usr/bin/start"$setname"
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
 proot-distro login alpine319vm
