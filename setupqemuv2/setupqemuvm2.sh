@@ -44,6 +44,8 @@ if [ -f "/storage/emulated/0/VM/"$setname"/"$diskfilename"" ]; then
     sed -i -e "1isetfileurl2='$setfileurl2'" "start"$setname".sh"
     sed -i -e "1isetfileurl3='$setfileurl3'" "start"$setname".sh"
 
+    sed -i '/^osname=/ s/_/ /g' "start"$setname".sh"
+
     clear
     echo -e '\e[1;37m[i] Done!\e[0m'
     echo -e '\e[1;37m-\e[0m'
