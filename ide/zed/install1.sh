@@ -28,13 +28,13 @@ clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
 proot-distro install debian -n debiandevroom
 clear
-echo -e '\e[1;37m[i] Downloading Visual Studio Code...\e[0m'
+echo -e '\e[1;37m[i] Downloading Zed...\e[0m'
 cd $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs
 mkdir -p Apps/IDE
 cd Apps/IDE
 aria2c -x 4 -o zed.tar.gz https://github.com/zed-industries/zed/releases/download/v1.14.2/zed-linux-aarch64.tar.gz
 clear
-echo -e '\e[1;37m[i] Installing Visual Studio Code...\e[0m'
+echo -e '\e[1;37m[i] Installing Zed...\e[0m'
 tar -xvzf zed.tar.gz
 rm zed.tar.gz
 cd zed.app
