@@ -17,7 +17,7 @@ read -n 1 option
 case "$option" in
     '1')
         clear
-        echo -e "\e[1;37m[i] Visual Studio Code is running..."
+        echo -e "\e[1;37m[i] Zed is running..."
         /Apps/IDE/zed.app/code.sh
         /Apps/IDE/zed.app/startzed.sh
         ;;

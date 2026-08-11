@@ -26,10 +26,10 @@ apt install x11-repo -y
 apt install proot-distro aria2 termux-x11 -y
 clear
 echo -e '\e[1;37m[i] Installing Linux...\e[0m'
-proot-distro install debian
+proot-distro install debian -n debiandevroom
 clear
 echo -e '\e[1;37m[i] Downloading Visual Studio Code...\e[0m'
-cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs
+cd $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs
 mkdir -p Apps/IDE
 cd Apps/IDE
 aria2c -x 4 -o zed.tar.gz https://github.com/zed-industries/zed/releases/download/v1.14.2/zed-linux-aarch64.tar.gz
@@ -49,29 +49,29 @@ chmod +x startzed.sh
 chmod +x uninstall.sh
 clear
 echo -e '\e[1;37m[i] Just a sec...\e[0m'
-mkdir -p $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom
-cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/etc/profile.d
+mkdir -p $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs/home/devroom
+cd $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs/etc/profile.d
 aria2c -o installzed.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/zed/install2.sh
 chmod +x installzed.sh
-cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/root
+cd $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs/root
 echo "sed -i \"/startzed.sh/d\" /home/devroom/.profile" > "zed.sh"
 echo "echo "/Apps/IDE/zed.app/zed.sh" >> /home/devroom/.profile" >> zed.sh
 echo "clear" >> zed.sh
 echo "su - devroom" >> zed.sh
 echo "clear" >> zed.sh
 chmod +x zed.sh
-cd $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom
+cd $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs/home/devroom
 echo "/Apps/IDE/zed.app/startzed.sh" > zed.sh
 chmod +x zed.sh
 cd
-echo "sed -i \"/startzed.sh/d\" $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom/.profile" > "zed.sh"
-echo "echo '/Apps/IDE/zed.app/startzed.sh' >> $PREFIX/var/lib/proot-distro/containers/debian/rootfs/home/devroom/.profile" >> zed.sh
+echo "sed -i \"/startzed.sh/d\" $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs/home/devroom/.profile" > "zed.sh"
+echo "echo '/Apps/IDE/zed.app/startzed.sh' >> $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs/home/devroom/.profile" >> zed.sh
 echo "clear" >> zed.sh
-echo "proot-distro login debian --user devroom" >> zed.sh
+echo "proot-distro login debiandevroom --user devroom" >> zed.sh
 echo "clear" >> zed.sh
 chmod +x zed.sh
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
-proot-distro login debian
+proot-distro login debiandevroom
 rm installzed.sh
 clear
