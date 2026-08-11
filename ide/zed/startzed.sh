@@ -18,7 +18,7 @@ case "$option" in
     '1')
         clear
         echo -e "\e[1;37m[i] Zed is running..."
-        /Apps/IDE/zed.app/code.sh
+        /Apps/IDE/zed.app/zed.sh
         /Apps/IDE/zed.app/startzed.sh
         ;;
     '2')
