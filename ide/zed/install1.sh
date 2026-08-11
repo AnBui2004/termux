@@ -40,7 +40,7 @@ rm zed.tar.gz
 cd zed.app
 cat > zed.sh <<'EOF'
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity && \
-termux-x11 -xstartup "bash -c 'nohup fluxbox & nohup thunar & export ZED_ALLOW_EMULATED_GPU=1 & /Apps/IDE/zed.app/bin/zed'"
+termux-x11 -xstartup "bash -c 'nohup fluxbox & nohup thunar & export ZED_ALLOW_EMULATED_GPU=1 && /Apps/IDE/zed.app/bin/zed'"
 EOF
 aria2c -o startzed.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/zed/startzed.sh
 aria2c -o uninstall.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/ide/zed/uninstall.sh
