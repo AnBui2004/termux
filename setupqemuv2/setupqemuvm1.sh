@@ -282,6 +282,7 @@ echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.
 echo 'pactl load-module module-aaudio-sink' >> start"$setname"
 echo "echo 'start"$setname"' >> $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" >> start"$setname"
 echo "proot-distro login alpine319vm --isolated -b /data -b /sdcard -b /storage" >> start"$setname"
+echo "clear" >> start"$setname"
 mv start"$setname" ../usr/bin
 chmod +rwx ../usr/bin/start"$setname"
 clear
