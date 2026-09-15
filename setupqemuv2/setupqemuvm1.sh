@@ -281,10 +281,10 @@ echo "sed -i \"/start"$setname"/d\" $PREFIX/var/lib/proot-distro/containers/alpi
 echo 'pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' >> start"$setname"
 echo 'pactl load-module module-aaudio-sink' >> start"$setname"
 echo "echo 'start"$setname"' >> $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/etc/profile" >> start"$setname"
-echo "proot-distro login alpine319vm" >> start"$setname"
+echo "proot-distro login alpine319vm --isolated -b /data -b /sdcard -b /storage" >> start"$setname"
 mv start"$setname" ../usr/bin
 chmod +rwx ../usr/bin/start"$setname"
 clear
 echo -e '\e[1;37m[i] Logging in...\e[0m'
-proot-distro login alpine319vm
+proot-distro login alpine319vm --isolated -b /data -b /sdcard -b /storage
 rm $PREFIX/var/lib/proot-distro/containers/alpine319vm/rootfs/root/setup"$setname".sh >/dev/null 2>&1
