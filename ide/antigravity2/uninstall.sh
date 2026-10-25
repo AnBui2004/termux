@@ -12,9 +12,10 @@ case "$option" in
         clear
         echo -e "\e[1;37m[i] Uninstalling Google Antigravity..."
         sed -i "/startantigravity.sh/d" $HOME/.profile
-        rm -r $HOME/antigravity.sh
-        sudo rm /root/antigravity.sh /data/data/com.termux/files/home/antigravity.sh
+        rm -rf $HOME/antigravity.sh
+        sudo rm -f /root/antigravity.sh /data/data/com.termux/files/home/antigravity.sh
         sudo rm -r /Apps/IDE/Antigravity
+        sudo rm -f "/home/devroom/.local/bin/agy"
         clear
         echo -e "\e[1;37m[i] Google Antigravity has been uninstalled."
         ;;
@@ -22,9 +23,11 @@ case "$option" in
         clear
         echo -e "\e[1;37m[i] Uninstalling Google Antigravity..."
         sed -i "/startantigravity.sh/d" $HOME/.profile
-        rm -r $HOME/antigravity.sh $HOME/.antigravity 
-        sudo rm /root/antigravity.sh /root/.antigravity /data/data/com.termux/files/home/antigravity.sh
+        rm -rf $HOME/antigravity.sh $HOME/.antigravity 
+        sudo rm -f /root/antigravity.sh /root/.antigravity /data/data/com.termux/files/home/antigravity.sh
         sudo rm -r /Apps/IDE/Antigravity
+        sudo rm -f "/home/devroom/.local/bin/agy"
+        rm -rf /home/devroom/.gemini/antigravity-cli
         clear
         echo -e "\e[1;37m[i] Google Antigravity has been uninstalled."
         ;;

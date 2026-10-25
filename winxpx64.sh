@@ -3,7 +3,7 @@ echo "The owner of these scripts will not be responsible for any unintended prob
 sleep 10
 clear
 echo -e '\e[1;37mInstalling packages...\e[0m'
-curl -o installqemu.sh https://raw.githubusercontent.com/AnBui2004/termux/main/installqemu.sh
+curl -o installqemu.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/installqemu.sh
 chmod +rwx installqemu.sh
 ./installqemu.sh
 rm installqemu.sh

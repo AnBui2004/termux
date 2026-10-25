@@ -9,7 +9,8 @@ echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37mDo you want to run Google Antigravity now? Enter the corresponding number and press enter to start. Enter nothing and press enter to exit and continue using Debian."
 echo -e "\e[1;37m--------------------"
 echo -e "\e[1;37m1. Run now"
-echo -e "\e[1;37m2. Uninstall"
+echo -e "\e[1;37m2. Run CLI"
+echo -e "\e[1;37m3. Uninstall"
 echo -e "\e[1;37mOther. Exit"
 echo -e "\e[1;37m--------------------"
 read -n 1 option
@@ -22,6 +23,9 @@ case "$option" in
         /Apps/IDE/Antigravity/startantigravity.sh
         ;;
     '2')
+        PATH="$HOME/.local/bin:$PATH" agy
+        ;;
+    '3')
         /Apps/IDE/Antigravity/uninstall.sh
         ;;
     *)

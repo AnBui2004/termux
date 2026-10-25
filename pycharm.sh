@@ -19,7 +19,7 @@ clear
 echo -e '\e[1;37mJust a moment...\e[0m'
 apt-get --fix-missing install -y
 apt --fix-broken install -y
-wget -O pycharm.sh https://raw.githubusercontent.com/AnBui2004/termux/main/startpycharm.sh
+wget -O pycharm.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/startpycharm.sh
 chmod +rwx pycharm.sh
 clear
 echo -e '\e[1;37mSetup VNC Server\e[0m'

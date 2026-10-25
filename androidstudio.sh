@@ -19,7 +19,7 @@ clear
 echo -e '\e[1;37mJust a moment...\e[0m'
 apt-get --fix-missing install -y
 apt --fix-broken install -y
-wget -O studio.sh https://raw.githubusercontent.com/AnBui2004/termux/main/startandroidstudio.sh
+wget -O studio.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/startandroidstudio.sh
 chmod +rwx studio.sh
 clear
 echo -e '\e[1;37mSetup VNC Server\e[0m'

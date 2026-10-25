@@ -24,7 +24,7 @@ mkdir /home
 mkdir /home/ann
 mkdir /home/ann/code
 chmod +rwx /home/ann/code
-wget -O code.sh https://raw.githubusercontent.com/AnBui2004/termux/main/startvscode.sh
+wget -O code.sh https://raw.githubusercontent.com/AnBui2004/termux/refs/heads/main/startvscode.sh
 chmod +rwx code.sh
 clear
 echo -e '\e[1;37mSetup VNC Server\e[0m'

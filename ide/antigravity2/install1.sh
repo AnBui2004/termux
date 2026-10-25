@@ -32,7 +32,20 @@ echo -e '\e[1;37m[i] Downloading Google Antigravity...\e[0m'
 cd $PREFIX/var/lib/proot-distro/containers/debiandevroom/rootfs
 mkdir -p Apps/IDE
 cd Apps/IDE
-aria2c -x 4 -o Antigravity.tar.gz https://storage.googleapis.com/antigravity-public/antigravity-hub/2.8.1-6512087774658560/linux-arm/Antigravity.tar.gz
+architecture=$(uname -m)
+if [[ "$architecture" =~ "aarch64" ]]; then
+    aria2c -x 4 -o Antigravity.tar.gz https://storage.googleapis.com/antigravity-public/antigravity-hub/2.17.0-5217732355031040/linux-arm/Antigravity.tar.gz
+elif [[ "$architecture" =~ "x86_64" ]]; then
+    aria2c -x 4 -o Antigravity.tar.gz https://storage.googleapis.com/antigravity-public/antigravity-hub/2.17.0-5217732355031040/linux-x64/Antigravity.tar.gz
+elif [[ "$architecture" =~ "arm" ]]; then
+    rm installantigravity.sh
+    clear
+    echo -e "\e[1;37m[!] Cannot install!"
+    echo -e "\e[1;37m-\e[0m"
+    echo -e "\e[1;37mAntigravity does not support 32-bit operating systems."
+    echo -e "\e[1;37m\e[0m"
+    exit
+fi
 clear
 echo -e '\e[1;37m[i] Installing Google Antigravity...\e[0m'
 tar -xvzf Antigravity.tar.gz
